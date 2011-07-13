@@ -1,0 +1,20 @@
+*.dylib
+*.21
+*.dblite
+*.o
+*.a
+*.swp
+*.orig
+*.dSYM
+*.mode1v3
+*tehansen.pbxuser
+*.core
+.DS_Store
+build
+fusion
+ptypes_test
+ptypesn_test
+
+# cause of window, try to not show differences...
+# but no help for already commited files...
+contrib/libevent*

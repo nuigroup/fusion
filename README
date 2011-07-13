@@ -1,0 +1,171 @@
+################################################################################
+# About
+################################################################################
+
+Fusion is a modular daemon designed to facilitate rapid prototyping of multimodal user interfaces.
+It was initially written for the Natural User Interface Group as part of Google Summer of Code 2011.
+
+
+
+################################################################################
+# Features
+################################################################################
+
+* Cross-Platform
+Fusion is fully cross-platform. It runs on Windows, Linux, MacOSX and FreeBSD.
+The same configurations and models apply across platforms, so if your application is
+cross-platform, we support it.
+
+* Daemon
+Fusion runs as a daemon process. That means you can
+launch it on a different headless computer if you want (although currently some things
+depend on the daemon running on localhost, and responsiveness could be an issue).
+
+* Threading
+With Fusion, you have the ability to enable threading for any module you want.
+That means you are finally able to use your Core 2 Duo / Quad Core to its full
+potential. Obviously, you can still use non-threaded mode.
+
+* Remote API
+Fusion has a JSON API to control all its settings and adjust your pipeline remotely
+and on the fly. Interaction events are also served as JSON objects.
+
+* HTML5 Administration
+Fusion's web interface makes use of the most recent developments in web
+programming with open standards like HTML5. All that is required is a compatible
+HTML5 web browser. As of today, Firefox 3.6, Safari and Chromium have successfully
+run the web interface.
+
+
+
+
+################################################################################
+# Compiling Fusion
+################################################################################
+
+Fusion uses the SCons build system (http://www.scons.org/). Quoting the website:
+"""SCons is a software construction tool -- that is, a superior alternative to the
+classic "Make" build tool that we all know and love."""
+
+This means you have to install SCons to be able to compile Fusion.
+The platform specific compile notes below include instruction on how to install
+SCons. Once you have SCons installed open a command line in the Fusion directory
+(the one with this README in it) and run the following command:
+
+To build fusion (and dependencies if needed) run:
+scons
+
+To clean fusion (remove any intermediate files, output libs and executables):
+scons -c  (or 'scons --clean')
+
+To also clean the dependencies built in contrib:
+scons -c --clean-contrib
+
+
+
+For more info about SCons, other options, or how to install it on any system,
+you can check the SCons user guide at:
+http://www.scons.org/doc/production/HTML/scons-user.html
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Linux Compile Notes
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+The following instructions are for Ubuntu/Debian.
+They should be easily transferable to other linux distributions.
+Building from source on these distributions is really easy.
+
+First, you have to install git and the build-tools:
+sudo apt-get install git-core build-essential scons
+
+Then, you get the current development version of Fusion:
+git clone git://github.com/shalstvedt/Fusion.git
+
+Afterwards, we change to the Fusion repo you just cloned:
+cd Fusion
+
+It is time to compile, let's run scons!
+scons
+
+Now you should be able to use fusion already. Try the ballworld demo:
+./fusion -l config/ballworld/ballworld.cfg
+
+Now that the daemon is running, you can simply open your webbrowser
+(needs to be Firefox 3.6 or some other browser with HTML5 and support for
+the canvas object. Javascript has to be enabled.) and navigate to the admin interface:
+http://127.0.0.1:7500/
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Windows Compile Notes
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+To build fusion, you will have to install a couple of things first.
+You will need Visual C++ 2010 and scons (which also requires python)
+
+1. install Visual C++ Express 2010 (not needed if you have Visual Studio 2010)
+not: must be 2010 version!  you can download a free version here (select language to start download):
+http://www.microsoft.com/express/Downloads/#2010-Visual-CPP
+
+2. install Python and scons
+download and run the following files:
+http://python.org/ftp/python/2.7/python-2.7.msi
+http://prdownloads.sourceforge.net/scons/scons-2.0.1.win32.exe
+
+OK, you're ready to build.  If you installed everything to default locations just run:
+scons
+
+If scons command is not found, try:
+
+C:\Python2.7\Scripts\scons
+
+Now you should be able to start fusion. Just double click the fusion executable or run it from the command line to use a config:
+fusion -l config/ballworld/ballworld.cfg
+
+Now that the daemon is running, you can simply open your browser
+(needs to be Firefox 3.6 or some other browser with HTML5 and support for
+the canvas object. Javascript has to be enabled.) and navigate to the admin interface:
+http://127.0.0.1:7500/
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++
++ OSX Compile Notes
++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+1. installl scons
+download the follwoing file:
+http://prdownloads.sourceforge.net/scons/scons-2.0.1.zip
+
+2. unzip the file, open a terminal and navigate to that directory:
+cd scons-2.0.1
+python setup.py install
+
+You're ready to build, just run:
+scons
+
+
+Note: If you need to build moved as 32bit, you can do so by forcing the -m32 flag on the compilers for both moved and all libs in contrib by running:
+CC='gcc -m32' CXX='g++ -m32' scons
+
+Now you should be able to use fusion already. Try the simple-video preset:
+./fusion -l config/ballworld/ballworld.cfg
+
+Now that the daemon is running, you can simply open your browser
+(needs to be Firefox 3.6 or some other browser with HTML5 and support for
+the canvas object. Javascript has to be enabled.) and navigate to the admin interface:
+http://127.0.0.1:7500/
+
+
+********************************************************************************
+Fusion incorporates components and ideas from the Movid project. Please see
+below for license information on that project.
+********************************************************************************
+
+################################################################################
+# License
+################################################################################
+Movid Copyright (C) 2010 Movid Authors (see AUTHORS file).  All rights reserved.
+Movid may be used and distributed under the terms of the Q Public License as
+appearing in the LICENSE file distributed with this software.

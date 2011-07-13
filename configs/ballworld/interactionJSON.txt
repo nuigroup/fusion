@@ -1,0 +1,38 @@
+{
+	type: "interaction"
+	val: "move"
+	children: [
+	{
+		type: "ball"
+		val: "22"
+	},
+	{
+		type: "loc"
+		val: "21,55"
+	}
+	]
+}
+
+{
+	type: "interaction"
+	val: "move"
+	children: [
+	{
+		type: "ball"
+		val: "null"
+		children: [
+		{
+			type: "color"
+			val: "yellow"
+		}
+		]
+	},
+	{
+		type: "loc"
+		val: "12,55"
+	}
+	]
+}
+
+
+basically, domains and identifiers.  if not identified in the domain, then not terminal.
