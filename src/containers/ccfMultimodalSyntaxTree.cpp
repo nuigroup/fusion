@@ -8,10 +8,9 @@
 #include "ccfMultimodalSyntaxTree.h"
 
 namespace client {
-    template <typename Iterator>
-    struct multimodalSyntaxTree_grammar() : qi::grammar<Iterator, syntaxTree(), ascii::space_type>
-    {
-        multimodalSyntaxTree_grammar : multimodalSyntaxTree_grammar::base_type(interaction)
+    template <typename Iterator> struct multimodalSyntaxTree_grammar : qi::grammar<Iterator, multimodalSyntaxTree(), ascii::space_type>
+	{
+        multimodalSyntaxTree_grammar() : multimodalSyntaxTree_grammar::base_type(interaction)
         {
             
             interaction %= moveInteraction | colorInteraction | destroyInteraction | createInteraction;
@@ -20,10 +19,10 @@ namespace client {
             colorInteraction = colorCommand > (ballSelector >> color); // build an interaction object, 
             
             
-            moveCommand = lit('move') | lit('put') [_val = 'move']; // val should be tuple<string type, string command>
-            colorCommand %= string('color');
-            destroyCommand = lit('delete') | lit('remove') | lit('destroy') [_val = 'destroy'];
-            createCommand = lit('make') | lit('create') | lit('put') [_val = 'create'];
+            moveCommand = lit("move") | lit("put") [_val = "move"]; // val should be tuple<string type, string command>
+            colorCommand %= string("color");
+            destroyCommand = lit("delete") | lit("remove") | lit("destroy") [_val = "destroy"];
+            createCommand = lit("make") | lit("create") | lit("put") [_val = "create"];
             
             ball = ballSelectorUnimodal | ballSelectorMultimodal; // pass on the ball object
             
@@ -31,9 +30,9 @@ namespace client {
             
             color = colorSelectorUnimodal; // build a color object (or its data), name of the rule is the type attribute and val is the returned attribute
             
-            colorSelectorUnimodal %= string('red') | string('green') | string('blue') | string('yellow') | string('orange') | string('white') | string('purple'); // return a domain type, this is terminal
+            colorSelectorUnimodal %= string("red") | string("green") | string("blue") | string("yellow") | string("orange") | string("white") | string("purple"); // return a domain type, this is terminal
             
-            newBall %= (lit('an') | lit('a')) >> -lit('new') >> color >> (lit('ball') | lit('one'));
+            newBall %= (lit("an") | lit("a")) >> -lit("new") >> color >> (lit("ball") | lit("one"));
             
             
         }
@@ -46,9 +45,9 @@ namespace client {
         qi::rule<Iterator, multimodalSyntaxTree(), ascii::space_type> destroyInteraction;
         
 		
-        qi::rule<Interator, std::string(), , ascii::space_type> moveCommand;
+        qi::rule<Iterator, std::string(), ascii::space_type> moveCommand;
         qi::rule<Iterator, std::string(), ascii::space_type> colorCommand;
-        qi::rule<Interator, std::string(), ascii::space_type> createCommand;
+        qi::rule<Iterator, std::string(), ascii::space_type> createCommand;
         qi::rule<Iterator, std::string(), ascii::space_type> destroyCommand;
         
         qi::rule<Iterator, multimodalSyntaxTreeNode(), ascii::space_type> ball;

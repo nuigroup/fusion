@@ -12,6 +12,7 @@
 #include <string>
 #include <vector>
 
+#include <boost/config/warning_disable.hpp>
 #include <boost/spirit/include/qi.hpp>
 #include <boost/spirit/include/phoenix_core.hpp>
 #include <boost/spirit/include/phoenix_operator.hpp>
@@ -27,19 +28,14 @@ namespace client
 {
     namespace fusion = boost::fusion;
     namespace phoenix = boost::phoenix;
-    namespace qi = boost::qi;
+    namespace qi = boost::spirit::qi;
     namespace ascii = boost::spirit::ascii;
     
     struct multimodalSyntaxTree;
-    struct multimodalSyntaxTreeNode;
+	struct unimodalLeaf;
+	struct multimodalLeaf;
     
-    typedef
-    boost::variant<
-    boost::recursive_wrapper<multimodalSyntaxTree>
-    , multimodalLeaf
-    , unimodalLeaf
-    >
-    multimodalSyntaxTreeNode;
+    typedef boost::variant<boost::recursive_wrapper<multimodalSyntaxTree>, multimodalLeaf, unimodalLeaf> multimodalSyntaxTreeNode;
     
     struct multimodalSyntaxTree
     {
@@ -64,7 +60,9 @@ namespace client
 
 BOOST_FUSION_ADAPT_STRUCT(
     client::multimodalSyntaxTree,
-	(std::string, type),
-	(std::string, val),
+	(std::string, type)
+	(std::string, val)
     (std::vector<client::multimodalSyntaxTreeNode>, children)
 )
+
+#endif

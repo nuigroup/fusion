@@ -46,16 +46,15 @@
 #include <string>
 #include <map>
 
+// libevent
+#include "event.h"
+#include "evhttp.h"
 
 // JSON
 #include "cJSON.h"
 
-// Fusion
-#include "ccx.h"
-
-// libevent
-#include "event.h"
-#include "evhttp.h"
+// CCX
+#include <ccx.h>
 
 // assert
 #include <assert.h>
@@ -66,6 +65,12 @@
 #define CCX_SLOTMAX	10
 #define CCX_SLOTDIR	"configs/slots/slot-"
 #define CCX_SLOTEXT	".txt"
+
+#ifndef UNICODE
+typedef std::string String;
+#else
+typedef std::wstring String;
+#endif
 
 LOG_DECLARE("App");
 
@@ -1125,7 +1130,8 @@ int parse_options(int *argc, char ***argv) {
 #ifndef WIN32
 		ch = getopt_long(*argc, *argv, "hp:g:l:sdni:t", options, &option_index);
 #else
-		ch = getopt(*argc, *argv, "hp:g:l:sdni:t");
+		//ch = getopt(*argc, *argv, "hp:g:l:sdni:t"); // fix this, http://www.wincli.com/?p=72
+		ch = -1;
 #endif
 		if (ch == -1)
 			break;
@@ -1138,21 +1144,21 @@ int parse_options(int *argc, char ***argv) {
 				config_detach = true;
 				break;
 			case 'p':
-				config_pidfile = std::string(optarg);
+				//config_pidfile = std::string(optarg);
 				break;
 			case 'g':
-				config_guidir = std::string(optarg);
+				//config_guidir = std::string(optarg);
 				break;
 			case 'n':
 				config_httpserver = false;
 				break;
 			case 'l':
-				config_pipelinefn = std::string(optarg);
+				//config_pipelinefn = std::string(optarg);
 				break;
 			case 'i':
 				ccxDaemon::init();
-				describe(optarg);
-				return 0; /* leave properly */
+				//describe(optarg);
+				return 0; // leave properly
 			case 't':
 				test_mode = true;
 				break;
@@ -1167,7 +1173,7 @@ int parse_options(int *argc, char ***argv) {
 	(*argc) -= optind;
 	(*argv) -= optind;
 
-	return -1; /* no error */
+	return -1; // no error
 }
 
 int main(int argc, char **argv) {
