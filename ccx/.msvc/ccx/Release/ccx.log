@@ -1,0 +1,48 @@
+﻿Build started 7/15/2011 5:51:20 PM.
+     1>Project "C:\Users\shalstvedt\Code\ccf\ccx\.msvc\ccx\ccx.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\ccx.unsuccessfulbuild".
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\shalstvedt\Code\ccf\ccx\.msvc\ccx\\..\..\contrib /I"C:\Users\shalstvedt\Code\ccf\ccx\.msvc\ccx\\..\..\contrib\libevent-1.4.13-stable" /I"C:\Users\shalstvedt\Code\ccf\ccx\.msvc\ccx\\..\..\contrib\ptypes-2.1.1\include" /I"C:\Users\shalstvedt\Code\ccf\ccx\.msvc\ccx\\..\..\contrib\libevent-1.4.13-stable\WIN32-Code" /I"C:\Users\shalstvedt\Code\ccf\ccx\.msvc\ccx\\..\..\contrib\libevent-1.4.13-stable\compat" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\ccxDaemon.cpp ..\..\ccxDataGenericContainer.cpp ..\..\ccxDataStream.cpp ..\..\ccxFactory.cpp ..\..\ccxLog.cpp ..\..\ccxModule.cpp ..\..\ccxPipeline.cpp ..\..\ccxProperty.cpp ..\..\ccxThread.cpp ..\..\ccxUtils.cpp
+         ccxDaemon.cpp
+         ccxDataGenericContainer.cpp
+         ccxDataStream.cpp
+         ccxFactory.cpp
+         ccxLog.cpp
+         ccxModule.cpp
+         ccxPipeline.cpp
+         ccxProperty.cpp
+     1>..\..\ccxProperty.cpp(105): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(363) : see declaration of '_snprintf'
+     1>..\..\ccxProperty.cpp(112): warning C4996: '_snprintf': This function or variable may be unsafe. Consider using _snprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\include\stdio.h(363) : see declaration of '_snprintf'
+         ccxThread.cpp
+         ccxUtils.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\shalstvedt\Code\ccf\.msvc\Release\ccx.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\ccx.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\shalstvedt\Code\ccf\.msvc\Release\ccx.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\shalstvedt\Code\ccf\.msvc\Release\ccx.lib" /MACHINE:X86 Release\ccxDaemon.obj
+         Release\ccxDataGenericContainer.obj
+         Release\ccxDataStream.obj
+         Release\ccxFactory.obj
+         Release\ccxLog.obj
+         Release\ccxModule.obj
+         Release\ccxPipeline.obj
+         Release\ccxProperty.obj
+         Release\ccxThread.obj
+         Release\ccxUtils.obj
+     1>ccxDaemon.obj : error LNK2001: unresolved external symbol __imp__WSACleanup@0
+     1>ccxDaemon.obj : error LNK2001: unresolved external symbol __imp__WSAStartup@8
+     1>ccxModule.obj : error LNK2001: unresolved external symbol "public: __thiscall pt::trigger::trigger(bool,bool)" (??0trigger@pt@@QAE@_N0@Z)
+     1>ccxModule.obj : error LNK2001: unresolved external symbol "public: void __thiscall pt::thread::waitfor(void)" (?waitfor@thread@pt@@QAEXXZ)
+     1>ccxModule.obj : error LNK2001: unresolved external symbol "public: void __thiscall pt::thread::start(void)" (?start@thread@pt@@QAEXXZ)
+     1>ccxPipeline.obj : error LNK2001: unresolved external symbol "int g_config_delay" (?g_config_delay@@3HA)
+     1>ccxThread.obj : error LNK2001: unresolved external symbol "public: bool __thiscall pt::timedsem::wait(int)" (?wait@timedsem@pt@@QAE_NH@Z)
+     1>ccxThread.obj : error LNK2001: unresolved external symbol "public: virtual __thiscall pt::thread::~thread(void)" (??1thread@pt@@UAE@XZ)
+     1>ccxThread.obj : error LNK2001: unresolved external symbol "public: __thiscall pt::thread::thread(bool)" (??0thread@pt@@QAE@_N@Z)
+     1>ccxThread.obj : error LNK2001: unresolved external symbol "protected: virtual void __thiscall pt::thread::cleanup(void)" (?cleanup@thread@pt@@MAEXXZ)
+     1>MSVCRT.lib(crtexe.obj) : error LNK2001: unresolved external symbol _main
+     1>C:\Users\shalstvedt\Code\ccf\.msvc\Release\ccx.exe : fatal error LNK1120: 11 unresolved externals
+     1>Done Building Project "C:\Users\shalstvedt\Code\ccf\ccx\.msvc\ccx\ccx.vcxproj" (build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:06.00
