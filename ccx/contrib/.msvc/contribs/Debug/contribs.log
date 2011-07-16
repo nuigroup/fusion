@@ -1,4 +1,8 @@
-﻿Build started 7/15/2011 9:23:32 PM.
+﻿Build started 7/15/2011 10:05:58 PM.
+     1>Project "C:\Users\shalstvedt\Code\old\ccf\ccx\contrib\.msvc\contribs\contribs.vcxproj" on node 3 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\contribs.lastbuildstate".
+     1>Done Building Project "C:\Users\shalstvedt\Code\old\ccf\ccx\contrib\.msvc\contribs\contribs.vcxproj" (clean target(s)).
 
 Build succeeded.
 

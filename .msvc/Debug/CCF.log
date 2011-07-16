@@ -1,4 +1,8 @@
-﻿Build started 7/15/2011 9:23:32 PM.
+﻿Build started 7/15/2011 10:05:58 PM.
+     1>Project "C:\Users\shalstvedt\Code\old\ccf\.msvc\CCF.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Debug\CCF.lastbuildstate".
+     1>Done Building Project "C:\Users\shalstvedt\Code\old\ccf\.msvc\CCF.vcxproj" (clean target(s)).
 
 Build succeeded.
 

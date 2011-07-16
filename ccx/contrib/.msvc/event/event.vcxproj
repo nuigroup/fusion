@@ -78,7 +78,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(SolutionDir)\..\libevent-1.4.13-stable\;$(SolutionDir)\..\libevent-1.4.13-stable\compat;$(SolutionDir)\..\libevent-1.4.13-stable\WIN32-Code</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\..\libevent-1.4.13-stable\;$(ProjectDir)\..\..\libevent-1.4.13-stable\compat;$(ProjectDir)\..\..\libevent-1.4.13-stable\WIN32-Code</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;HAVE_CONFIG_H;_CRT_SECURE_NO_DEPRECATE;HAVE_GETADDRINFO;EAI_SYSTEM=-11</PreprocessorDefinitions>
     </ClCompile>
     <Link>
