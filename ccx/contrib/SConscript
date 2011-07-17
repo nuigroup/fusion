@@ -14,10 +14,9 @@ env = Environment(TARGET_ARCH='x86')
 
 #add include paths and libraries #########################
 env.Append(
-   CPPPATH = ['contrib',
-              'contrib/cJSON',
-		        'contrib/libevent-1.4.13-stable',
-		        'contrib/ptypes-2.1.1/include',
+   CPPPATH = ['ccx/contrib',
+	        'ccx/contrib/libevent-1.4.13-stable',
+	        'ccx/contrib/ptypes-2.1.1/include',
               'contrib/XgetOpt'],
 
    LIBS = ['event', 'ptypes'],
@@ -27,13 +26,13 @@ env.Append(
 ## add additional libevent include directories for win32
 if sys.platform == 'win32':
    env.Append( CPPPATH = [
-      'contrib/libevent-1.4.13-stable/compat',
-      'contrib/libevent-1.4.13-stable/WIN32-Code'
+      'ccx/contrib/libevent-1.4.13-stable/compat',
+      'ccx/contrib/libevent-1.4.13-stable/WIN32-Code'
    ],
-   LIBPATH = ['contrib/.msvc/lib']
+   LIBPATH = ['ccx/contrib/.msvc/lib']
    )
 else:
-	env.Append(LIBPATH = ['contrib/lib'])
+	env.Append(LIBPATH = ['ccx/contrib/lib'])
 
 
 

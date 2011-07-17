@@ -44,7 +44,7 @@ print 'Doing compilation in %s mode' % mode
 #################################################################
 # Build contrib and configure env for linking against deps
 #################################################################
-env = SConscript('contrib/SConscript')
+env = SConscript('ccx/contrib/SConscript')
 
 #################################################################
 # Platform specific settings for build env and OpenCV flags
@@ -85,5 +85,6 @@ else:
 #################################################################
 ccx = env.Library('ccx', ccx_src )
 env.Append(CPPPATH = ['ccx'])
-env.Append(CPPPATH = 'src/modules');
+env.Append(CPPPATH = 'src/modules')
+env.Append(CPPPATH = 'contrib/cJSON')
 env.Program('fusion', daemon_src + [ccx])
