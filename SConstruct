@@ -14,6 +14,7 @@ AddOption( '--clean-contrib',
 #source files for the daemon ####################################
 daemon_src = [
   'src/fusion.cpp',
+  'src/containers/ccfMultimodalSyntaxTree.cpp',
   'contrib/cJSON/cJSON.c'
 ]
 
@@ -87,4 +88,5 @@ ccx = env.Library('ccx', ccx_src )
 env.Append(CPPPATH = ['ccx'])
 env.Append(CPPPATH = 'src/modules')
 env.Append(CPPPATH = 'contrib/cJSON')
+env.Append(CPPPATH = 'contrib/boost_1_47_0')
 env.Program('fusion', daemon_src + [ccx])
