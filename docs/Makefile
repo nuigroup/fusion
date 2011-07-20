@@ -1,5 +1,5 @@
 all:
-	doxygen doxygen.config
+	doxygen Doxyfile
 
 clean:
 	-rm -rf html
