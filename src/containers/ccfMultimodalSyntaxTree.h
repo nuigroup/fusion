@@ -46,14 +46,16 @@ namespace client
     
     struct multimodalLeaf
     {
-        int seq;
-        std::string type;
+       	std::string type;
+       	int seq;
+		bool multimodal; // true
     };
     
     struct unimodalLeaf
     {
         std::string type;
         std::string val;
+		bool multimodal; // false
     };
 }
 
