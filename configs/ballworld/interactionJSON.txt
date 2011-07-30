@@ -34,5 +34,20 @@
 	]
 }
 
+{
+	type: "interaction"
+	val: "move"
+	attributes: [
+	{
+		type: "color"
+		val: "yellow"
+	},
+	{
+		type: "point"
+		
+	}
+	]
+}
+
 
 basically, domains and identifiers.  if not identified in the domain, then not terminal.

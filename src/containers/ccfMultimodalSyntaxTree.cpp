@@ -18,47 +18,39 @@ namespace client {
 			
 			using ascii::string;
 			using namespace qi::labels;
-			
-			using phoenix::at_c;
-			using phoenix::push_back;
-			
+			            			
             
-            interaction %= moveInteraction | colorInteraction | destroyInteraction | createInteraction; // type is name of the rule, val is string, and children is children
+            interaction %= (moveInteraction | colorInteraction | createInteraction | destroyInteraction); // type is name of the rule, val is string, and children is children
             
-            moveInteraction = moveCommand [at_c<1>(_val) = _1]
-				> (ball [push_back(at_c<2>(_val), _1)]
-				> point [push_back(at_c<2>(_val), _1)]
-				) [at_c<0>(_val) = "interaction"];
-            colorInteraction = colorCommand [at_c<1>(_val) = _1]
- 				> (ball [push_back(at_c<2>(_val), _1)]
-				> color [push_back(at_c<2>(_val), _1)]
-				) [at_c<0>(_val) = "interaction"];
-            createInteraction = createCommand [at_c<1>(_val) = _1]
-				> (newBall [push_back(at_c<2>(_val), _1)]
-				> point [push_back(at_c<2>(_val), _1)]
-				) [at_c<0>(_val) = "interaction"];
-            destroyInteraction = destroyCommand [at_c<1>(_val) = _1]
-				> (ball [push_back(at_c<2>(_val), _1)]
-				) [at_c<0>(_val) = "interaction"];
+            moveInteraction %= moveCommand >> attr("interaction") >> movePredicate;
+            colorInteraction %= colorCommand >> attr("interaction") >> colorPredicate;
+            createInteraction %= createCommand >> attr("interaction") >> createPredicate;
+            destroyInteraction %= destroyCommand >> attr("interaction") >> destroyPredicate;
+            
+            movePredicate %= (ball >> point);
+            colorPredicate %= (ball >> color);
+            createPredicate %= (newBall >> point);
+            destroyPredicate %= (ball);
             
             
-            moveCommand = lit("move") | lit("put") >> attr("move"); // val should be tuple<string type, string command>
-            colorCommand %= string("color");
-            destroyCommand = lit("delete") | lit("remove") | lit("destroy") >> attr("destroy");
-            createCommand = lit("make") | lit("create") | lit("put") >> attr("create");
+            moveCommand = (lit("move") | lit("put")) [_val = "move"]; // val should be tuple<string type, string command>
+            colorCommand = lit("color") [_val = "color"];
+            destroyCommand = (lit("delete") | lit("remove") | lit("destroy")) [_val = "destroy"];
+            createCommand = (lit("make") | lit("create")) [_val = "create"];
             
-            ball %= attr("ball") > attr("NULL") > (ballSelectorUnimodal | ballSelectorMultimodal); // pass on the ball node
-            ballSelectorUnimodal %= attr("color") > (lit("the") >> color >> (lit("ball") | lit("one")));
-            ballSelectorMultimodal %= lit("this") | lit("that") >> -lit("ball");
+            ball %= ballSelectorUnimodal | ballSelectorMultimodal; // pass on the ball node
+            ballSelectorUnimodal %= lit("the") >> colorSelectorUnimodal  >> (lit("ball") | lit("one"));
+            ballSelectorMultimodal %= (lit("this") | lit("that")) >> attr("ball") >> -(lit("ball") | lit("one"));
             
-            point = pointSelectorMultimodal; // build a point object
-            pointSelectorMultimodal = lit("here") | lit("there");
+            point %= pointSelectorMultimodal; // build a point object
+            pointSelectorMultimodal %= (lit("here") | lit("there")) >> attr("point");
             
-            color = colorSelectorUnimodal; // build a color object (or its data), name of the rule is the type attribute and val is the returned attribute
+            newBall %= (lit("an") | lit("a")) >> -lit("new") >> color >> (lit("ball") | lit("one")); // ball id needs replacing
             
-            colorSelectorUnimodal %= (string("red") | string("green") | string("blue") | string("yellow") | string("orange") | string("white") | string("purple")); // return a domain value, this is terminal
+            color %= colorSelectorUnimodal; // build a color object (or its data), name of the rule is the type attribute and val is the returned attribute
             
-            newBall %= (lit("an") | lit("a")) >> -lit("new") >> color >> (lit("ball") | lit("one"));
+            colorSelectorUnimodal %= (string("red") | string("green") | string("blue") | string("yellow") | string("orange") | string("white") | string("purple")) >> attr("color"); // return a unimodal leaf, this is terminal
+            
             
             
             
@@ -70,24 +62,186 @@ namespace client {
         qi::rule<Iterator, multimodalSyntaxTree(), ascii::space_type> colorInteraction;
         qi::rule<Iterator, multimodalSyntaxTree(), ascii::space_type> createInteraction;
         qi::rule<Iterator, multimodalSyntaxTree(), ascii::space_type> destroyInteraction;
+        
+        qi::rule<Iterator, std::vector<node>(), ascii::space_type> createPredicate;
+        qi::rule<Iterator, std::vector<node>(), ascii::space_type> colorPredicate;
+        qi::rule<Iterator, std::vector<node>(), ascii::space_type> movePredicate;
+        qi::rule<Iterator, std::vector<node>(), ascii::space_type> destroyPredicate;
+
 		
         qi::rule<Iterator, std::string(), ascii::space_type> moveCommand;
         qi::rule<Iterator, std::string(), ascii::space_type> colorCommand;
         qi::rule<Iterator, std::string(), ascii::space_type> createCommand;
         qi::rule<Iterator, std::string(), ascii::space_type> destroyCommand;
         
-        qi::rule<Iterator, multimodalSyntaxTreeNode(), ascii::space_type> ball;
-        qi::rule<Iterator, multimodalLeaf(), ascii::space_type> ballSelectorMultimodal;
-        qi::rule<Iterator, unimodalLeaf(), ascii::space_type> ballSelectorUnimodal;
+        qi::rule<Iterator, node(), ascii::space_type> ball;
+        qi::rule<Iterator, multimodalLeafNode(), ascii::space_type> ballSelectorMultimodal;
+        qi::rule<Iterator, unimodalLeafNode(), ascii::space_type> ballSelectorUnimodal;
 
-        qi::rule<Iterator, multimodalSyntaxTreeNode(), ascii::space_type> newBall;
+        qi::rule<Iterator, node(), ascii::space_type> newBall;
 
-		qi::rule<Iterator, multimodalSyntaxTreeNode(), ascii::space_type> point;
-        qi::rule<Iterator, multimodalLeaf(), ascii::space_type> pointSelectorMultimodal;
+		qi::rule<Iterator, node(), ascii::space_type> point;
+        qi::rule<Iterator, multimodalLeafNode(), ascii::space_type> pointSelectorMultimodal;
                 
-        qi::rule<Iterator, multimodalSyntaxTreeNode(), ascii::space_type> color;
-        qi::rule<Iterator, std::string(), ascii::space_type> colorSelectorUnimodal;
+        qi::rule<Iterator, node(), ascii::space_type> color;
+        qi::rule<Iterator, unimodalLeafNode(), ascii::space_type> colorSelectorUnimodal;
         
         
     };
+    
+    // somewhere in here we need a phoenix::ref to a counter for multimodal sequence
+    
+    // we also need to use phoenix::construct to enable object creation
+    // _val = phoenix::construct<unimodalLeafNode>(_1, _2);
+    
+    // create classes instead of structs to hold the tree; then it can be smart.
+    
+    // also, we need to test the parser (but all this should go in the module)
+
 }
+
+namespace client {
+    
+    int const tabsize = 4;
+    
+    void tab(int indent)
+    {
+        for (int i = 0; i < indent; ++i) {
+            std::cout << ' ';
+        }
+    }
+    
+    struct mast_printer
+    {
+        mast_printer(int indent = 0) : indent(indent) {}
+        
+        void operator()(multimodalSyntaxTree const& mast) const;
+        
+        int indent;
+    };
+    
+    struct mast_node_printer : boost::static_visitor<>
+    {
+        mast_node_printer(int indent = 0) : indent(indent) {}
+        
+        void operator()(multimodalSyntaxTree const& mast) const {
+            mast_printer(indent+tabsize)(mast);
+        }
+        
+        void operator()(multimodalLeafNode const& mmNode) const {
+            tab(indent+tabsize);
+            std::cout << "|multimodal| type: \"" << mmNode.type << "\" |\n";
+        }
+        
+        void operator()(unimodalLeafNode const& umNode) const {
+            tab(indent+tabsize);
+            std::cout << "|unimodal| type: \"" << umNode.type << "\", val: \"" << umNode.val << "\" |\n";
+        }
+        
+        int indent;
+    };
+    
+    void mast_printer::operator()(multimodalSyntaxTree const& mast) const
+    {
+        tab(indent);
+        std::cout << "|abstract| type: \"" << mast.type << "\", val: \"" << mast.val << "\", children.size(): " << mast.children.size() << " |\n";
+        tab(indent);
+        std::cout << '{' << std::endl;
+        BOOST_FOREACH(node const& nod, mast.children)
+        {
+            boost::apply_visitor(mast_node_printer(indent), nod);
+        }
+        tab(indent);
+        std::cout << '}' << std::endl;
+    }
+}
+
+bool doParse(std::string input) {
+    
+    client::multimodalSyntaxTree mast;
+    
+    typedef client::multimodalSyntaxTree_grammar<std::string::iterator> mast_grammar;
+    mast_grammar grammar;
+    
+    std::string storage = input; // We will manipulate the contents here.
+    
+    std::string::iterator iter = storage.begin();
+    std::string::iterator end = storage.end();
+    
+    using boost::spirit::ascii::space;
+    
+    bool r = boost::spirit::qi::phrase_parse(iter, end, grammar, space, mast);
+    
+    if(r && iter == end) {
+        std::cout << "success!\n";
+        client::mast_printer printer;
+        printer(mast);
+        return(true);
+    }
+    else {
+        std::cout << "failure\n";
+        return(false);
+    }
+}
+
+/*
+ *
+ * Testing framework 
+ *
+ *
+ 
+ int main(int argc, char *argv[]) {
+    std::string storage;
+    
+    if(argc > 2 && strcmp(argv[1], "c") == 0) {
+        if(doParse(argv[2])) {
+            return(0); 
+        } else {
+            return(-1); 
+        }
+    } else if(argc > 2 && strcmp(argv[1], "f") == 0) {
+        char const* filename = argv[2];
+         
+        std::ifstream in(filename, std::ios_base::in);
+         
+        if (!in)
+        {
+            std::cerr << "Error: Could not open input file: "
+            << filename << std::endl;
+            return 1;
+        }
+         
+        in.unsetf(std::ios::skipws); // No white space skipping!
+        std::copy(
+                  std::istream_iterator<char>(in),
+                  std::istream_iterator<char>(),
+                  std::back_inserter(storage));
+        char *cstr, *lines;
+        
+        cstr = new char [storage.size()+1];
+        strcpy (cstr, storage.c_str());
+        
+        bool success = true;
+        
+        lines = strtok(cstr, "/");
+        
+        while (lines != NULL) {
+            success = success && doParse(lines);
+            lines = strtok(NULL, "/");
+            std::cout << std::endl;
+        }
+        
+        if(success) {
+            return(0);
+        }
+        else 
+        {
+            return(-1);
+        }
+        
+    } else {
+        std::cout << "either provide command line input with c flag or a filename with f flag\n";
+    }
+}
+ 
+*/

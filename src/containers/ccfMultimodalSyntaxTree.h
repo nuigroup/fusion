@@ -9,6 +9,7 @@
 #define _CCV_MMST_H
 
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -32,39 +33,52 @@ namespace client
     namespace ascii = boost::spirit::ascii;
     
     struct multimodalSyntaxTree;
-	struct unimodalLeaf;
-	struct multimodalLeaf;
+	struct unimodalLeafNode;
+	struct multimodalLeafNode;
     
-    typedef boost::variant<boost::recursive_wrapper<multimodalSyntaxTree>, multimodalLeaf, unimodalLeaf> multimodalSyntaxTreeNode;
+    typedef
+        boost::variant<
+            boost::recursive_wrapper<multimodalSyntaxTree>
+            , multimodalLeafNode
+            , unimodalLeafNode
+        >
+    node;
     
     struct multimodalSyntaxTree
     {
-        std::string type;
         std::string val;
-        std::vector<multimodalSyntaxTreeNode> children;
+        std::string type;
+        std::vector<node> children;
     };
     
-    struct multimodalLeaf
+    struct multimodalLeafNode
     {
        	std::string type;
-       	int seq;
-		bool multimodal; // true
     };
     
-    struct unimodalLeaf
+    struct unimodalLeafNode
     {
-        std::string type;
         std::string val;
-		bool multimodal; // false
+        std::string type;
     };
 }
 
+BOOST_FUSION_ADAPT_STRUCT(
+                          client::multimodalSyntaxTree,
+                          (std::string, val)
+                          (std::string, type)
+                          (std::vector<client::node>, children)
+                          )
 
 BOOST_FUSION_ADAPT_STRUCT(
-    client::multimodalSyntaxTree,
-	(std::string, type)
-	(std::string, val)
-    (std::vector<client::multimodalSyntaxTreeNode>, children)
-)
+                          client::multimodalLeafNode,
+                          (std::string, type)
+                          )
+
+BOOST_FUSION_ADAPT_STRUCT(
+                          client::unimodalLeafNode,
+                          (std::string, val)
+                          (std::string, type)
+                          )
 
 #endif
