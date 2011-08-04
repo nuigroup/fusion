@@ -6,19 +6,19 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #include "ccfMultimodalSyntaxTree.h"
-
+   
 namespace client {
     template <typename Iterator> struct multimodalSyntaxTree_grammar : qi::grammar<Iterator, multimodalSyntaxTree(), ascii::space_type>
 	{
         multimodalSyntaxTree_grammar() : multimodalSyntaxTree_grammar::base_type(interaction)
         {
-	
+            
 			using qi::lit;
 			using qi::attr;
 			
 			using ascii::string;
 			using namespace qi::labels;
-			            			
+            
             
             interaction %= (moveInteraction | colorInteraction | createInteraction | destroyInteraction); // type is name of the rule, val is string, and children is children
             
@@ -67,7 +67,7 @@ namespace client {
         qi::rule<Iterator, std::vector<node>(), ascii::space_type> colorPredicate;
         qi::rule<Iterator, std::vector<node>(), ascii::space_type> movePredicate;
         qi::rule<Iterator, std::vector<node>(), ascii::space_type> destroyPredicate;
-
+        
 		
         qi::rule<Iterator, std::string(), ascii::space_type> moveCommand;
         qi::rule<Iterator, std::string(), ascii::space_type> colorCommand;
@@ -77,12 +77,12 @@ namespace client {
         qi::rule<Iterator, node(), ascii::space_type> ball;
         qi::rule<Iterator, multimodalLeafNode(), ascii::space_type> ballSelectorMultimodal;
         qi::rule<Iterator, unimodalLeafNode(), ascii::space_type> ballSelectorUnimodal;
-
+        
         qi::rule<Iterator, node(), ascii::space_type> newBall;
-
+        
 		qi::rule<Iterator, node(), ascii::space_type> point;
         qi::rule<Iterator, multimodalLeafNode(), ascii::space_type> pointSelectorMultimodal;
-                
+        
         qi::rule<Iterator, node(), ascii::space_type> color;
         qi::rule<Iterator, unimodalLeafNode(), ascii::space_type> colorSelectorUnimodal;
         
@@ -97,8 +97,9 @@ namespace client {
     // create classes instead of structs to hold the tree; then it can be smart.
     
     // also, we need to test the parser (but all this should go in the module)
-
+    
 }
+
 
 namespace client {
     
@@ -155,93 +156,3 @@ namespace client {
         std::cout << '}' << std::endl;
     }
 }
-
-bool doParse(std::string input) {
-    
-    client::multimodalSyntaxTree mast;
-    
-    typedef client::multimodalSyntaxTree_grammar<std::string::iterator> mast_grammar;
-    mast_grammar grammar;
-    
-    std::string storage = input; // We will manipulate the contents here.
-    
-    std::string::iterator iter = storage.begin();
-    std::string::iterator end = storage.end();
-    
-    using boost::spirit::ascii::space;
-    
-    bool r = boost::spirit::qi::phrase_parse(iter, end, grammar, space, mast);
-    
-    if(r && iter == end) {
-        std::cout << "success!\n";
-        client::mast_printer printer;
-        printer(mast);
-        return(true);
-    }
-    else {
-        std::cout << "failure\n";
-        return(false);
-    }
-}
-
-/*
- *
- * Testing framework 
- *
- *
- 
- int main(int argc, char *argv[]) {
-    std::string storage;
-    
-    if(argc > 2 && strcmp(argv[1], "c") == 0) {
-        if(doParse(argv[2])) {
-            return(0); 
-        } else {
-            return(-1); 
-        }
-    } else if(argc > 2 && strcmp(argv[1], "f") == 0) {
-        char const* filename = argv[2];
-         
-        std::ifstream in(filename, std::ios_base::in);
-         
-        if (!in)
-        {
-            std::cerr << "Error: Could not open input file: "
-            << filename << std::endl;
-            return 1;
-        }
-         
-        in.unsetf(std::ios::skipws); // No white space skipping!
-        std::copy(
-                  std::istream_iterator<char>(in),
-                  std::istream_iterator<char>(),
-                  std::back_inserter(storage));
-        char *cstr, *lines;
-        
-        cstr = new char [storage.size()+1];
-        strcpy (cstr, storage.c_str());
-        
-        bool success = true;
-        
-        lines = strtok(cstr, "/");
-        
-        while (lines != NULL) {
-            success = success && doParse(lines);
-            lines = strtok(NULL, "/");
-            std::cout << std::endl;
-        }
-        
-        if(success) {
-            return(0);
-        }
-        else 
-        {
-            return(-1);
-        }
-        
-    } else {
-        std::cout << "either provide command line input with c flag or a filename with f flag\n";
-    }
-}
- 
-*/

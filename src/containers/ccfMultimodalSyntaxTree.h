@@ -6,7 +6,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 #ifndef _CCF_MMST_H
-#define _CCV_MMST_H
+#define _CCF_MMST_H
 
 #include <iostream>
 #include <fstream>
