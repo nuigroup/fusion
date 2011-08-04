@@ -1275,9 +1275,9 @@ int main(int argc, char **argv) {
 		evhttp_set_cb(server, "/pipeline/slot/save", web_pipeline_slot_save, NULL);
         
         // test
-        /*
-        evhttp_set_cb(server, "/utterance", web_pipeline_utterance, NULL); 
-        */
+        
+        //evhttp_set_cb(server, "/utterance", web_pipeline_utterance, NULL); 
+        
 
 		evhttp_set_gencb(server, web_file, NULL);
 	}

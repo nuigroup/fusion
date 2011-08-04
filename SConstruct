@@ -15,7 +15,9 @@ AddOption( '--clean-contrib',
 daemon_src = [
   'src/fusion.cpp',
   'src/containers/ccfMultimodalSyntaxTree.cpp',
-  'contrib/cJSON/cJSON.c'
+  'contrib/cJSON/cJSON.c',
+  'src/modules/ccxSpiritParserModule.cpp',
+  'src/models/ballWorldGrammar.cpp'
 ]
 
 #source files for ccx, core+modules ########################
@@ -30,7 +32,7 @@ ccx_src = [
   'ccx/ccxProperty.cpp',
   'ccx/ccxThread.cpp',
   'ccx/ccxUtils.cpp',
-  'src/modules/ccxDebugModule.cpp'
+  'src/modules/ccxDebugModule.cpp',
 ]
 
 #################################################################
@@ -87,6 +89,8 @@ else:
 ccx = env.Library('ccx', ccx_src )
 env.Append(CPPPATH = ['ccx'])
 env.Append(CPPPATH = 'src/modules')
+env.Append(CPPPATH = 'src/containers')
+env.Append(CPPPATH = 'src/models')
 env.Append(CPPPATH = 'contrib/cJSON')
 env.Append(CPPPATH = 'contrib/boost')
 env.Program('fusion', daemon_src + [ccx])

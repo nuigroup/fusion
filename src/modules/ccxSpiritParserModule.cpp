@@ -6,21 +6,19 @@
 
 #include "ccxSpiritParserModule.h"
 
-//MODULE_DECLARE(SpiritParser, "native", "Parses attributes out of ASR text to fill in the semantic tree");
+MODULE_DECLARE(SpiritParser, "native", "Parses attributes out of ASR text to fill in the semantic tree");
 
-//ccxSpiritParserModule::ccxSpiritParserModule() : ccxModule(CCX_MODULE_INPUT | CCX_MODULE_OUTPUT) {
-ccxSpiritParserModule::ccxSpiritParserModule() {
+ccxSpiritParserModule::ccxSpiritParserModule() : ccxModule(CCX_MODULE_INPUT | CCX_MODULE_OUTPUT) {
     
-    //MODULE_INIT();
+    MODULE_INIT();
     
-    this->input = NULL;
-    //this->output = new ccxDataStream("mAST");
-    this-> output = NULL;  
+    this->input = new ccxDataStream("CCAHypothesis");
+    this->output = new ccxDataStream("mAST");
+            
+    this->declareInput(0, &this->input, new ccxDataStreamInfo("data", "CCAHypothesis", "CCA recognition hypothesis"));
+    this->declareOutput(0, &this->output, new ccxDataStreamInfo("data", "mAST", "Multimodal abstract syntax tree"));
     
-    //this->declareInput(0, &this->input, new ccxDataStreamInfo("data", "CCAHypothesis", "CCA recognition hypothesis"));
-    //this->declareOutput(0, &this->output, new ccxDataStreamInfo("data", "mAST", "Multimodal abstract syntax tree"));
-    
-    //this->properties["grammar"] = new ccxProperty("ballworld", "The grammar to use");
+    this->properties["grammar"] = new ccxProperty("ballworld", "The grammar to use");
                                                               
 }
 
@@ -29,16 +27,16 @@ ccxSpiritParserModule::~ccxSpiritParserModule() {
     // delete things
 }
 
-/*
+
 void ccxSpiritParserModule::start() {
-    // initialize things
-    // grammar = the right grammar;
-    
-    
+    // initialize things    
+    this->mast = new client::multimodalSyntaxTree;
+    std::cout << "started!\n";
+    this->initializeFromString("move this here");
 }
 
 void ccxSpiritParserModule::stop() {
-    // stop things
+    free(this->mast);
 }
 
 void ccxSpiritParserModule::notifyData(ccxDataStream *input) {
@@ -49,7 +47,7 @@ void ccxSpiritParserModule::notifyData(ccxDataStream *input) {
 
 void ccxSpiritParserModule::update() {
     this->input->lock();
-    if(this->initializeFromString(std::string(this->input->getData()))) {
+    if(this->initializeFromString(std::string((char*)this->input->getData()))) {
         this->input->unlock();
         this->output->push(mast);
     }
@@ -58,7 +56,7 @@ void ccxSpiritParserModule::update() {
     }
     // if input is valid and initializeFromString is good, then set the output to the current mast
 
-}*/
+}
 
 
 
@@ -66,8 +64,9 @@ bool ccxSpiritParserModule::initializeFromString(std::string input) {
         
     storage = input; // We will manipulate the contents here.
     
-    free(mast);
+    client::multimodalSyntaxTree *oldmast = mast;
     mast = new client::multimodalSyntaxTree;
+    free(oldmast);
     
     std::string::iterator iter = storage.begin();
     std::string::iterator end = storage.end();
@@ -76,7 +75,7 @@ bool ccxSpiritParserModule::initializeFromString(std::string input) {
     
     if(r && iter == end) {
         std::cout << "success! sentence: \"" << storage << "\"\n";
-        printer(*mast);
+        std::cout << mast_to_string(mast);
         return(true);
     }
     else {
@@ -89,7 +88,7 @@ bool ccxSpiritParserModule::initializeFromString(std::string input) {
  *
  * Testing framework 
  *
- */
+ *
 
 int main(int argc, char *argv[]) {
     
@@ -146,4 +145,4 @@ int main(int argc, char *argv[]) {
     } else {
         std::cout << "either provide command line input with c flag or a filename with f flag\n";
     }
-}
+}*/
