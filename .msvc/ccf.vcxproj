@@ -52,7 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\boost;$(ProjectDir)\..\contrib\cJSON;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\compat;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\WIN32-Code;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable;$(ProjectDir)\..\src;$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\ccx;$(ProjectDir)\..\ccx\contrib\ptypes-2.1.1\include;$(ProjectDir)\..\src\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\boost;$(ProjectDir)\..\contrib\cJSON;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\compat;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\WIN32-Code;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable;$(ProjectDir)\..\src;$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\ccx;$(ProjectDir)\..\ccx\contrib\ptypes-2.1.1\include;$(ProjectDir)\..\src\containers;$(ProjectDir)\..\src\models;$(ProjectDir)\..\src\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -91,14 +91,18 @@
     <ClInclude Include="..\contrib\cJSON\cJSON.h" />
     <ClInclude Include="..\contrib\XgetOpt\XGetopt.h" />
     <ClInclude Include="..\src\containers\ccfMultimodalSyntaxTree.h" />
+    <ClInclude Include="..\src\models\ballWorldGrammar.h" />
     <ClInclude Include="..\src\modules\ccxDebugModule.h" />
+    <ClInclude Include="..\src\modules\ccxSpiritParserModule.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\contrib\cJSON\cJSON.c" />
     <ClCompile Include="..\contrib\XgetOpt\XGetopt.cxx" />
     <ClCompile Include="..\src\containers\ccfMultimodalSyntaxTree.cpp" />
     <ClCompile Include="..\src\fusion.cpp" />
+    <ClCompile Include="..\src\models\ballWorldGrammar.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugModule.cpp" />
+    <ClCompile Include="..\src\modules\ccxSpiritParserModule.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

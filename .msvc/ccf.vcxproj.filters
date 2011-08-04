@@ -30,6 +30,12 @@
     <ClInclude Include="..\contrib\XgetOpt\XGetopt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\models\ballWorldGrammar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\modules\ccxSpiritParserModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\fusion.cpp">
@@ -45,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\contrib\XgetOpt\XGetopt.cxx">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\models\ballWorldGrammar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\modules\ccxSpiritParserModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
