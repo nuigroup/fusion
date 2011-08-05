@@ -17,6 +17,8 @@ daemon_src = [
   'src/containers/ccfMultimodalSyntaxTree.cpp',
   'contrib/cJSON/cJSON.c',
   'src/modules/ccxSpiritParserModule.cpp',
+  'src/modules/ccxDebugInputModule.cpp',
+  'src/modules/ccxDebugOutputModule.cpp',
   'src/models/ballWorldGrammar.cpp'
 ]
 

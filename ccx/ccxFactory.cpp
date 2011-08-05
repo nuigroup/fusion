@@ -67,7 +67,8 @@ void ccxFactory::init() {
 	REGISTER_MODULE(Tuio2);
 	REGISTER_MODULE(Video);
 	REGISTER_MODULE(YCrCbThreshold);*/
-    REGISTER_MODULE(Debug);
+    REGISTER_MODULE(DebugInput);
+    REGISTER_MODULE(DebugOutput);
     REGISTER_MODULE(SpiritParser);
     //DoNotRemoveThisComment
 	LOG(CCX_INFO, "registered " << ccxFactory::getInstance()->list().size() << " modules");

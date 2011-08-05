@@ -6,21 +6,24 @@
 /////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef CCX_DEBUG_INPUT_MODULE_H
-#define CCX_DEBUG_INPUT_MODULE_H
+#ifndef CCX_DEBUG_OUTPUT_MODULE_H
+#define CCX_DEBUG_OUTPUT_MODULE_H
 
 #include "ccxModule.h"
 
-class ccxDebugInputModule : public ccxModule {
+class ccxDebugOutputModule : public ccxModule {
 public:
-	ccxDebugInputModule(); 
-	virtual ~ccxDebugInputModule();
+	ccxDebugOutputModule(); 
+	virtual ~ccxDebugOutputModule();
 
 	virtual void notifyData(ccxDataStream *stream);
+    virtual void poll();
 	void update();
+    void start();
 
 private:
 	ccxDataStream *stream;
+    bool alreadySent;
 	MODULE_INTERNALS();
 };
 

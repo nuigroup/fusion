@@ -31,12 +31,14 @@ ccxSpiritParserModule::~ccxSpiritParserModule() {
 void ccxSpiritParserModule::start() {
     // initialize things    
     this->mast = new client::multimodalSyntaxTree;
-    std::cout << "started!\n";
-    this->initializeFromString("move this here");
+    ccxModule::start();
+    LOG(CCX_INFO, "started!");
 }
 
 void ccxSpiritParserModule::stop() {
     free(this->mast);
+    ccxModule::stop();
+    LOG(CCX_INFO, "stopped!");
 }
 
 void ccxSpiritParserModule::notifyData(ccxDataStream *input) {
@@ -52,7 +54,8 @@ void ccxSpiritParserModule::update() {
         this->output->push(mast);
     }
     else {
-        // log failure
+        this->input->unlock();
+        LOG(CCX_INFO, "update failure");
     }
     // if input is valid and initializeFromString is good, then set the output to the current mast
 
@@ -74,12 +77,11 @@ bool ccxSpiritParserModule::initializeFromString(std::string input) {
     bool r = boost::spirit::qi::phrase_parse(iter, end, grammar, boost::spirit::ascii::space, *mast);
     
     if(r && iter == end) {
-        std::cout << "success! sentence: \"" << storage << "\"\n";
-        std::cout << mast_to_string(mast);
+        LOG(CCX_INFO, "success! sentence: \"" << storage << "\"");
         return(true);
     }
     else {
-        std::cout << "failure\n";
+        LOG(CCX_INFO, "failure! sentence: \"" << storage << "\"");
         return(false);
     }
 }

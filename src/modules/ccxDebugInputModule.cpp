@@ -11,16 +11,19 @@
 #include "ccxDataGenericContainer.h"
 #include "ccxLog.h"
 #include "ccxModule.h"
+#include "ccfMultimodalSyntaxTree.h"
 
 MODULE_DECLARE(DebugInput, "native", "Print streams/structures to the debug console in text format");
 
-ccxDebugModule::ccxDebugInputModule() : ccxModule(CCX_MODULE_INPUT) {
+ccxDebugInputModule::ccxDebugInputModule() : ccxModule(CCX_MODULE_INPUT) {
+    MODULE_INIT();
+    
 	this->stream = NULL;
 	this->declareInput(0, &this->stream, new ccxDataStreamInfo(
-			"data", "*", "Show any stream that conforms to GenericList in text format"));
+			"data", "mAST", "Show any stream that conforms to GenericList in text format"));
 }
 
-ccxDebugModule::~ccxDebugInputModule() {
+ccxDebugInputModule::~ccxDebugInputModule() {
 }
 
 void ccxDebugInputModule::update() {
@@ -34,8 +37,8 @@ void ccxDebugInputModule::notifyData(ccxDataStream *stream) {
 		LOG(CCX_INFO, " `- " << stream->getFormat() << " size=" << list->size());
 	}
     
-    if( stream->getFormat() == "multimodalSyntaxTree" ) {
-        // iterate over the tree and log it
+    if( stream->getFormat() == "mAST" ) {
+        mast_to_string(static_cast<client::multimodalSyntaxTree*>(stream->getData()));
     }
 }
 
