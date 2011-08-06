@@ -22,6 +22,8 @@ ccxDebugOutputModule::ccxDebugOutputModule() : ccxModule(CCX_MODULE_OUTPUT) {
 	this->declareOutput(0, &this->stream, new ccxDataStreamInfo(
 			"data", "CCAHypothesis", "Create simple text for debugging"));
     this->alreadySent = false;
+
+	this->properties["sentence"] = new ccxProperty("move this here", "The sentence to feed");
 }
 
 ccxDebugOutputModule::~ccxDebugOutputModule() {
@@ -29,7 +31,7 @@ ccxDebugOutputModule::~ccxDebugOutputModule() {
 
 void ccxDebugOutputModule::update() {
     LOG(CCX_INFO, "updating");
-    std::string text = "move this here";
+	std::string text = this->properties["sentence"]->asString();
     char* cstr;
     cstr = new char [text.size()+1];
     strcpy (cstr, text.c_str());
