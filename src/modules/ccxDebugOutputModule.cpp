@@ -23,7 +23,7 @@ ccxDebugOutputModule::ccxDebugOutputModule() : ccxModule(CCX_MODULE_OUTPUT) {
 			"data", "CCAHypothesis", "Create simple text for debugging"));
     this->alreadySent = false;
 
-	this->properties["sentence"] = new ccxProperty("move this here", "The sentence to feed");
+	this->properties["sentence"] = new ccxProperty("delete the yellow ball", "The sentence to feed");
 }
 
 ccxDebugOutputModule::~ccxDebugOutputModule() {

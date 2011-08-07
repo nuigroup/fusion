@@ -34,7 +34,6 @@ ccx_src = [
   'ccx/ccxProperty.cpp',
   'ccx/ccxThread.cpp',
   'ccx/ccxUtils.cpp',
-  'src/modules/ccxDebugModule.cpp',
 ]
 
 #################################################################

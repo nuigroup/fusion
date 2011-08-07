@@ -149,13 +149,25 @@ scons
 Note: If you need to build moved as 32bit, you can do so by forcing the -m32 flag on the compilers for both moved and all libs in contrib by running:
 CC='gcc -m32' CXX='g++ -m32' scons
 
-Now you should be able to use fusion already. Try the simple-video preset:
-./fusion -l config/ballworld/ballworld.cfg
+Now you should be able to use fusion already. Try the simple preset:
+./fusion
 
 Now that the daemon is running, you can simply open your browser
 (needs to be Firefox 3.6 or some other browser with HTML5 and support for
 the canvas object. Javascript has to be enabled.) and navigate to the admin interface:
 http://127.0.0.1:7500/
+
+++++++++++++++++++++++++++++++++++++++++++++++++++
++ Documentation
+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+OS X or Linux:
+1. Make sure you have Doxygen installed 
+2. cd docs
+3. make
+
+Windows:
+1. Run Doxygen on the Doxyfile in docs/
 
 
 ********************************************************************************
