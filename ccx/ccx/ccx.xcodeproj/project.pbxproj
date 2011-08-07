@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		74708A4613EE35D400112449 /* ccx.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3113EE35D400112449 /* ccx.h */; };
+		74708A4713EE35D400112449 /* ccxDaemon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A3213EE35D400112449 /* ccxDaemon.cpp */; };
+		74708A4813EE35D400112449 /* ccxDaemon.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3313EE35D400112449 /* ccxDaemon.h */; };
+		74708A4913EE35D400112449 /* ccxDataGenericContainer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A3413EE35D400112449 /* ccxDataGenericContainer.cpp */; };
+		74708A4A13EE35D400112449 /* ccxDataGenericContainer.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3513EE35D400112449 /* ccxDataGenericContainer.h */; };
+		74708A4B13EE35D400112449 /* ccxDataStream.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A3613EE35D400112449 /* ccxDataStream.cpp */; };
+		74708A4C13EE35D400112449 /* ccxDataStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3713EE35D400112449 /* ccxDataStream.h */; };
+		74708A4D13EE35D400112449 /* ccxFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A3813EE35D400112449 /* ccxFactory.cpp */; };
+		74708A4E13EE35D400112449 /* ccxFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3913EE35D400112449 /* ccxFactory.h */; };
+		74708A4F13EE35D400112449 /* ccxLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A3A13EE35D400112449 /* ccxLog.cpp */; };
+		74708A5013EE35D400112449 /* ccxLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3B13EE35D400112449 /* ccxLog.h */; };
+		74708A5113EE35D400112449 /* ccxModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A3C13EE35D400112449 /* ccxModule.cpp */; };
+		74708A5213EE35D400112449 /* ccxModule.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3D13EE35D400112449 /* ccxModule.h */; };
+		74708A5313EE35D400112449 /* ccxPipeline.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A3E13EE35D400112449 /* ccxPipeline.cpp */; };
+		74708A5413EE35D400112449 /* ccxPipeline.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A3F13EE35D400112449 /* ccxPipeline.h */; };
+		74708A5513EE35D400112449 /* ccxProperty.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A4013EE35D400112449 /* ccxProperty.cpp */; };
+		74708A5613EE35D400112449 /* ccxProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A4113EE35D400112449 /* ccxProperty.h */; };
+		74708A5713EE35D400112449 /* ccxThread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A4213EE35D400112449 /* ccxThread.cpp */; };
+		74708A5813EE35D400112449 /* ccxThread.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A4313EE35D400112449 /* ccxThread.h */; };
+		74708A5913EE35D400112449 /* ccxUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A4413EE35D400112449 /* ccxUtils.cpp */; };
+		74708A5A13EE35D400112449 /* ccxUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 74708A4513EE35D400112449 /* ccxUtils.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		74708AA013EE36B800112449 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74708A9C13EE368300112449 /* ccx-contrib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 74708A9613EE368300112449;
+			remoteInfo = "ccx-contrib";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		74708A2413EE35C600112449 /* libccx.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libccx.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		74708A3113EE35D400112449 /* ccx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccx.h; path = ../ccx.h; sourceTree = "<group>"; };
+		74708A3213EE35D400112449 /* ccxDaemon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxDaemon.cpp; path = ../ccxDaemon.cpp; sourceTree = "<group>"; };
+		74708A3313EE35D400112449 /* ccxDaemon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxDaemon.h; path = ../ccxDaemon.h; sourceTree = "<group>"; };
+		74708A3413EE35D400112449 /* ccxDataGenericContainer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxDataGenericContainer.cpp; path = ../ccxDataGenericContainer.cpp; sourceTree = "<group>"; };
+		74708A3513EE35D400112449 /* ccxDataGenericContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxDataGenericContainer.h; path = ../ccxDataGenericContainer.h; sourceTree = "<group>"; };
+		74708A3613EE35D400112449 /* ccxDataStream.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxDataStream.cpp; path = ../ccxDataStream.cpp; sourceTree = "<group>"; };
+		74708A3713EE35D400112449 /* ccxDataStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxDataStream.h; path = ../ccxDataStream.h; sourceTree = "<group>"; };
+		74708A3813EE35D400112449 /* ccxFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxFactory.cpp; path = ../ccxFactory.cpp; sourceTree = "<group>"; };
+		74708A3913EE35D400112449 /* ccxFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxFactory.h; path = ../ccxFactory.h; sourceTree = "<group>"; };
+		74708A3A13EE35D400112449 /* ccxLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxLog.cpp; path = ../ccxLog.cpp; sourceTree = "<group>"; };
+		74708A3B13EE35D400112449 /* ccxLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxLog.h; path = ../ccxLog.h; sourceTree = "<group>"; };
+		74708A3C13EE35D400112449 /* ccxModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxModule.cpp; path = ../ccxModule.cpp; sourceTree = "<group>"; };
+		74708A3D13EE35D400112449 /* ccxModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxModule.h; path = ../ccxModule.h; sourceTree = "<group>"; };
+		74708A3E13EE35D400112449 /* ccxPipeline.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxPipeline.cpp; path = ../ccxPipeline.cpp; sourceTree = "<group>"; };
+		74708A3F13EE35D400112449 /* ccxPipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxPipeline.h; path = ../ccxPipeline.h; sourceTree = "<group>"; };
+		74708A4013EE35D400112449 /* ccxProperty.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxProperty.cpp; path = ../ccxProperty.cpp; sourceTree = "<group>"; };
+		74708A4113EE35D400112449 /* ccxProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxProperty.h; path = ../ccxProperty.h; sourceTree = "<group>"; };
+		74708A4213EE35D400112449 /* ccxThread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxThread.cpp; path = ../ccxThread.cpp; sourceTree = "<group>"; };
+		74708A4313EE35D400112449 /* ccxThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxThread.h; path = ../ccxThread.h; sourceTree = "<group>"; };
+		74708A4413EE35D400112449 /* ccxUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ccxUtils.cpp; path = ../ccxUtils.cpp; sourceTree = "<group>"; };
+		74708A4513EE35D400112449 /* ccxUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ccxUtils.h; path = ../ccxUtils.h; sourceTree = "<group>"; };
+		74708A9C13EE368300112449 /* ccx-contrib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "ccx-contrib.xcodeproj"; path = "../contrib/ccx-contrib/ccx-contrib.xcodeproj"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		74708A2113EE35C600112449 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		74708A1913EE35C600112449 = {
+			isa = PBXGroup;
+			children = (
+				74708A9C13EE368300112449 /* ccx-contrib.xcodeproj */,
+				74708A3113EE35D400112449 /* ccx.h */,
+				74708A3213EE35D400112449 /* ccxDaemon.cpp */,
+				74708A3313EE35D400112449 /* ccxDaemon.h */,
+				74708A3413EE35D400112449 /* ccxDataGenericContainer.cpp */,
+				74708A3513EE35D400112449 /* ccxDataGenericContainer.h */,
+				74708A3613EE35D400112449 /* ccxDataStream.cpp */,
+				74708A3713EE35D400112449 /* ccxDataStream.h */,
+				74708A3813EE35D400112449 /* ccxFactory.cpp */,
+				74708A3913EE35D400112449 /* ccxFactory.h */,
+				74708A3A13EE35D400112449 /* ccxLog.cpp */,
+				74708A3B13EE35D400112449 /* ccxLog.h */,
+				74708A3C13EE35D400112449 /* ccxModule.cpp */,
+				74708A3D13EE35D400112449 /* ccxModule.h */,
+				74708A3E13EE35D400112449 /* ccxPipeline.cpp */,
+				74708A3F13EE35D400112449 /* ccxPipeline.h */,
+				74708A4013EE35D400112449 /* ccxProperty.cpp */,
+				74708A4113EE35D400112449 /* ccxProperty.h */,
+				74708A4213EE35D400112449 /* ccxThread.cpp */,
+				74708A4313EE35D400112449 /* ccxThread.h */,
+				74708A4413EE35D400112449 /* ccxUtils.cpp */,
+				74708A4513EE35D400112449 /* ccxUtils.h */,
+				74708A2513EE35C600112449 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		74708A2513EE35C600112449 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74708A2413EE35C600112449 /* libccx.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		74708A9D13EE368300112449 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		74708A2213EE35C600112449 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74708A4613EE35D400112449 /* ccx.h in Headers */,
+				74708A4813EE35D400112449 /* ccxDaemon.h in Headers */,
+				74708A4A13EE35D400112449 /* ccxDataGenericContainer.h in Headers */,
+				74708A4C13EE35D400112449 /* ccxDataStream.h in Headers */,
+				74708A4E13EE35D400112449 /* ccxFactory.h in Headers */,
+				74708A5013EE35D400112449 /* ccxLog.h in Headers */,
+				74708A5213EE35D400112449 /* ccxModule.h in Headers */,
+				74708A5413EE35D400112449 /* ccxPipeline.h in Headers */,
+				74708A5613EE35D400112449 /* ccxProperty.h in Headers */,
+				74708A5813EE35D400112449 /* ccxThread.h in Headers */,
+				74708A5A13EE35D400112449 /* ccxUtils.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		74708A2313EE35C600112449 /* ccx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74708A2813EE35C600112449 /* Build configuration list for PBXNativeTarget "ccx" */;
+			buildPhases = (
+				74708A2013EE35C600112449 /* Sources */,
+				74708A2113EE35C600112449 /* Frameworks */,
+				74708A2213EE35C600112449 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74708AA113EE36B800112449 /* PBXTargetDependency */,
+			);
+			name = ccx;
+			productName = ccx;
+			productReference = 74708A2413EE35C600112449 /* libccx.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		74708A1B13EE35C600112449 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 74708A1E13EE35C600112449 /* Build configuration list for PBXProject "ccx" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 74708A1913EE35C600112449;
+			productRefGroup = 74708A2513EE35C600112449 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 74708A9D13EE368300112449 /* Products */;
+					ProjectRef = 74708A9C13EE368300112449 /* ccx-contrib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				74708A2313EE35C600112449 /* ccx */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		74708A2013EE35C600112449 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74708A4713EE35D400112449 /* ccxDaemon.cpp in Sources */,
+				74708A4913EE35D400112449 /* ccxDataGenericContainer.cpp in Sources */,
+				74708A4B13EE35D400112449 /* ccxDataStream.cpp in Sources */,
+				74708A4D13EE35D400112449 /* ccxFactory.cpp in Sources */,
+				74708A4F13EE35D400112449 /* ccxLog.cpp in Sources */,
+				74708A5113EE35D400112449 /* ccxModule.cpp in Sources */,
+				74708A5313EE35D400112449 /* ccxPipeline.cpp in Sources */,
+				74708A5513EE35D400112449 /* ccxProperty.cpp in Sources */,
+				74708A5713EE35D400112449 /* ccxThread.cpp in Sources */,
+				74708A5913EE35D400112449 /* ccxUtils.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		74708AA113EE36B800112449 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ccx-contrib";
+			targetProxy = 74708AA013EE36B800112449 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		74708A2613EE35C600112449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		74708A2713EE35C600112449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		74708A2913EE35C600112449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../contrib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		74708A2A13EE35C600112449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/../contrib/**";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		74708A1E13EE35C600112449 /* Build configuration list for PBXProject "ccx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74708A2613EE35C600112449 /* Debug */,
+				74708A2713EE35C600112449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74708A2813EE35C600112449 /* Build configuration list for PBXNativeTarget "ccx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74708A2913EE35C600112449 /* Debug */,
+				74708A2A13EE35C600112449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 74708A1B13EE35C600112449 /* Project object */;
+}

@@ -54,7 +54,7 @@
 #include "cJSON.h"
 
 // CCX
-#include <ccx.h>
+#include "ccx.h"
 
 // assert
 #include <assert.h>
@@ -85,7 +85,7 @@ static std::string config_pipelinefn = "";
 static std::string config_guidir = CCX_GUIDIR;
 static std::string config_pidfile = "/var/run/fusion.pid";
 static struct evhttp *server = NULL;
-int g_config_delay = 5;
+int g_config_delay = 20;
 
 char *strsep(char **stringp, const char *delim) {
 	char *s = *stringp;
@@ -1284,7 +1284,6 @@ int main(int argc, char **argv) {
 
 	// main loop
 	while ( want_quit == false ) {
-		// TODO: Test whether WIN32 Sleep() works/links in as expected, and whether we need a separate config delay in DWORD format
 		#ifndef WIN32
 		usleep(g_config_delay);
 		#else

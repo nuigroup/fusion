@@ -1,0 +1,386 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A5F13EE362500112449 /* ccfMultimodalSyntaxTree.cpp */; };
+		74708A7A13EE363200112449 /* fusion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6113EE362500112449 /* fusion.cpp */; };
+		74708A7B13EE363200112449 /* ballWorldGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6313EE362500112449 /* ballWorldGrammar.cpp */; };
+		74708A8113EE363200112449 /* ccxDebugInputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6A13EE362500112449 /* ccxDebugInputModule.cpp */; };
+		74708A8313EE363200112449 /* ccxDebugOutputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6C13EE362500112449 /* ccxDebugOutputModule.cpp */; };
+		74708A8B13EE363200112449 /* ccxSpiritParserModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7413EE362500112449 /* ccxSpiritParserModule.cpp */; };
+		74708C8513EE39A000112449 /* libccx.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74708A3013EE35C700112449 /* libccx.a */; };
+		74708C8813EE39C200112449 /* libevent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74708C8613EE39C200112449 /* libevent.a */; };
+		74708C8913EE39C200112449 /* libptypes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74708C8713EE39C200112449 /* libptypes.a */; };
+		74708C8B13EE3B0A00112449 /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = 74708C8A13EE3B0A00112449 /* cJSON.c */; };
+		74708CA513EE3F9200112449 /* configs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74708CA313EE3F9200112449 /* configs */; };
+		74708CA613EE3F9200112449 /* gui in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74708CA413EE3F9200112449 /* gui */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		74708A2F13EE35C700112449 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74708A2B13EE35C600112449 /* ccx.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 74708A2413EE35C600112449;
+			remoteInfo = ccx;
+		};
+		74708A5B13EE360500112449 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 74708A2B13EE35C600112449 /* ccx.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 74708A2313EE35C600112449;
+			remoteInfo = ccx;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		74708A0913EE358F00112449 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				74708CA513EE3F9200112449 /* configs in CopyFiles */,
+				74708CA613EE3F9200112449 /* gui in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		74708A0B13EE358F00112449 /* fusion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fusion; sourceTree = BUILT_PRODUCTS_DIR; };
+		74708A2B13EE35C600112449 /* ccx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ccx.xcodeproj; path = ../ccx/ccx/ccx.xcodeproj; sourceTree = "<group>"; };
+		74708A5F13EE362500112449 /* ccfMultimodalSyntaxTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccfMultimodalSyntaxTree.cpp; sourceTree = "<group>"; };
+		74708A6013EE362500112449 /* ccfMultimodalSyntaxTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccfMultimodalSyntaxTree.h; sourceTree = "<group>"; };
+		74708A6113EE362500112449 /* fusion.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = fusion.cpp; sourceTree = "<group>"; };
+		74708A6313EE362500112449 /* ballWorldGrammar.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ballWorldGrammar.cpp; sourceTree = "<group>"; };
+		74708A6413EE362500112449 /* ballWorldGrammar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ballWorldGrammar.h; sourceTree = "<group>"; };
+		74708A6613EE362500112449 /* .dummy.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = .dummy.cpp; sourceTree = "<group>"; };
+		74708A6713EE362500112449 /* .dummy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = .dummy.h; sourceTree = "<group>"; };
+		74708A6813EE362500112449 /* ccxASRModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxASRModule.cpp; sourceTree = "<group>"; };
+		74708A6913EE362500112449 /* ccxASRModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxASRModule.h; sourceTree = "<group>"; };
+		74708A6A13EE362500112449 /* ccxDebugInputModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxDebugInputModule.cpp; sourceTree = "<group>"; };
+		74708A6B13EE362500112449 /* ccxDebugInputModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxDebugInputModule.h; sourceTree = "<group>"; };
+		74708A6C13EE362500112449 /* ccxDebugOutputModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxDebugOutputModule.cpp; sourceTree = "<group>"; };
+		74708A6D13EE362500112449 /* ccxDebugOutputModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxDebugOutputModule.h; sourceTree = "<group>"; };
+		74708A6E13EE362500112449 /* ccxFusionModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxFusionModule.cpp; sourceTree = "<group>"; };
+		74708A6F13EE362500112449 /* ccxFusionModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxFusionModule.h; sourceTree = "<group>"; };
+		74708A7013EE362500112449 /* ccxParserModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxParserModule.cpp; sourceTree = "<group>"; };
+		74708A7113EE362500112449 /* ccxParserModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxParserModule.h; sourceTree = "<group>"; };
+		74708A7213EE362500112449 /* ccxSphinxASRModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxSphinxASRModule.cpp; sourceTree = "<group>"; };
+		74708A7313EE362500112449 /* ccxSphinxASRModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxSphinxASRModule.h; sourceTree = "<group>"; };
+		74708A7413EE362500112449 /* ccxSpiritParserModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxSpiritParserModule.cpp; sourceTree = "<group>"; };
+		74708A7513EE362500112449 /* ccxSpiritParserModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxSpiritParserModule.h; sourceTree = "<group>"; };
+		74708A7613EE362500112449 /* ccxTemporalFusionModule.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccxTemporalFusionModule.cpp; sourceTree = "<group>"; };
+		74708A7713EE362500112449 /* ccxTemporalFusionModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ccxTemporalFusionModule.h; sourceTree = "<group>"; };
+		74708C8613EE39C200112449 /* libevent.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libevent.a; path = ../ccx/contrib/lib/libevent.a; sourceTree = "<group>"; };
+		74708C8713EE39C200112449 /* libptypes.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libptypes.a; path = ../ccx/contrib/lib/libptypes.a; sourceTree = "<group>"; };
+		74708C8A13EE3B0A00112449 /* cJSON.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cJSON.c; path = ../contrib/cJSON/cJSON.c; sourceTree = "<group>"; };
+		74708CA313EE3F9200112449 /* configs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = configs; path = ../configs; sourceTree = "<group>"; };
+		74708CA413EE3F9200112449 /* gui */ = {isa = PBXFileReference; lastKnownFileType = folder; name = gui; path = ../gui; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		74708A0813EE358F00112449 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74708C8813EE39C200112449 /* libevent.a in Frameworks */,
+				74708C8913EE39C200112449 /* libptypes.a in Frameworks */,
+				74708C8513EE39A000112449 /* libccx.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		74708A0013EE358F00112449 = {
+			isa = PBXGroup;
+			children = (
+				74708CA313EE3F9200112449 /* configs */,
+				74708CA413EE3F9200112449 /* gui */,
+				74708C8A13EE3B0A00112449 /* cJSON.c */,
+				74708C8613EE39C200112449 /* libevent.a */,
+				74708C8713EE39C200112449 /* libptypes.a */,
+				74708A5D13EE362500112449 /* src */,
+				74708A2B13EE35C600112449 /* ccx.xcodeproj */,
+				74708A0C13EE358F00112449 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		74708A0C13EE358F00112449 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74708A0B13EE358F00112449 /* fusion */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		74708A2C13EE35C600112449 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				74708A3013EE35C700112449 /* libccx.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		74708A5D13EE362500112449 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				74708A5E13EE362500112449 /* containers */,
+				74708A6113EE362500112449 /* fusion.cpp */,
+				74708A6213EE362500112449 /* models */,
+				74708A6513EE362500112449 /* modules */,
+			);
+			name = src;
+			path = ../src;
+			sourceTree = "<group>";
+		};
+		74708A5E13EE362500112449 /* containers */ = {
+			isa = PBXGroup;
+			children = (
+				74708A5F13EE362500112449 /* ccfMultimodalSyntaxTree.cpp */,
+				74708A6013EE362500112449 /* ccfMultimodalSyntaxTree.h */,
+			);
+			path = containers;
+			sourceTree = "<group>";
+		};
+		74708A6213EE362500112449 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				74708A6313EE362500112449 /* ballWorldGrammar.cpp */,
+				74708A6413EE362500112449 /* ballWorldGrammar.h */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		74708A6513EE362500112449 /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				74708A6613EE362500112449 /* .dummy.cpp */,
+				74708A6713EE362500112449 /* .dummy.h */,
+				74708A6813EE362500112449 /* ccxASRModule.cpp */,
+				74708A6913EE362500112449 /* ccxASRModule.h */,
+				74708A6A13EE362500112449 /* ccxDebugInputModule.cpp */,
+				74708A6B13EE362500112449 /* ccxDebugInputModule.h */,
+				74708A6C13EE362500112449 /* ccxDebugOutputModule.cpp */,
+				74708A6D13EE362500112449 /* ccxDebugOutputModule.h */,
+				74708A6E13EE362500112449 /* ccxFusionModule.cpp */,
+				74708A6F13EE362500112449 /* ccxFusionModule.h */,
+				74708A7013EE362500112449 /* ccxParserModule.cpp */,
+				74708A7113EE362500112449 /* ccxParserModule.h */,
+				74708A7213EE362500112449 /* ccxSphinxASRModule.cpp */,
+				74708A7313EE362500112449 /* ccxSphinxASRModule.h */,
+				74708A7413EE362500112449 /* ccxSpiritParserModule.cpp */,
+				74708A7513EE362500112449 /* ccxSpiritParserModule.h */,
+				74708A7613EE362500112449 /* ccxTemporalFusionModule.cpp */,
+				74708A7713EE362500112449 /* ccxTemporalFusionModule.h */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		74708A0A13EE358F00112449 /* fusion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74708A1513EE359000112449 /* Build configuration list for PBXNativeTarget "fusion" */;
+			buildPhases = (
+				74708A0713EE358F00112449 /* Sources */,
+				74708A0813EE358F00112449 /* Frameworks */,
+				74708A0913EE358F00112449 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				74708A5C13EE360500112449 /* PBXTargetDependency */,
+			);
+			name = fusion;
+			productName = fusion;
+			productReference = 74708A0B13EE358F00112449 /* fusion */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		74708A0213EE358F00112449 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
+			buildConfigurationList = 74708A0513EE358F00112449 /* Build configuration list for PBXProject "fusion" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 74708A0013EE358F00112449;
+			productRefGroup = 74708A0C13EE358F00112449 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 74708A2C13EE35C600112449 /* Products */;
+					ProjectRef = 74708A2B13EE35C600112449 /* ccx.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				74708A0A13EE358F00112449 /* fusion */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		74708A3013EE35C700112449 /* libccx.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libccx.a;
+			remoteRef = 74708A2F13EE35C700112449 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		74708A0713EE358F00112449 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74708C8B13EE3B0A00112449 /* cJSON.c in Sources */,
+				74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */,
+				74708A7A13EE363200112449 /* fusion.cpp in Sources */,
+				74708A7B13EE363200112449 /* ballWorldGrammar.cpp in Sources */,
+				74708A8113EE363200112449 /* ccxDebugInputModule.cpp in Sources */,
+				74708A8313EE363200112449 /* ccxDebugOutputModule.cpp in Sources */,
+				74708A8B13EE363200112449 /* ccxSpiritParserModule.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		74708A5C13EE360500112449 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ccx;
+			targetProxy = 74708A5B13EE360500112449 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		74708A1313EE359000112449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../ccx",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../ccx/contrib/**",
+					"$(PROJECT_DIR)/../contrib/**",
+					"$(PROJECT_DIR)/../ccx/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../ccx/contrib/lib/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		74708A1413EE359000112449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../ccx",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../ccx/contrib/**",
+					"$(PROJECT_DIR)/../contrib/**",
+					"$(PROJECT_DIR)/../ccx/**",
+				);
+				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../ccx/contrib/lib/**";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		74708A1613EE359000112449 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ccx/contrib/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		74708A1713EE359000112449 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../ccx/contrib/lib\"",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		74708A0513EE358F00112449 /* Build configuration list for PBXProject "fusion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74708A1313EE359000112449 /* Debug */,
+				74708A1413EE359000112449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		74708A1513EE359000112449 /* Build configuration list for PBXNativeTarget "fusion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74708A1613EE359000112449 /* Debug */,
+				74708A1713EE359000112449 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 74708A0213EE358F00112449 /* Project object */;
+}

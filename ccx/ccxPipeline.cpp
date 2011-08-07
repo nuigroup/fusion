@@ -39,7 +39,7 @@ LOG_DECLARE("Pipeline");
 MODULE_DECLARE_EX(Pipeline,, "native", "Handle object list");
 
 // TODO: move to another file
-extern int g_config_delay;
+//extern int g_config_delay;
 
 ccxPipeline::ccxPipeline() : ccxModule(CCX_MODULE_NONE) {
 	MODULE_INIT();
@@ -305,8 +305,8 @@ bool ccxPipeline::parse(const std::string& filename) {
 		if ( tokens[0] == "config" ) {
 			if ( tokens.size() < 3 )
 				PIPELINE_PARSE_ERROR("not enough parameters");
-			if ( tokens[1] == "delay" )
-				g_config_delay = atoi(tokens[2].c_str());
+			//if ( tokens[1] == "delay" )
+				//g_config_delay = atoi(tokens[2].c_str());
 		} else if ( tokens[0] == "pipeline" ) {
 			if ( tokens.size() < 2 )
 				PIPELINE_PARSE_ERROR("not enough parameters");
