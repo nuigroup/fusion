@@ -19,6 +19,7 @@ daemon_src = [
   'src/modules/ccxSpiritParserModule.cpp',
   'src/modules/ccxDebugInputModule.cpp',
   'src/modules/ccxDebugOutputModule.cpp',
+  'src/modules/ccxSphinxASRModule.cpp',
   'src/models/ballWorldGrammar.cpp'
 ]
 
@@ -94,4 +95,10 @@ env.Append(CPPPATH = 'src/containers')
 env.Append(CPPPATH = 'src/models')
 env.Append(CPPPATH = 'contrib/cJSON')
 env.Append(CPPPATH = 'contrib/boost')
-env.Program('fusion', daemon_src + [ccx])
+env.Append(CPPPATH = '/usr/local/include/sphinxbase')
+env.Append(CPPPATH = '/usr/local/include/sphinx3')
+env.Append(LIBPATH = '/usr/local/lib')
+env.Append(LIBS = 's3decoder')
+env.Append(LIBS = 'sphinxbase')
+env.Append(LIBS = 'sphinxad')
+env.Program('ccf', daemon_src + [ccx])

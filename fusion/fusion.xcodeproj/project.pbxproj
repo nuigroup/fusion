@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		745A598713EE501500736762 /* ccxSphinxASRModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7213EE362500112449 /* ccxSphinxASRModule.cpp */; };
 		74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A5F13EE362500112449 /* ccfMultimodalSyntaxTree.cpp */; };
 		74708A7A13EE363200112449 /* fusion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6113EE362500112449 /* fusion.cpp */; };
 		74708A7B13EE363200112449 /* ballWorldGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6313EE362500112449 /* ballWorldGrammar.cpp */; };
@@ -19,6 +20,13 @@
 		74708C8B13EE3B0A00112449 /* cJSON.c in Sources */ = {isa = PBXBuildFile; fileRef = 74708C8A13EE3B0A00112449 /* cJSON.c */; };
 		74708CA513EE3F9200112449 /* configs in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74708CA313EE3F9200112449 /* configs */; };
 		74708CA613EE3F9200112449 /* gui in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74708CA413EE3F9200112449 /* gui */; };
+		749B0B5413EF38CF004A673E /* libs3decoder.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 749B0B5213EF38CF004A673E /* libs3decoder.dylib */; };
+		749B0B5513EF38CF004A673E /* libsphinxbase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 749B0B5313EF38CF004A673E /* libsphinxbase.dylib */; };
+		74FEC02D13EEA14D009C1AB3 /* librtaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FEC02C13EEA14D009C1AB3 /* librtaudio.a */; };
+		74FEC02F13EEA408009C1AB3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FEC02E13EEA408009C1AB3 /* CoreAudio.framework */; };
+		74FEC03113EEB2A0009C1AB3 /* resample.c in Sources */ = {isa = PBXBuildFile; fileRef = 74FEC03013EEB2A0009C1AB3 /* resample.c */; };
+		74FEC03D13EEB6CF009C1AB3 /* filterkit.c in Sources */ = {isa = PBXBuildFile; fileRef = 74FEC03B13EEB6CF009C1AB3 /* filterkit.c */; };
+		74FEC03E13EEB6CF009C1AB3 /* resamplesubs.c in Sources */ = {isa = PBXBuildFile; fileRef = 74FEC03C13EEB6CF009C1AB3 /* resamplesubs.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +91,13 @@
 		74708C8A13EE3B0A00112449 /* cJSON.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = cJSON.c; path = ../contrib/cJSON/cJSON.c; sourceTree = "<group>"; };
 		74708CA313EE3F9200112449 /* configs */ = {isa = PBXFileReference; lastKnownFileType = folder; name = configs; path = ../configs; sourceTree = "<group>"; };
 		74708CA413EE3F9200112449 /* gui */ = {isa = PBXFileReference; lastKnownFileType = folder; name = gui; path = ../gui; sourceTree = "<group>"; };
+		749B0B5213EF38CF004A673E /* libs3decoder.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libs3decoder.dylib; path = ../contrib/sphinx/lib/osx/libs3decoder.dylib; sourceTree = "<group>"; };
+		749B0B5313EF38CF004A673E /* libsphinxbase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsphinxbase.dylib; path = ../contrib/sphinx/lib/osx/libsphinxbase.dylib; sourceTree = "<group>"; };
+		74FEC02C13EEA14D009C1AB3 /* librtaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librtaudio.a; path = ../contrib/rtaudio/librtaudio.a; sourceTree = "<group>"; };
+		74FEC02E13EEA408009C1AB3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		74FEC03013EEB2A0009C1AB3 /* resample.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = resample.c; path = ../contrib/libresample/lib/resample.c; sourceTree = "<group>"; };
+		74FEC03B13EEB6CF009C1AB3 /* filterkit.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = filterkit.c; path = ../contrib/libresample/lib/filterkit.c; sourceTree = "<group>"; };
+		74FEC03C13EEB6CF009C1AB3 /* resamplesubs.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = resamplesubs.c; path = ../contrib/libresample/lib/resamplesubs.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +105,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				749B0B5413EF38CF004A673E /* libs3decoder.dylib in Frameworks */,
+				749B0B5513EF38CF004A673E /* libsphinxbase.dylib in Frameworks */,
+				74FEC02F13EEA408009C1AB3 /* CoreAudio.framework in Frameworks */,
+				74FEC02D13EEA14D009C1AB3 /* librtaudio.a in Frameworks */,
 				74708C8813EE39C200112449 /* libevent.a in Frameworks */,
 				74708C8913EE39C200112449 /* libptypes.a in Frameworks */,
 				74708C8513EE39A000112449 /* libccx.a in Frameworks */,
@@ -104,9 +123,7 @@
 			children = (
 				74708CA313EE3F9200112449 /* configs */,
 				74708CA413EE3F9200112449 /* gui */,
-				74708C8A13EE3B0A00112449 /* cJSON.c */,
-				74708C8613EE39C200112449 /* libevent.a */,
-				74708C8713EE39C200112449 /* libptypes.a */,
+				749B0B5613EF393B004A673E /* includes */,
 				74708A5D13EE362500112449 /* src */,
 				74708A2B13EE35C600112449 /* ccx.xcodeproj */,
 				74708A0C13EE358F00112449 /* Products */,
@@ -184,6 +201,23 @@
 			path = modules;
 			sourceTree = "<group>";
 		};
+		749B0B5613EF393B004A673E /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				749B0B5213EF38CF004A673E /* libs3decoder.dylib */,
+				749B0B5313EF38CF004A673E /* libsphinxbase.dylib */,
+				74708C8613EE39C200112449 /* libevent.a */,
+				74708C8713EE39C200112449 /* libptypes.a */,
+				74FEC03B13EEB6CF009C1AB3 /* filterkit.c */,
+				74FEC03C13EEB6CF009C1AB3 /* resamplesubs.c */,
+				74FEC03013EEB2A0009C1AB3 /* resample.c */,
+				74708C8A13EE3B0A00112449 /* cJSON.c */,
+				74FEC02E13EEA408009C1AB3 /* CoreAudio.framework */,
+				74FEC02C13EEA14D009C1AB3 /* librtaudio.a */,
+			);
+			name = includes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -251,6 +285,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74FEC03D13EEB6CF009C1AB3 /* filterkit.c in Sources */,
+				74FEC03E13EEB6CF009C1AB3 /* resamplesubs.c in Sources */,
+				74FEC03113EEB2A0009C1AB3 /* resample.c in Sources */,
+				745A598713EE501500736762 /* ccxSphinxASRModule.cpp in Sources */,
 				74708C8B13EE3B0A00112449 /* cJSON.c in Sources */,
 				74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */,
 				74708A7A13EE363200112449 /* fusion.cpp in Sources */,
@@ -293,11 +331,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)../contrib/rtaudio/include",
 					"$(PROJECT_DIR)/../ccx",
 					"$(PROJECT_DIR)/../src/**",
 					"$(PROJECT_DIR)/../ccx/contrib/**",
 					"$(PROJECT_DIR)/../contrib/**",
 					"$(PROJECT_DIR)/../ccx/**",
+					"$(PROJECT_DIR/../contrib/boost",
 				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../ccx/contrib/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -321,11 +361,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)../contrib/rtaudio/include",
 					"$(PROJECT_DIR)/../ccx",
 					"$(PROJECT_DIR)/../src/**",
 					"$(PROJECT_DIR)/../ccx/contrib/**",
 					"$(PROJECT_DIR)/../contrib/**",
 					"$(PROJECT_DIR)/../ccx/**",
+					"$(PROJECT_DIR/../contrib/boost",
 				);
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/../ccx/contrib/lib/**";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
@@ -336,9 +378,22 @@
 		74708A1613EE359000112449 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../contrib/libresample/include",
+					"/usr/local/include/sphinxbase/**",
+					"/usr/local/include/sphinx3/**",
+					"$(PROJECT_DIR)/../ccx",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../ccx/contrib/**",
+					"$(PROJECT_DIR)/../contrib/**",
+					"$(PROJECT_DIR)/../ccx/**",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../ccx/contrib/lib\"",
+					"\"$(SRCROOT)/../contrib/sphinx/lib/osx\"",
+					"\"$(SRCROOT)/../contrib/rtaudio\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -349,9 +404,22 @@
 		74708A1713EE359000112449 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				HEADER_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../contrib/libresample/include",
+					"/usr/local/include/sphinxbase/**",
+					"/usr/local/include/sphinx3/**",
+					"$(PROJECT_DIR)/../ccx",
+					"$(PROJECT_DIR)/../src/**",
+					"$(PROJECT_DIR)/../ccx/contrib/**",
+					"$(PROJECT_DIR)/../contrib/**",
+					"$(PROJECT_DIR)/../ccx/**",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../ccx/contrib/lib\"",
+					"\"$(SRCROOT)/../contrib/sphinx/lib/osx\"",
+					"\"$(SRCROOT)/../contrib/rtaudio\"",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";

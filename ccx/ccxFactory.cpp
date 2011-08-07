@@ -70,6 +70,7 @@ void ccxFactory::init() {
     REGISTER_MODULE(DebugInput);
     REGISTER_MODULE(DebugOutput);
     REGISTER_MODULE(SpiritParser);
+    REGISTER_MODULE(SphinxASR);
     //DoNotRemoveThisComment
 	LOG(CCX_INFO, "registered " << ccxFactory::getInstance()->list().size() << " modules");
 }

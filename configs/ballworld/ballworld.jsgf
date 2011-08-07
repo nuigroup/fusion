@@ -2,26 +2,31 @@
 
 grammar ballworld;
 
-public <interaction> = <moveInteraction> | <colorInteraction> | <destroyInteraction> | <createInteraction>;
+public <interaction> = <moveInteraction> | <colorInteraction> | <createInteraction> | <destroyInteraction>;
 
-<moveInteraction> = <moveCommand> <ballSelector> <pointSelector>;
-<colorInteraction> = <colorCommand> <ballSelector> <color>;
-<destroyInteraction> = <destroyCommand> <ballSelector>;
-<createInteraction> = <createCommand> <newBall> <pointSelector>;
+<moveInteraction> = <moveCommand> <movePredicate>;
+<colorInteraction> = <colorCommand> <colorPredicate>;
+<createInteraction> = <createCommand> <createPredicate>;
+<destroyInteraction> = <destroyCommand> <destroyPredicate>;
 
 <moveCommand> = move | put;
 <colorCommand> = color;
+<createCommand> = make | create;
 <destroyCommand> = delete | remove | destroy;
-<createCommand> = make | create | put;
 
-<ballSelector> = <ballSelectorMultimodal> | <ballSelectorUnimodal>;
-<ballSelectorUnimodal> = the <color> ball;
+<movePredicate> = <ball> <point>;
+<colorPredicate> = <ball> <color>;
+<createPredicate> = <newBall> <point>;
+<destroyPredicate> = <ball>;
+
+<ball> = <ballSelectorMultimodal> | <ballSelectorUnimodal>;
+<ballSelectorUnimodal> = the <color> (ball | one);
 <ballSelectorMultimodal> = (this | that) ([ball | one]);
 
-<pointSelector> = <pointSelectorMultimodal>;
+<point> = <pointSelectorMultimodal>;
 <pointSelectorMultimodal> = here | there;
 
 <newBall> = (an | a [new]) <color> (ball | one);
 
-<color> = red | green | blue | yellow | orange | white | purple;
-
+<color> = <colorSelectorUnimodal>;
+<colorSelectorUnimodal> = red | green | blue | yellow | orange | white | purple;
