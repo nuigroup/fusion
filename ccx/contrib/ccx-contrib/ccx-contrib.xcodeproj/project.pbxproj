@@ -1144,7 +1144,7 @@
 			buildPhases = (
 			);
 			buildToolPath = /usr/bin/make;
-			buildWorkingDirectory = /Users/shalstvedt/Code/ccf/ccx/contrib;
+			buildWorkingDirectory = "$(PROJECT_DIR)/../";
 			dependencies = (
 			);
 			name = "ccx-contrib";
