@@ -20,7 +20,10 @@ daemon_src = [
   'src/modules/ccxDebugInputModule.cpp',
   'src/modules/ccxDebugOutputModule.cpp',
   'src/modules/ccxSphinxASRModule.cpp',
-  'src/models/ballWorldGrammar.cpp'
+  'src/models/ballWorldGrammar.cpp',
+  'contrib/libresample/lib/resample.c',
+  'contrib/libresample/lib/filterkit.c',
+  'contrib/libresample/lib/resamplesubs.c'
 ]
 
 #source files for ccx, core+modules ########################
@@ -95,10 +98,16 @@ env.Append(CPPPATH = 'src/containers')
 env.Append(CPPPATH = 'src/models')
 env.Append(CPPPATH = 'contrib/cJSON')
 env.Append(CPPPATH = 'contrib/boost')
-env.Append(CPPPATH = '/usr/local/include/sphinxbase')
-env.Append(CPPPATH = '/usr/local/include/sphinx3')
-env.Append(LIBPATH = '/usr/local/lib')
+env.Append(CPPPATH = 'contrib/libresample/include')
+env.Append(CPPPATH = 'contrib/libresample/lib')
+env.Append(CPPPATH = 'contrib/rtaudio')
+env.Append(CPPPATH = 'contrib/rtaudio/include')
+env.Append(CPPPATH = 'contrib/sphinx/include')
+env.Append(CPPPATH = 'contrib/sphinx/include/sphinxbase')
+env.Append(CPPPATH = 'contrib/sphinx/include/sphinx3')
+env.Append(LIBPATH = 'contrib/sphinx/lib/osx')
+env.Append(LIBPATH = 'contrib/rtaudio')
 env.Append(LIBS = 's3decoder')
 env.Append(LIBS = 'sphinxbase')
-env.Append(LIBS = 'sphinxad')
+env.Append(LIBS = 'rtaudio')
 env.Program('ccf', daemon_src + [ccx])
