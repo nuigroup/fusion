@@ -32,45 +32,11 @@ static ccxFactory *instance = NULL;
 
 void ccxFactory::init() {
 	// Keep the alphabetical order when adding new modules!
-	/*REGISTER_MODULE(Amplify);
-	REGISTER_MODULE(BackgroundSubtract);
-	REGISTER_MODULE(BinaryMask);
-	REGISTER_MODULE(BlobFinder)
-	REGISTER_MODULE(Calibration);
-	REGISTER_MODULE(Camera);
-	REGISTER_MODULE(Canny);
-	REGISTER_MODULE(Combine);
-	REGISTER_MODULE(Dilate);
-	REGISTER_MODULE(DistanceTransform);
-	REGISTER_MODULE(Dump);
-	REGISTER_MODULE(Erode);
-	REGISTER_MODULE(EqualizeHist);
-	REGISTER_MODULE(FiducialFinder);
-	REGISTER_MODULE(FingerTipFinder);
-	REGISTER_MODULE(GrayScale);
-	REGISTER_MODULE(GreedyBlobTracker);
-	REGISTER_MODULE(Highpass);
-	REGISTER_MODULE(Hsv);
-	REGISTER_MODULE(HuObjectFinder);
-	REGISTER_MODULE(Image);
-	REGISTER_MODULE(ImageDisplay);
-	REGISTER_MODULE(Invert);
-	REGISTER_MODULE(Justify);
-	REGISTER_MODULE(Mask);
-	REGISTER_MODULE(MirrorImage);
-	REGISTER_MODULE(MunkresBlobTracker);
-	REGISTER_MODULE(PeakFinder);
-	REGISTER_MODULE(Roi);
-	REGISTER_MODULE(Smooth);
-	REGISTER_MODULE(Threshold);
-	REGISTER_MODULE(Tuio);
-	REGISTER_MODULE(Tuio2);
-	REGISTER_MODULE(Video);
-	REGISTER_MODULE(YCrCbThreshold);*/
+    REGISTER_MODULE(AudioOutput);
     REGISTER_MODULE(DebugInput);
     REGISTER_MODULE(DebugOutput);
-    REGISTER_MODULE(SpiritParser);
     REGISTER_MODULE(SphinxASR);
+    REGISTER_MODULE(SpiritParser);
     //DoNotRemoveThisComment
 	LOG(CCX_INFO, "registered " << ccxFactory::getInstance()->list().size() << " modules");
 }

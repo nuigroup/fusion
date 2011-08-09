@@ -37,8 +37,8 @@ void ccxSpiritParserModule::start() {
 
 void ccxSpiritParserModule::stop() {
     free(this->mast);
-    ccxModule::stop();
     LOG(CCX_INFO, "stopped!");
+    ccxModule::stop();
 }
 
 void ccxSpiritParserModule::notifyData(ccxDataStream *input) {

@@ -15,26 +15,7 @@
 #include "fsg_model.h"
 #include "jsgf.h"
 
-#include "RtAudio.h"
-#include "libresample.h"
-
-#define AUDIO_SEGBUF_SIZE 256
-
-typedef float  AUDIO_TYPE;
-#define FORMAT RTAUDIO_FLOAT32
-#define SCALE  1.0;
-
-#if defined( __WINDOWS_ASIO__ ) || defined( __WINDOWS_DS__ ) || defined(WIN32)
-#include <windows.h>
-#include <io.h>
-#include <direct.h>
-#define getcwd _getcwd
-#define SLEEP( milliseconds ) Sleep( (DWORD) milliseconds ) 
-#else // Unix variants
-#include <unistd.h>
-#define SLEEP( milliseconds ) usleep( (unsigned long) (milliseconds * 1000.0) )
-#endif
-
+#include "ccxAudioOutputModule.h"
 
 // The return codes
 #define SPHINXASR_SUCCESS                   0
@@ -63,22 +44,10 @@ struct ccaSphinxASREngineArgs
         
     ccaSphinxASREngineArgs()
     {
-        samplerate = 16000;
+        samplerate = 8000;
         sphinx_mode = 0;
     }
 };
-
-int gotAudioInput( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data );
-int gotAudioOutput( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data );
-
-struct AudioData {
-    AUDIO_TYPE* buffer;
-    unsigned long bufferBytes;
-    unsigned long totalFrames;
-    unsigned long frameCounter;
-    unsigned int channels;
-};
-
 
 class ccaSphinxASREngine {
 
@@ -127,7 +96,8 @@ protected:
 
     ccxDataStream* output;
     
-    RtAudio recorder;
+    ccxDataStream* input;
+    
     
 	MODULE_INTERNALS();
     
@@ -135,17 +105,6 @@ private:
     // The ASR Engine
     ccaSphinxASREngine *engine;
     int                 model_sampleRate;
-    void *              resample_handle;
-    float               resample_factor;
-    
-    bool                bRecording;
-    
-    
-    int                 SampleRate;
-    float *             audioBuf;
-    int                 audioBufSize;
-    
-
 };
 
 #endif

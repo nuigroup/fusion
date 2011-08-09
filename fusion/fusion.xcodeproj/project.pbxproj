@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		741C664013F0F940005219A6 /* ccxAudioOutputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */; };
 		745A598713EE501500736762 /* ccxSphinxASRModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7213EE362500112449 /* ccxSphinxASRModule.cpp */; };
 		74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A5F13EE362500112449 /* ccfMultimodalSyntaxTree.cpp */; };
 		74708A7A13EE363200112449 /* fusion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6113EE362500112449 /* fusion.cpp */; };
@@ -61,6 +62,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		741C663E13F0F92F005219A6 /* ccxAudioOutputModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxAudioOutputModule.h; sourceTree = "<group>"; };
+		741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxAudioOutputModule.cpp; sourceTree = "<group>"; };
 		74708A0B13EE358F00112449 /* fusion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fusion; sourceTree = BUILT_PRODUCTS_DIR; };
 		74708A2B13EE35C600112449 /* ccx.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ccx.xcodeproj; path = ../ccx/ccx/ccx.xcodeproj; sourceTree = "<group>"; };
 		74708A5F13EE362500112449 /* ccfMultimodalSyntaxTree.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ccfMultimodalSyntaxTree.cpp; sourceTree = "<group>"; };
@@ -183,6 +186,8 @@
 				74708A6713EE362500112449 /* .dummy.h */,
 				74708A6813EE362500112449 /* ccxASRModule.cpp */,
 				74708A6913EE362500112449 /* ccxASRModule.h */,
+				741C663E13F0F92F005219A6 /* ccxAudioOutputModule.h */,
+				741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */,
 				74708A6A13EE362500112449 /* ccxDebugInputModule.cpp */,
 				74708A6B13EE362500112449 /* ccxDebugInputModule.h */,
 				74708A6C13EE362500112449 /* ccxDebugOutputModule.cpp */,
@@ -296,6 +301,7 @@
 				74708A8113EE363200112449 /* ccxDebugInputModule.cpp in Sources */,
 				74708A8313EE363200112449 /* ccxDebugOutputModule.cpp in Sources */,
 				74708A8B13EE363200112449 /* ccxSpiritParserModule.cpp in Sources */,
+				741C664013F0F940005219A6 /* ccxAudioOutputModule.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
