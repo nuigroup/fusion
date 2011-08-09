@@ -1,17 +1,9 @@
-﻿Build started 7/15/2011 5:51:26 PM.
-     1>Project "C:\Users\shalstvedt\Code\ccf\.msvc\CCF.vcxproj" on node 3 (build target(s)).
-     1>InitializeBuildStatus:
-         Touching "Release\CCF.unsuccessfulbuild".
-       ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /IC:\Users\shalstvedt\Code\ccf\.msvc\\..\contrib\XgetOpt /I"C:\Users\shalstvedt\Code\ccf\.msvc\\..\contrib\ptypes-2.1.1\include" /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\src\containers\ccfMultimodalSyntaxTree.cpp ..\src\fusion.cpp ..\src\modules\ccxDebugModule.cpp
-         ccfMultimodalSyntaxTree.cpp
-     1>c:\users\shalstvedt\code\ccf\src\containers\ccfMultimodalSyntaxTree.h(15): fatal error C1083: Cannot open include file: 'boost/spirit/include/qi.hpp': No such file or directory
-         fusion.cpp
-     1>..\src\fusion.cpp(49): fatal error C1083: Cannot open include file: 'ccx.h': No such file or directory
-         ccxDebugModule.cpp
-     1>c:\users\shalstvedt\code\ccf\src\modules\ccxDebugModule.h(22): fatal error C1083: Cannot open include file: 'ccxModule.h': No such file or directory
-     1>Done Building Project "C:\Users\shalstvedt\Code\ccf\.msvc\CCF.vcxproj" (build target(s)) -- FAILED.
+﻿Build started 8/8/2011 10:43:06 PM.
+     1>Project "C:\Users\shalstvedt\Code\ccf\.msvc\CCF.vcxproj" on node 2 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\CCF.lastbuildstate".
+     1>Done Building Project "C:\Users\shalstvedt\Code\ccf\.msvc\CCF.vcxproj" (clean target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:00.98
+Time Elapsed 00:00:00.06

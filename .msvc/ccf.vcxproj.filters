@@ -39,6 +39,369 @@
     <ClInclude Include="..\src\modules\ccxDebugOutputModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\contrib\libresample\lib\resample_defs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\libresample\lib\filterkit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\libresample\include\libresample.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\rtaudio\RtAudio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\rtaudio\RtError.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\adaptor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\approx_cont_mgau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ascr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\astar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\blkarray_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\cb2mllr_io.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\classifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\classify.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\cmdln_macro.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\confidence.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\cont_mgau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\corpus.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ctxt_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\dag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\dict.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\dict2pid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\encoding.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\endptr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fast_algo_struct.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fillpen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_history.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_lextree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_psubtree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\gmm_wrap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\gs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\hmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\interp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\kb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\kbcore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\kdtree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lextree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lmclass.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\logs3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\mdef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\misc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\mllr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_gauden.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_mgau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_mllr.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_senone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s2_semi_mgau.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_arraylist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_cfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_decode.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_endpointer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\search.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\sort.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\sphinx3_export.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_allphone.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_debug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_do_nothing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_flat_fwd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_fsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_output.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_time_switch_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_word_switch_tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\stat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\subvq.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\tmat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\utt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\vector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\vithist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\whmm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\wid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\word_fsg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\word_graph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\word_ugprob.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\ad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\agc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\bio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\bitvec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\byteorder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\case.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\ckd_alloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\clapack_lite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\cmd_ln.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\cmn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\cont_ad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\err.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\f2c.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\fe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\feat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\filename.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\fixpoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\fsg_model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\genrand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\glist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\hash_table.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\heap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\huff_code.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\info.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\jsgf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\libutil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\listelem_alloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\logmath.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\matrix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\mmio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\mulaw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\ngram_model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\pio.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\prim_type.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\profile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\sbthread.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\sphinxbase_export.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\sphinx_config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\strfuncs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\unlimit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\yin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\modules\ccxSphinxASRModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\fusion.cpp">
@@ -65,5 +428,22 @@
     <ClCompile Include="..\src\modules\ccxDebugInputModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\contrib\libresample\lib\resample.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\libresample\lib\resamplesubs.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\libresample\lib\filterkit.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\modules\ccxSphinxASRModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CCF.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

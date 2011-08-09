@@ -37,10 +37,19 @@ ccxSphinxASRModule::ccxSphinxASRModule() : ccxModule(CCX_MODULE_OUTPUT){
     // ASR Engine: commandpicking
     engine = new ccaSphinxASREngine();
     ccaSphinxASREngineArgs *engineArgs = new ccaSphinxASREngineArgs;
+#ifndef WIN32
     engineArgs->sphinxmodel_am = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/.";
     engineArgs->sphinxmodel_lm = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/voxforge_en_sphinx.lm.DMP";
     engineArgs->sphinxmodel_dict = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/cmudict.0.7a";
     engineArgs->sphinxmodel_fdict = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/noisedict";
+#else
+    engineArgs->sphinxmodel_am = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel";
+    engineArgs->sphinxmodel_lm = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel\\voxforge_en_sphinx.lm.DMP";
+    engineArgs->sphinxmodel_dict = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel\\cmudict.0.7a";
+    engineArgs->sphinxmodel_fdict = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel\\noisedict";
+
+#endif
+
     engineArgs->sphinx_mode = 2;
     engineArgs->samplerate = model_sampleRate;
     int asrstatus = engine->engineInit(engineArgs);
@@ -67,9 +76,10 @@ void ccxSphinxASRModule::start() {
     double max_time = 5.0;
     if ( recorder.getDeviceCount() < 1 ) {
         LOG(CCX_INFO, "No audio devices found!");
+		LOG(CCX_INFO, recorder.getDeviceCount());
     }
     else {
-        LOG(CCX_INFO, "Audio good!");
+		LOG(CCX_INFO, "Audio good!" << recorder.getDeviceCount());
     }
     recorder.showWarnings( true );
     bufferFrames = 512;
@@ -242,10 +252,9 @@ ccaSphinxASREngine::~ccaSphinxASREngine() {
 }
 
 int ccaSphinxASREngine::engineInit(ccaSphinxASREngineArgs *args) {
-#if defined TARGET_WIN32
+#if defined WIN32
     char cfg_filename[] = "sphinx.cfg";
-    char grammarJSGF_filename[] = "grammar.jsgf";
-    char grammarFSG_filename[] = "grammar.fsg";
+    char grammarFSG_filename[] = "configs\\ballworld\\ballworld.fsg";
 #else
 	char cfg_filename[] = "/tmp/sphinx.cfg";
     char grammarFSG_filename[] = "/Users/shalstvedt/Code/ccf/configs/ballworld/ballworld.fsg";

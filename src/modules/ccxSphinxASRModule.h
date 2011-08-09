@@ -16,7 +16,6 @@
 #include "jsgf.h"
 
 #include "RtAudio.h"
-
 #include "libresample.h"
 
 #define AUDIO_SEGBUF_SIZE 256
@@ -25,8 +24,11 @@ typedef float  AUDIO_TYPE;
 #define FORMAT RTAUDIO_FLOAT32
 #define SCALE  1.0;
 
-#if defined( __WINDOWS_ASIO__ ) || defined( __WINDOWS_DS__ )
+#if defined( __WINDOWS_ASIO__ ) || defined( __WINDOWS_DS__ ) || defined(WIN32)
 #include <windows.h>
+#include <io.h>
+#include <direct.h>
+#define getcwd _getcwd
 #define SLEEP( milliseconds ) Sleep( (DWORD) milliseconds ) 
 #else // Unix variants
 #include <unistd.h>

@@ -1,26 +1,9 @@
-﻿Build started 7/15/2011 5:51:20 PM.
-     1>Project "C:\Users\shalstvedt\Code\ccf\ccx\contrib\.msvc\contribs\contribs.vcxproj" on node 3 (build target(s)).
-     1>InitializeBuildStatus:
-         Creating "Release\contribs.unsuccessfulbuild" because "AlwaysCreate" was specified.
-       PreBuildEvent:
-         Description: remove old lib files in contrib/lib
-         rd /S /Q C:\Users\shalstvedt\Code\ccf\.msvc\\..\lib
-         :VCEnd
-       PostBuildEvent:
-         Description: Place lib files in contrib/lib after compilation is done
-         echo d | xcopy /S C:\Users\shalstvedt\Code\ccf\.msvc\\lib C:\Users\shalstvedt\Code\ccf\.msvc\\..\lib
-         :VCEnd
-         Does C:\Users\shalstvedt\Code\ccf\.msvc\\..\lib specify a file name
-         or directory name on the target
-         (F = file, D = directory)? d
-         C:\Users\shalstvedt\Code\ccf\.msvc\\lib\event.lib
-         C:\Users\shalstvedt\Code\ccf\.msvc\\lib\ptypes.lib
-         2 File(s) copied
-       FinalizeBuildStatus:
-         Deleting file "Release\contribs.unsuccessfulbuild".
-         Touching "Release\contribs.lastbuildstate".
-     1>Done Building Project "C:\Users\shalstvedt\Code\ccf\ccx\contrib\.msvc\contribs\contribs.vcxproj" (build target(s)).
+﻿Build started 8/8/2011 10:43:06 PM.
+     1>Project "C:\Users\shalstvedt\Code\ccf\ccx\contrib\.msvc\contribs\contribs.vcxproj" on node 3 (clean target(s)).
+     1>_PrepareForClean:
+         Deleting file "Release\contribs.lastbuildstate".
+     1>Done Building Project "C:\Users\shalstvedt\Code\ccf\ccx\contrib\.msvc\contribs\contribs.vcxproj" (clean target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.13
+Time Elapsed 00:00:00.01

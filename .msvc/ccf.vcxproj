@@ -52,7 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\boost;$(ProjectDir)\..\contrib\cJSON;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\compat;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\WIN32-Code;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable;$(ProjectDir)\..\src;$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\ccx;$(ProjectDir)\..\ccx\contrib\ptypes-2.1.1\include;$(ProjectDir)\..\src\containers;$(ProjectDir)\..\src\models;$(ProjectDir)\..\src\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\rtaudio;$(ProjectDir)\..\contrib\rtaudio\include;$(ProjectDir)\..\contrib\libresample\include;$(ProjectDir)\..\contrib\sphinx\include\sphinxbase;$(ProjectDir)\..\contrib\sphinx\include\sphinx3;$(ProjectDir)\..\contrib\boost;$(ProjectDir)\..\contrib\cJSON;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\compat;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\WIN32-Code;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable;$(ProjectDir)\..\src;$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\ccx;$(ProjectDir)\..\ccx\contrib\ptypes-2.1.1\include;$(ProjectDir)\..\src\containers;$(ProjectDir)\..\src\models;$(ProjectDir)\..\src\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -60,13 +60,16 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;user32.lib;event.lib;ccx.lib;ptypes.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;user32.lib;event.lib;ccx.lib;ptypes.lib;rtAudioD.lib;dsound.lib;s3decoder.lib;sphinxbase.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
-      <AdditionalLibraryDirectories>$(SolutionDir)\lib;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\contrib\rtaudio;$(SolutionDir)\..\contrib\sphinx\lib\win32;$(SolutionDir)\lib;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)..\gui $(OutputPath) /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -77,34 +80,164 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\contrib\ptypes-2.1.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\rtaudio;$(ProjectDir)\..\contrib\rtaudio\include;$(ProjectDir)\..\contrib\libresample\include;$(ProjectDir)\..\contrib\sphinx\include\sphinxbase;$(ProjectDir)\..\contrib\sphinx\include\sphinx3;$(ProjectDir)\..\contrib\boost;$(ProjectDir)\..\contrib\cJSON;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\compat;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\WIN32-Code;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable;$(ProjectDir)\..\src;$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\ccx;$(ProjectDir)\..\ccx\contrib\ptypes-2.1.1\include;$(ProjectDir)\..\src\containers;$(ProjectDir)\..\src\models;$(ProjectDir)\..\src\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>ws2_32.lib;user32.lib;event.lib;ccx.lib;ptypes.lib;rtAudio.lib;s3decoder.lib;sphinxbase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\contrib\rtaudio;$(SolutionDir)\..\contrib\sphinx\lib\win32;$(SolutionDir)\lib;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\ccx\ccx.h" />
     <ClInclude Include="..\contrib\cJSON\cJSON.h" />
+    <ClInclude Include="..\contrib\libresample\include\libresample.h" />
+    <ClInclude Include="..\contrib\libresample\lib\filterkit.h" />
+    <ClInclude Include="..\contrib\libresample\lib\resample_defs.h" />
+    <ClInclude Include="..\contrib\rtaudio\RtAudio.h" />
+    <ClInclude Include="..\contrib\rtaudio\RtError.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\adaptor.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\approx_cont_mgau.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ascr.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\astar.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\blkarray_list.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\cb2mllr_io.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\classifier.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\classify.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\cmdln_macro.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\confidence.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\cont_mgau.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\corpus.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ctxt_table.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\dag.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\dict.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\dict2pid.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\encoding.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\endptr.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fast_algo_struct.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fillpen.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_history.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_lextree.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_psubtree.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\fsg_search.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\gmm_wrap.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\gs.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\hmm.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\interp.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\kb.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\kbcore.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\kdtree.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lextree.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lm.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lmclass.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\logs3.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\lts.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\mdef.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\misc.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\mllr.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_gauden.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_mgau.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_mllr.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\ms_senone.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s2_semi_mgau.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3types.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_arraylist.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_cfg.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_decode.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\s3_endpointer.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\search.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\sort.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\sphinx3_export.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_allphone.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_debug.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_do_nothing.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_flat_fwd.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_fsg.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_output.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_time_switch_tree.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\srch_word_switch_tree.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\stat.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\subvq.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\tmat.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\utt.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\vector.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\vithist.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\whmm.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\wid.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\word_fsg.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\word_graph.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinx3\word_ugprob.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\ad.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\agc.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\bio.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\bitvec.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\byteorder.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\case.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\ckd_alloc.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\clapack_lite.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\cmd_ln.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\cmn.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\cont_ad.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\err.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\f2c.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\fe.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\feat.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\filename.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\fixpoint.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\fsg_model.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\genrand.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\glist.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\hash_table.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\heap.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\huff_code.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\info.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\jsgf.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\libutil.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\listelem_alloc.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\logmath.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\matrix.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\mmio.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\mulaw.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\ngram_model.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\pio.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\prim_type.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\profile.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\sbthread.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\sphinxbase_export.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\sphinx_config.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\strfuncs.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\unlimit.h" />
+    <ClInclude Include="..\contrib\sphinx\include\sphinxbase\yin.h" />
     <ClInclude Include="..\contrib\XgetOpt\XGetopt.h" />
     <ClInclude Include="..\src\containers\ccfMultimodalSyntaxTree.h" />
     <ClInclude Include="..\src\models\ballWorldGrammar.h" />
     <ClInclude Include="..\src\modules\ccxDebugInputModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugOutputModule.h" />
+    <ClInclude Include="..\src\modules\ccxSphinxASRModule.h" />
     <ClInclude Include="..\src\modules\ccxSpiritParserModule.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\contrib\cJSON\cJSON.c" />
+    <ClCompile Include="..\contrib\libresample\lib\filterkit.c" />
+    <ClCompile Include="..\contrib\libresample\lib\resample.c" />
+    <ClCompile Include="..\contrib\libresample\lib\resamplesubs.c" />
     <ClCompile Include="..\contrib\XgetOpt\XGetopt.cxx" />
     <ClCompile Include="..\src\containers\ccfMultimodalSyntaxTree.cpp" />
     <ClCompile Include="..\src\fusion.cpp" />
     <ClCompile Include="..\src\models\ballWorldGrammar.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugInputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugOutputModule.cpp" />
+    <ClCompile Include="..\src\modules\ccxSphinxASRModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSpiritParserModule.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CCF.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
