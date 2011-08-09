@@ -1,23 +1,32 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        modules/ccxCCASpeechRecognitionModule.cpp
-// Purpose:     CCA speech recognition output module
+// Name:        modules/ccxTemporalFusionModule.cpp
+// Purpose:     Temporal fusion module
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef MO_DUMMY_MODULE_H
-#define MO_DUMMY_MODULE_H
+#ifndef CCX_TEMPORAL_FUSION_MODULE_H
+#define CCX_TEMPORAL_FUSION_MODULE_H
 
-#include "moImageFilterModule.h"
+#include "ccfMultimodalSyntaxTree.h"
+#include "ccx.h"
+#include <assert.h>
 
-class moDUMMYModule : public moImageFilterModule{
+class ccxTemporalFusionModule : public ccxModule {
 public:
-	moDUMMYModule();
-	virtual ~moDUMMYModule();
+	ccxTemporalFusionModule();
+	virtual ~ccxTemporalFusionModule();
+
+	void start();
+    void update();
+    void stop();
+
+	void notifyData(ccxDataStream* data);
 	
 protected:
-	void applyFilter();
+	ccxDataStream* output;
+	ccxDataStream* input;
 
 	MODULE_INTERNALS();
 };

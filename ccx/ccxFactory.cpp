@@ -37,6 +37,7 @@ void ccxFactory::init() {
     REGISTER_MODULE(DebugOutput);
     REGISTER_MODULE(SphinxASR);
     REGISTER_MODULE(SpiritParser);
+	REGISTER_MODULE(TemporalFusion);
     //DoNotRemoveThisComment
 	LOG(CCX_INFO, "registered " << ccxFactory::getInstance()->list().size() << " modules");
 }
