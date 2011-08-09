@@ -43,22 +43,19 @@ void ccxAudioOutputModule::start() {
     
     unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, device = 0, offset = 0;
     double max_time = 5.0;
+
     if ( recorder.getDeviceCount() < 1 ) {
-        LOG(CCX_INFO, "No audio devices found!");
-		LOG(CCX_INFO, recorder.getDeviceCount());
+        LOG(CCX_ERROR, "No audio devices found!");
     }
-    else {
-		LOG(CCX_INFO, "Audio good!" << recorder.getDeviceCount());
-    }
-    LOG(CCX_INFO, "Device count: " << recorder.getDeviceCount());
+
     recorder.showWarnings( true );
     bufferFrames = 512;
     RtAudio::StreamParameters iParams;
     RtAudio::StreamParameters oParams;
-    iParams.deviceId = device;
+	iParams.deviceId = recorder.getDefaultInputDevice();
     iParams.nChannels = channels;
     iParams.firstChannel = offset;
-    oParams.deviceId = 2;
+	oParams.deviceId = recorder.getDefaultOutputDevice();
     oParams.nChannels = channels;
     oParams.firstChannel = offset;
     
@@ -93,20 +90,25 @@ void ccxAudioOutputModule::start() {
     } catch (RtError& e) {
         LOG(CCX_ERROR, e.getMessage());
     }
+
+	LOG(CCX_INFO, "started recording");
     
     for(int tm = 0; tm < max_time; tm++) {
         SLEEP(500);
         LOG(CCX_INFO, tm);
-    }    
+    }
+	LOG(CCX_INFO, "done recording");
+
     recorder.stopStream();
+	LOG(CCX_INFO, "stopped stream");
+
     recorder.closeStream();
-    
-    LOG(CCX_INFO, "done recording");
+    LOG(CCX_INFO, "closed input stream");
     
     data.frameCounter = 0;
-    
-    /*
      
+	/*
+
     try {
         recorder.openStream( &oParams, NULL, FORMAT, fs, &bufferFrames, &gotAudioOutput, (void *)&data );
         recorder.startStream();
@@ -123,9 +125,9 @@ void ccxAudioOutputModule::start() {
     recorder.closeStream();
     
     LOG(CCX_INFO, "done playing");
-     
-    */
     
+	*/
+
     int srcused = 0;
     
     audioBufSize = fs * max_time * data.channels;
