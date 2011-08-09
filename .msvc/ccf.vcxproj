@@ -216,6 +216,7 @@
     <ClInclude Include="..\contrib\XgetOpt\XGetopt.h" />
     <ClInclude Include="..\src\containers\ccfMultimodalSyntaxTree.h" />
     <ClInclude Include="..\src\models\ballWorldGrammar.h" />
+    <ClInclude Include="..\src\modules\ccxAudioOutputModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugInputModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugOutputModule.h" />
     <ClInclude Include="..\src\modules\ccxSphinxASRModule.h" />
@@ -231,13 +232,11 @@
     <ClCompile Include="..\src\containers\ccfMultimodalSyntaxTree.cpp" />
     <ClCompile Include="..\src\fusion.cpp" />
     <ClCompile Include="..\src\models\ballWorldGrammar.cpp" />
+    <ClCompile Include="..\src\modules\ccxAudioOutputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugInputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugOutputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSphinxASRModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSpiritParserModule.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="CCF.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

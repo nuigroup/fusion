@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <fstream>
+#include <algorithm>
 
 MODULE_DECLARE(SphinxASR, "native", "Fetch CCA speech recognition");
 
@@ -94,7 +95,9 @@ void ccxSphinxASRModule::update() {
         std::string hypothesis(engine->engineGetText());
         engine->engineClose();
         std::transform(hypothesis.begin(), hypothesis.end(), hypothesis.begin(), ::tolower);
-        this->output->push((void*)hypothesis.c_str());
+		char* chyp = new char[hypothesis.size()+1];
+		strcpy (chyp, hypothesis.c_str());
+        this->output->push((void*)chyp);
         
     }
     
@@ -229,9 +232,9 @@ char * ccaSphinxASREngine::engineGetText()
     hyp_t **hypsegs;
     if (s3_decode_hypothesis(decoder, NULL, &hypstr, &hypsegs)
         == S3_DECODE_SUCCESS && decoder->phypdump) {
-        for (; *hypsegs; hypsegs++) {
+        /*for (; *hypsegs; hypsegs++) {
             printf("Word-segment id: %i; start-frame: %i; string: %s; score: %i\n", (*hypsegs)->id, (*hypsegs)->sf, (*hypsegs)->word, (*hypsegs)->ascr);
-        }
+        }*/
         return hypstr;
     }
     else {
