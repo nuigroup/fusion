@@ -105,6 +105,8 @@ void ccxAudioOutputModule::start() {
     
     data.frameCounter = 0;
     
+    /*
+     
     try {
         recorder.openStream( &oParams, NULL, FORMAT, fs, &bufferFrames, &gotAudioOutput, (void *)&data );
         recorder.startStream();
@@ -117,10 +119,12 @@ void ccxAudioOutputModule::start() {
         SLEEP( 100 ); // wake every 100 ms to check if we're done
         if ( recorder.isStreamRunning() == false ) break;
     }
+     
+    recorder.closeStream();
     
     LOG(CCX_INFO, "done playing");
-    
-    recorder.closeStream();
+     
+    */
     
     int srcused = 0;
     

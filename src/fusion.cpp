@@ -59,7 +59,7 @@
 // assert
 #include <assert.h>
 
-#define CCX_DAEMON	"fusion"
+#define CCX_DAEMON	"ccf"
 #define CCX_GUIDIR	"gui/html"
 #define CCX_VERSION	"0.1a"
 #define CCX_SLOTMAX	10
@@ -81,7 +81,7 @@ static bool config_detach = false;
 static bool config_syslog = false;
 static bool config_httpserver = true;
 static bool test_mode = false;
-static std::string config_pipelinefn = "";
+static std::string config_pipelinefn = "configs/presets/fusion.txt";
 static std::string config_guidir = CCX_GUIDIR;
 static std::string config_pidfile = "/var/run/fusion.pid";
 static struct evhttp *server = NULL;

@@ -1,0 +1,20 @@
+pipeline create DebugInput Debug
+pipeline create SpiritParser Parser
+pipeline create SphinxASR ASR
+pipeline create AudioOutput Audio
+
+pipeline set Audio x 73
+pipeline set Audio y 33
+
+pipeline set ASR x 117
+pipeline set ASR y 362
+
+pipeline set Parser x 383
+pipeline set Parser y 72
+
+pipeline set Debug x 655
+pipeline set Debug y 193
+
+pipeline connect Audio 0 ASR 0
+pipeline connect ASR 0 Parser 0
+pipeline connect Parser 0 Debug 0
