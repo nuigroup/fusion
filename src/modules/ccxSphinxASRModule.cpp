@@ -32,10 +32,10 @@ ccxSphinxASRModule::ccxSphinxASRModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODUL
     engine = new ccaSphinxASREngine();
     ccaSphinxASREngineArgs *engineArgs = new ccaSphinxASREngineArgs;
 #ifndef WIN32
-    engineArgs->sphinxmodel_am = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/.";
-    engineArgs->sphinxmodel_lm = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/voxforge_en_sphinx.lm.DMP";
-    engineArgs->sphinxmodel_dict = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/cmudict.0.7a";
-    engineArgs->sphinxmodel_fdict = "/Users/shalstvedt/Code/ccf/configs/ballworld/sphinxmodel/noisedict";
+    engineArgs->sphinxmodel_am = "configs/ballworld/sphinxmodel/.";
+    engineArgs->sphinxmodel_lm = "configs/ballworld/sphinxmodel/voxforge_en_sphinx.lm.DMP";
+    engineArgs->sphinxmodel_dict = "configs/ballworld/sphinxmodel/cmudict.0.7a";
+    engineArgs->sphinxmodel_fdict = "configs/ballworld/sphinxmodel/noisedict";
 #else
     engineArgs->sphinxmodel_am = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel";
     engineArgs->sphinxmodel_lm = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel\\voxforge_en_sphinx.lm.DMP";

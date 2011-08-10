@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		741C664013F0F940005219A6 /* ccxAudioOutputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */; };
 		745A598713EE501500736762 /* ccxSphinxASRModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7213EE362500112449 /* ccxSphinxASRModule.cpp */; };
+		7461F2BB13F2156A005654C5 /* ccxTemporalFusionModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7613EE362500112449 /* ccxTemporalFusionModule.cpp */; };
 		74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A5F13EE362500112449 /* ccfMultimodalSyntaxTree.cpp */; };
 		74708A7A13EE363200112449 /* fusion.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6113EE362500112449 /* fusion.cpp */; };
 		74708A7B13EE363200112449 /* ballWorldGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A6313EE362500112449 /* ballWorldGrammar.cpp */; };
@@ -298,6 +299,7 @@
 				74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */,
 				74708A7A13EE363200112449 /* fusion.cpp in Sources */,
 				74708A7B13EE363200112449 /* ballWorldGrammar.cpp in Sources */,
+				7461F2BB13F2156A005654C5 /* ccxTemporalFusionModule.cpp in Sources */,
 				74708A8113EE363200112449 /* ccxDebugInputModule.cpp in Sources */,
 				74708A8313EE363200112449 /* ccxDebugOutputModule.cpp in Sources */,
 				74708A8B13EE363200112449 /* ccxSpiritParserModule.cpp in Sources */,
