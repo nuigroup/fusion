@@ -16,6 +16,7 @@
 #include <boost/config/warning_disable.hpp>
 #include <boost/variant/recursive_variant.hpp>
 #include <boost/variant/apply_visitor.hpp>
+#include <boost/variant/get.hpp>
 #include <boost/foreach.hpp>
 
 namespace client

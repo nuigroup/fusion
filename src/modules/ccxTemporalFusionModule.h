@@ -12,6 +12,9 @@
 #include "ccfMultimodalSyntaxTree.h"
 #include "ccx.h"
 #include <assert.h>
+#include <boost/variant/recursive_variant.hpp>
+#include <boost/variant/apply_visitor.hpp>
+#include <boost/foreach.hpp>
 
 class ccxTemporalFusionModule : public ccxModule {
 public:

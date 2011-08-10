@@ -2,6 +2,7 @@ pipeline create DebugInput Debug
 pipeline create SpiritParser Parser
 pipeline create SphinxASR ASR
 pipeline create AudioOutput Audio
+pipeline create TemporalFusion Fusion
 
 pipeline set Audio x 73
 pipeline set Audio y 33
@@ -15,11 +16,12 @@ pipeline set Parser y 72
 pipeline set Debug x 655
 pipeline set Debug y 193
 
-pipeline set ASR acoustic_model "configs/ballworld/sphinxmodel/."
-pipeline set ASR language_model "configs/ballworld/sphinxmodel/voxforge_en_sphinx.lm.DMP"
-pipeline set ASR dictionary "configs/ballworld/sphinxmodel/cmudict.0.7a"
-pipeline set ASR noise_dictionary "configs/ballworld/sphinxmodel/noisedict"
+pipeline set ASR acoustic_model configs/ballworld/sphinxmodel/.
+pipeline set ASR language_model configs/ballworld/sphinxmodel/voxforge_en_sphinx.lm.DMP
+pipeline set ASR dictionary configs/ballworld/sphinxmodel/cmudict.0.7a
+pipeline set ASR noise_dictionary configs/ballworld/sphinxmodel/noisedict
 
 pipeline connect Audio 0 ASR 0
 pipeline connect ASR 0 Parser 0
-pipeline connect Parser 0 Debug 0
+pipeline connect Parser 0 Fusion 0
+pipeline connect Fusion 0 Debug 0

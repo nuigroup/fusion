@@ -46,6 +46,8 @@ struct mast_node_printer : boost::static_visitor<>
     int indent;
 };
 
+
+
 void mast_printer::operator()(client::multimodalSyntaxTree const& mast) const
 {
     tab(indent);
@@ -65,3 +67,10 @@ std::string mast_to_string(client::multimodalSyntaxTree *mast) {
     printer(*mast);
     return "";
 }
+
+class mast_iterator {
+    ;
+    
+public:
+    ;
+};

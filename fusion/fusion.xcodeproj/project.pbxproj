@@ -53,7 +53,7 @@
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 12;
 			dstPath = "";
-			dstSubfolderSpec = 16;
+			dstSubfolderSpec = 7;
 			files = (
 				74708CA513EE3F9200112449 /* configs in CopyFiles */,
 				74708CA613EE3F9200112449 /* gui in CopyFiles */,
@@ -153,8 +153,8 @@
 		74708A5D13EE362500112449 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				74708A5E13EE362500112449 /* containers */,
 				74708A6113EE362500112449 /* fusion.cpp */,
+				74708A5E13EE362500112449 /* containers */,
 				74708A6213EE362500112449 /* models */,
 				74708A6513EE362500112449 /* modules */,
 			);
