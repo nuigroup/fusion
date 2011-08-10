@@ -15,9 +15,14 @@
 
 MODULE_DECLARE(SphinxASR, "native", "Fetch CCA speech recognition");
 
-ccxSphinxASRModule::ccxSphinxASRModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODULE_OUTPUT){
+ccxSphinxASRModule::ccxSphinxASRModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODULE_OUTPUT) {
 
 	MODULE_INIT();
+
+	this->properties["acoustic_model"] = new ccxProperty("configs/ballworld/sphinxmodel/.");
+	this->properties["language_model"] = new ccxProperty("configs/ballworld/sphinxmodel/voxforge_en_sphinx.lm.DMP");
+	this->properties["dictionary"] = new ccxProperty("configs/ballworld/sphinxmodel/cmudict.0.7a");
+	this->properties["noise_dictionary"] = new ccxProperty("configs/ballworld/sphinxmodel/noisedict");
 
     this->output = new ccxDataStream("CCAHypothesis");
     this->declareOutput(0, &this->output, new ccxDataStreamInfo("CCAHypothesis", "CCAHypothesis", "CCA recognition hypothesis"));
@@ -31,18 +36,11 @@ ccxSphinxASRModule::ccxSphinxASRModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODUL
     // ASR Engine: commandpicking
     engine = new ccaSphinxASREngine();
     ccaSphinxASREngineArgs *engineArgs = new ccaSphinxASREngineArgs;
-#ifndef WIN32
-    engineArgs->sphinxmodel_am = "configs/ballworld/sphinxmodel/.";
-    engineArgs->sphinxmodel_lm = "configs/ballworld/sphinxmodel/voxforge_en_sphinx.lm.DMP";
-    engineArgs->sphinxmodel_dict = "configs/ballworld/sphinxmodel/cmudict.0.7a";
-    engineArgs->sphinxmodel_fdict = "configs/ballworld/sphinxmodel/noisedict";
-#else
-    engineArgs->sphinxmodel_am = "configs\\ballworld\\sphinxmodel";
-    engineArgs->sphinxmodel_lm = "configs\\ballworld\\sphinxmodel\\voxforge_en_sphinx.lm.DMP";
-    engineArgs->sphinxmodel_dict = "configs\\ballworld\\sphinxmodel\\cmudict.0.7a";
-    engineArgs->sphinxmodel_fdict = "configs\\ballworld\\sphinxmodel\\noisedict";
 
-#endif
+	engineArgs->sphinxmodel_am = this->properties["acoustic_model"]->asString();
+    engineArgs->sphinxmodel_lm = this->properties["language_model"]->asString();
+    engineArgs->sphinxmodel_dict = this->properties["dictionary"]->asString();
+    engineArgs->sphinxmodel_fdict = this->properties["noise_dictionary"]->asString();
 
     engineArgs->sphinx_mode = 2;
     engineArgs->samplerate = model_sampleRate;
@@ -125,7 +123,7 @@ int ccaSphinxASREngine::engineInit(ccaSphinxASREngineArgs *args) {
     char grammarFSG_filename[] = "configs\\ballworld\\ballworld.fsg";
 #else
 	char cfg_filename[] = "/tmp/sphinx.cfg";
-    char grammarFSG_filename[] = "/Users/shalstvedt/Code/ccf/configs/ballworld/ballworld.fsg";
+    char grammarFSG_filename[] = "configs/ballworld/ballworld.fsg";
 #endif	
     FILE *cfg_fp = fopen(cfg_filename, "wt");
     if (cfg_fp==NULL)
