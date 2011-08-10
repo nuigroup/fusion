@@ -405,6 +405,9 @@
     <ClInclude Include="..\src\modules\ccxAudioOutputModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\modules\ccxTemporalFusionModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\fusion.cpp">
@@ -444,6 +447,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\modules\ccxAudioOutputModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\modules\ccxTemporalFusionModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

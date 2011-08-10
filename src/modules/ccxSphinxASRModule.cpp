@@ -37,10 +37,10 @@ ccxSphinxASRModule::ccxSphinxASRModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODUL
     engineArgs->sphinxmodel_dict = "configs/ballworld/sphinxmodel/cmudict.0.7a";
     engineArgs->sphinxmodel_fdict = "configs/ballworld/sphinxmodel/noisedict";
 #else
-    engineArgs->sphinxmodel_am = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel";
-    engineArgs->sphinxmodel_lm = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel\\voxforge_en_sphinx.lm.DMP";
-    engineArgs->sphinxmodel_dict = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel\\cmudict.0.7a";
-    engineArgs->sphinxmodel_fdict = "C:\\Users\\shalstvedt\\Code\\ccf\\configs\\ballworld\\sphinxmodel\\noisedict";
+    engineArgs->sphinxmodel_am = "configs\\ballworld\\sphinxmodel";
+    engineArgs->sphinxmodel_lm = "configs\\ballworld\\sphinxmodel\\voxforge_en_sphinx.lm.DMP";
+    engineArgs->sphinxmodel_dict = "configs\\ballworld\\sphinxmodel\\cmudict.0.7a";
+    engineArgs->sphinxmodel_fdict = "configs\\ballworld\\sphinxmodel\\noisedict";
 
 #endif
 

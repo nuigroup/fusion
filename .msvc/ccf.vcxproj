@@ -41,6 +41,9 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)\..\</OutDir>
     <ExtensionsToDeleteOnClean>*.exe;*.sdf;$(ExtensionsToDeleteOnClean)</ExtensionsToDeleteOnClean>
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+    <CustomBuildBeforeTargets>Clean</CustomBuildBeforeTargets>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -68,8 +71,13 @@
       <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>xcopy $(ProjectDir)..\gui $(OutputPath) /E /Y</Command>
+      <Command>xcopy /i /s /Y $(ProjectDir)..\gui\* $(ProjectDir)\gui
+xcopy /i /s /Y $(ProjectDir)..\configs\* $(ProjectDir)\configs
+xcopy /Y $(ProjectDir)..\contrib\sphinx\lib\win32\*.dll $(TargetDir)</Command>
     </PostBuildEvent>
+    <CustomBuildStep>
+      <Command>erase $(ProjectDir)..\gui $(ProjectDir)..\configs $(TargetDir)sphinxbase.dll $(TargetDir)s3decoder.dll</Command>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -221,6 +229,7 @@
     <ClInclude Include="..\src\modules\ccxDebugOutputModule.h" />
     <ClInclude Include="..\src\modules\ccxSphinxASRModule.h" />
     <ClInclude Include="..\src\modules\ccxSpiritParserModule.h" />
+    <ClInclude Include="..\src\modules\ccxTemporalFusionModule.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
@@ -237,6 +246,7 @@
     <ClCompile Include="..\src\modules\ccxDebugOutputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSphinxASRModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSpiritParserModule.cpp" />
+    <ClCompile Include="..\src\modules\ccxTemporalFusionModule.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

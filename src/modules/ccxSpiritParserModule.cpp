@@ -50,15 +50,9 @@ void ccxSpiritParserModule::notifyData(ccxDataStream *input) {
 void ccxSpiritParserModule::update() {
     this->input->lock();
     if(this->initializeFromString(std::string((char*)this->input->getData()))) {
-        this->input->unlock();
         this->output->push(mast);
     }
-    else {
-        this->input->unlock();
-        LOG(CCX_INFO, "update failure");
-    }
-    // if input is valid and initializeFromString is good, then set the output to the current mast
-
+    this->input->unlock();
 }
 
 
