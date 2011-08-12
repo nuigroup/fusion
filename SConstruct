@@ -22,6 +22,7 @@ daemon_src = [
   'src/modules/ccxSphinxASRModule.cpp',
   'src/modules/ccxAudioOutputModule.cpp',
   'src/modules/ccxTemporalFusionModule.cpp',
+  'src/modules/ccxDebugGestureOutputModule.cpp',
   'src/models/ballWorldGrammar.cpp',
   'contrib/libresample/lib/resample.c',
   'contrib/libresample/lib/filterkit.c',
