@@ -33,6 +33,7 @@ static ccxFactory *instance = NULL;
 void ccxFactory::init() {
 	// Keep the alphabetical order when adding new modules!
     REGISTER_MODULE(AudioOutput);
+    REGISTER_MODULE(DebugGestureOutput);
     REGISTER_MODULE(DebugInput);
     REGISTER_MODULE(DebugOutput);
     REGISTER_MODULE(SphinxASR);

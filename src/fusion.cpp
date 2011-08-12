@@ -61,7 +61,7 @@
 
 #define CCX_DAEMON	"ccf"
 #define CCX_GUIDIR	"gui/html"
-#define CCX_VERSION	"0.1a"
+#define CCX_VERSION	"0.1b"
 #define CCX_SLOTMAX	10
 #define CCX_SLOTDIR	"configs/slots/slot-"
 #define CCX_SLOTEXT	".txt"
@@ -1211,7 +1211,7 @@ int main(int argc, char **argv) {
 			goto exit_critical;
 		if ( pipeline->parse(config_pipelinefn) == false )
 			goto exit_critical;
-		pipeline->start();
+		//pipeline->start();
 	} else if ( config_httpserver == false ) {
 		LOG(CCX_CRITICAL, "no pipeline or webserver to start !");
 		goto exit_critical;

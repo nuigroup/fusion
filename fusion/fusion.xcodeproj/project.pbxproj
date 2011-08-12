@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7403310113F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 740330FF13F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp */; };
 		741C664013F0F940005219A6 /* ccxAudioOutputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */; };
 		745A598713EE501500736762 /* ccxSphinxASRModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7213EE362500112449 /* ccxSphinxASRModule.cpp */; };
 		7461F2BB13F2156A005654C5 /* ccxTemporalFusionModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7613EE362500112449 /* ccxTemporalFusionModule.cpp */; };
@@ -63,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		740330FF13F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxDebugGestureOutputModule.cpp; sourceTree = "<group>"; };
+		7403310013F4DEEA0038EB32 /* ccxDebugGestureOutputModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxDebugGestureOutputModule.h; sourceTree = "<group>"; };
 		741C663E13F0F92F005219A6 /* ccxAudioOutputModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxAudioOutputModule.h; sourceTree = "<group>"; };
 		741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxAudioOutputModule.cpp; sourceTree = "<group>"; };
 		74708A0B13EE358F00112449 /* fusion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fusion; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -189,6 +192,8 @@
 				74708A6913EE362500112449 /* ccxASRModule.h */,
 				741C663E13F0F92F005219A6 /* ccxAudioOutputModule.h */,
 				741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */,
+				740330FF13F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp */,
+				7403310013F4DEEA0038EB32 /* ccxDebugGestureOutputModule.h */,
 				74708A6A13EE362500112449 /* ccxDebugInputModule.cpp */,
 				74708A6B13EE362500112449 /* ccxDebugInputModule.h */,
 				74708A6C13EE362500112449 /* ccxDebugOutputModule.cpp */,
@@ -299,6 +304,7 @@
 				74708A7813EE363200112449 /* ccfMultimodalSyntaxTree.cpp in Sources */,
 				74708A7A13EE363200112449 /* fusion.cpp in Sources */,
 				74708A7B13EE363200112449 /* ballWorldGrammar.cpp in Sources */,
+				7403310113F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp in Sources */,
 				7461F2BB13F2156A005654C5 /* ccxTemporalFusionModule.cpp in Sources */,
 				74708A8113EE363200112449 /* ccxDebugInputModule.cpp in Sources */,
 				74708A8313EE363200112449 /* ccxDebugOutputModule.cpp in Sources */,

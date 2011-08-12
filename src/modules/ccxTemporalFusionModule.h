@@ -29,7 +29,8 @@ public:
 	
 protected:
 	ccxDataStream* output;
-	ccxDataStream* input;
+	ccxDataStream* audioInput;
+    ccxDataStream* tactileInput;
 
 	MODULE_INTERNALS();
 };

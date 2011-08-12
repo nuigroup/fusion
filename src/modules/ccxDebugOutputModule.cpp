@@ -24,6 +24,7 @@ ccxDebugOutputModule::ccxDebugOutputModule() : ccxModule(CCX_MODULE_OUTPUT) {
     this->alreadySent = false;
 
 	this->properties["sentence"] = new ccxProperty("delete the yellow ball", "The sentence to feed");
+    
 }
 
 ccxDebugOutputModule::~ccxDebugOutputModule() {
