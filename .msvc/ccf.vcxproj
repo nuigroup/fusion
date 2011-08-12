@@ -225,6 +225,7 @@ xcopy /Y $(ProjectDir)..\contrib\sphinx\lib\win32\*.dll $(TargetDir)</Command>
     <ClInclude Include="..\src\containers\ccfMultimodalSyntaxTree.h" />
     <ClInclude Include="..\src\models\ballWorldGrammar.h" />
     <ClInclude Include="..\src\modules\ccxAudioOutputModule.h" />
+    <ClInclude Include="..\src\modules\ccxDebugGestureOutputModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugInputModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugOutputModule.h" />
     <ClInclude Include="..\src\modules\ccxSphinxASRModule.h" />
@@ -242,6 +243,7 @@ xcopy /Y $(ProjectDir)..\contrib\sphinx\lib\win32\*.dll $(TargetDir)</Command>
     <ClCompile Include="..\src\fusion.cpp" />
     <ClCompile Include="..\src\models\ballWorldGrammar.cpp" />
     <ClCompile Include="..\src\modules\ccxAudioOutputModule.cpp" />
+    <ClCompile Include="..\src\modules\ccxDebugGestureOutputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugInputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugOutputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSphinxASRModule.cpp" />
