@@ -24,7 +24,7 @@ ccxSpiritParserModule::ccxSpiritParserModule() : ccxModule(CCX_MODULE_INPUT | CC
 
 
 ccxSpiritParserModule::~ccxSpiritParserModule() {
-    // delete things
+    if(this->mast != NULL) delete(this->mast);
 }
 
 
@@ -36,7 +36,6 @@ void ccxSpiritParserModule::start() {
 }
 
 void ccxSpiritParserModule::stop() {
-    free(this->mast);
     LOG(CCX_INFO, "stopped!");
     ccxModule::stop();
 }
@@ -52,6 +51,9 @@ void ccxSpiritParserModule::update() {
     if(this->initializeFromString(std::string((char*)this->input->getData()))) {
         this->output->push(mast);
     }
+    else {
+        this->output->clear();
+    }
     this->input->unlock();
 }
 
@@ -61,9 +63,8 @@ bool ccxSpiritParserModule::initializeFromString(std::string input) {
         
     storage = input; // We will manipulate the contents here.
     
-    client::multimodalSyntaxTree *oldmast = mast;
+    delete(mast);
     mast = new client::multimodalSyntaxTree;
-    free(oldmast);
     
     std::string::iterator iter = storage.begin();
     std::string::iterator end = storage.end();

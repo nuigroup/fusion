@@ -64,7 +64,9 @@ void ccxTemporalFusionModule::update() {
                     LOG(CCX_INFO, node.type << " needed");
                     if(node.type == gesIter->type) {
                         LOG(CCX_INFO, "success!!!!!!!!");
-                        audioTree->children.at(childcount) = *gesIter;
+                        client::node newNode = *gesIter;
+                        audioTree->children.at(childcount).swap(newNode);
+                        //audioTree->children.at(childcount) = newNode;
                     }
                     else {
                         LOG(CCX_INFO, "mismatch");
@@ -75,7 +77,12 @@ void ccxTemporalFusionModule::update() {
                 childcount++;
             }
         }
-        if(good) this->output->push(audioTree);
+        if(good) {
+            this->output->push(audioTree);
+        }
+        else {
+            this->output->clear();
+        }
     }
 }
 

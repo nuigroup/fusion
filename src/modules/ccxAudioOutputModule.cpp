@@ -41,7 +41,7 @@ void ccxAudioOutputModule::start() {
     
     ccxModule::start();
     
-    unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, device = 0, offset = 0;
+    unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
     double max_time = 5.0;
 
     if ( recorder.getDeviceCount() < 1 ) {

@@ -66,6 +66,12 @@
 #define CCX_SLOTDIR	"configs/slots/slot-"
 #define CCX_SLOTEXT	".txt"
 
+#ifdef WIN32
+#define SLEEP( milliseconds ) Sleep( (DWORD) milliseconds ) 
+#else
+#define SLEEP( milliseconds ) usleep( (unsigned long) (milliseconds * 1000.0) )
+#endif
+
 #ifndef UNICODE
 typedef std::string String;
 #else
@@ -86,6 +92,9 @@ static std::string config_guidir = CCX_GUIDIR;
 static std::string config_pidfile = "/var/run/fusion.pid";
 static struct evhttp *server = NULL;
 int g_config_delay = 20;
+
+bool want_quit_soon = false;
+int want_quit_soon_count = 0;
 
 char *strsep(char **stringp, const char *delim) {
 	char *s = *stringp;
@@ -861,8 +870,6 @@ void web_pipeline_stop(struct evhttp_request *req, void *arg) {
 	web_message(req, "ok");
 }
 
-//void web_pipeline_utterance
-
 void web_pipeline_slot_refresh(struct evhttp_request *req, void *arg) {
 	std::ostringstream oss;
 	cJSON *root, *slots, *slot;
@@ -929,7 +936,7 @@ void web_pipeline_slot_save(struct evhttp_request *req, void *arg) {
 	struct evkeyvalq headers;
 	const char *uri, *s_idx;
 	int slotidx;
-	struct stat st;
+	//struct stat st;
 	FILE *fd;
 
 	uri = evhttp_request_uri(req);
@@ -994,7 +1001,7 @@ void web_pipeline_dump(struct evhttp_request *req, void *arg) {
 
 void web_pipeline_quit(struct evhttp_request *req, void *arg) {
 	web_message(req, "bye");
-	want_quit = false;
+	want_quit_soon = true;
 }
 
 void web_index(struct evhttp_request *req, void *arg) {
@@ -1176,6 +1183,11 @@ int parse_options(int *argc, char ***argv) {
 	return -1; // no error
 }
 
+void web_utterance_start(struct evhttp_request *req, void *arg) {
+    LOG(CCX_INFO, "Utterance started! module to trigger:" << pipeline->firstModule()->getName());
+    web_message(req, "utterance start ok");
+}
+
 int main(int argc, char **argv) {
 	int ret, exit_ret = 0;
 
@@ -1242,12 +1254,7 @@ int main(int argc, char **argv) {
 				perror("HTTP server");
 				LOG(CCX_ERROR, "unable to open socket for 127.0.0.1:7500... retry in 3s");
 
-				#ifdef WIN32
-				Sleep(3);
-				#endif
-				#ifndef WIN32
-				sleep(3);
-				#endif
+				SLEEP(3);
 
 			}
 		} while ( ret == -1 );
@@ -1274,21 +1281,14 @@ int main(int argc, char **argv) {
 		evhttp_set_cb(server, "/pipeline/slot/load", web_pipeline_slot_load, NULL);
 		evhttp_set_cb(server, "/pipeline/slot/save", web_pipeline_slot_save, NULL);
         
-        // test
+        evhttp_set_cb(server, "/utterance/start", web_utterance_start, NULL);
         
-        //evhttp_set_cb(server, "/utterance", web_pipeline_utterance, NULL); 
-        
-
 		evhttp_set_gencb(server, web_file, NULL);
 	}
 
 	// main loop
-	while ( want_quit == false ) {
-		#ifndef WIN32
-		usleep(g_config_delay);
-		#else
-		Sleep(g_config_delay);
-		#endif
+	while ( want_quit == false && want_quit_soon_count < 5) {
+		SLEEP(g_config_delay);
 
 		// update pipeline
 		if ( pipeline->isStarted() ) {
@@ -1305,6 +1305,10 @@ int main(int argc, char **argv) {
 		// if we're running the server, allow the event loop to have control for a while
 		if ( server != NULL )
 			event_base_loop(base, EVLOOP_ONCE|EVLOOP_NONBLOCK);
+        
+        if(want_quit_soon == true) {
+            want_quit_soon_count++;
+        }
 	}
 
 exit_standard:

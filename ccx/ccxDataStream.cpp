@@ -64,6 +64,12 @@ void ccxDataStream::push(void *data) {
 	this->notifyObservers();
 }
 
+void ccxDataStream::clear() {
+    this->lock();
+    this->data = NULL;
+    this->unlock();
+}
+
 void ccxDataStream::addObserver(ccxModule *module) {
 	this->observers.push_back(module);
 }

@@ -27,11 +27,8 @@ ccxDebugInputModule::~ccxDebugInputModule() {
 }
 
 void ccxDebugInputModule::update() {
-}
-
-void ccxDebugInputModule::notifyData(ccxDataStream *stream) {
-	LOG(CCX_INFO, "stream<" << stream << ">, type=" << stream->getFormat() << ", observers=" << stream->getObserverCount());
-
+    LOG(CCX_INFO, "stream<" << stream << ">, type=" << stream->getFormat() << ", observers=" << stream->getObserverCount());
+    
 	if ( stream->getFormat() == "generic" ) {
 		ccxDataGenericList *list = static_cast<ccxDataGenericList*>(stream->getData());
 		LOG(CCX_INFO, " `- " << stream->getFormat() << " size=" << list->size());
@@ -40,5 +37,9 @@ void ccxDebugInputModule::notifyData(ccxDataStream *stream) {
     if( stream->getFormat() == "mAST" ) {
         mast_to_string(static_cast<client::multimodalSyntaxTree*>(stream->getData()));
     }
+}
+
+void ccxDebugInputModule::notifyData(ccxDataStream *stream) {
+    this->notifyUpdate();
 }
 

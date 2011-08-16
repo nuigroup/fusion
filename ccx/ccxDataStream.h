@@ -75,6 +75,8 @@ public:
 
 	void push(void *data);
 	void *getData();
+    
+    void clear();
 
 	void lock();
 	void unlock();

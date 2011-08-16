@@ -144,13 +144,13 @@ var Widget = $.buildClass({
 		_x = this.x;
 		_y = this.headerSize();
 		for ( var i = 0; i < this.inputs.size(); i++ ) {
-			pjs.fill(250, 150, 50);
+			pjs.fill(50, 150, 250);
 
 			for ( var j = 0; j < widgets_hover.size(); j++ ) {
 				o = widgets_hover[j];
 				if ( this != o[0] || o[1] != 'input' || o[2] != i )
 					continue;
-				pjs.fill(0x8b, 0xea, 0x00);
+				pjs.fill(0x00, 0xea, 0x8b);
 				break;
 			}
 
@@ -164,13 +164,13 @@ var Widget = $.buildClass({
 		_x = this.x + this.w - 15;
 		_y = this.headerSize();
 		for ( var i = 0; i < this.outputs.size(); i++ ) {
-			pjs.fill(250, 150, 50);
+			pjs.fill(50, 150, 250);
 
 			for ( var j = 0; j < widgets_hover.size(); j++ ) {
 				o = widgets_hover[j];
 				if ( this != o[0] || o[1] != 'output' || o[2] != i )
 					continue;
-				pjs.fill(0x8b, 0xea, 0x00);
+				pjs.fill(0x00, 0xea, 0x8b);
 				break;
 			}
 
@@ -183,10 +183,10 @@ var Widget = $.buildClass({
 		var do_draw = false;
 
 		// box
-		pjs.fill(204, 102, 0);
+		pjs.fill(0, 102, 204);
 		pjs.rect(this.x, this.y, this.w, this.h);
 
-		pjs.fill(250, 150, 50);
+		pjs.fill(50, 150, 250);
 		pjs.rect(this.x, this.y, this.w, textHeight(this.name) + 6);
 
 		// text
@@ -200,7 +200,7 @@ var Widget = $.buildClass({
 
 		// or is widget is currently selected for connectivity ?
 		} else if ( connectivity_widget == this ) {
-			pjs.stroke(0x6b, 0xca, 0x00);
+			pjs.stroke(0x00, 0xca, 0x6b);
 			do_draw = true;
 
 		// or is widget is currently in hover state ?
@@ -873,9 +873,9 @@ function gui_mouseDragged() {
 // setup processing canvas
 function ccf_pjs() {
 	color_ok = pjs.color(0, 0xcc, 0);
-	color_ko = pjs.color(0xcc, 0, 0);
-	color_idle = pjs.color(0xc5, 0x80, 0x00);
-	color_selected = pjs.color(0x8b, 0xea, 0x00);
+	color_ko = pjs.color(0x00, 0, 0xCC);
+	color_idle = pjs.color(0x00, 0x80, 0xC5);
+	color_selected = pjs.color(0x00, 0xea, 0x8b);
 	widgets = new pjs.ArrayList();
 	widgets_hover = new pjs.ArrayList();
 
