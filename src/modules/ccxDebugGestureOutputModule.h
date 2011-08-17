@@ -10,6 +10,10 @@
 #define CCX_DEBUG_GESTURE_OUTPUT_MODULE_H
 
 #include "ccxModule.h"
+#include "ccxDataStream.h"
+#include "ccxDataGenericContainer.h"
+#include "ccxLog.h"
+#include "ccfMultimodalSyntaxTree.h"
 
 class ccxDebugGestureOutputModule : public ccxModule {
 public:

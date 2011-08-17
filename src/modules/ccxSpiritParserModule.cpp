@@ -19,6 +19,8 @@ ccxSpiritParserModule::ccxSpiritParserModule() : ccxModule(CCX_MODULE_INPUT | CC
     this->declareOutput(0, &this->output, new ccxDataStreamInfo("data", "mAST", "Multimodal abstract syntax tree"));
     
     this->properties["grammar"] = new ccxProperty("ballworld", "The grammar to use");
+
+	this->mast = NULL;
                                                               
 }
 

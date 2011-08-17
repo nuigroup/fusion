@@ -50,12 +50,12 @@ ccxPipeline::~ccxPipeline() {
 }
 
 void ccxPipeline::clear() {
-	std::vector<ccxModule *>::iterator it = this->modules.begin();
+	std::vector<ccxModule *>::iterator it;
 	this->stop();
-	while ( it != this->modules.end() ) {
+	for (it = this->modules.begin(); it != this->modules.end(); it++) {
 		delete *it;
-		this->modules.erase(it);
 	}
+	this->modules.clear();
 }
 
 ccxModule *ccxPipeline::firstModule() {

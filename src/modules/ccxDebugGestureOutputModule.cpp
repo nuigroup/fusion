@@ -7,11 +7,6 @@
 
 
 #include "ccxDebugGestureOutputModule.h"
-#include "ccxDataStream.h"
-#include "ccxDataGenericContainer.h"
-#include "ccxLog.h"
-#include "ccxModule.h"
-#include "ccfMultimodalSyntaxTree.h"
 
 MODULE_DECLARE(DebugGestureOutput, "native", "Pushes a vector<unimodalLeaf> onto the stream for tactile GUI events");
 

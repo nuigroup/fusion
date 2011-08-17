@@ -66,7 +66,6 @@ void ccxTemporalFusionModule::update() {
                         LOG(CCX_INFO, "success!!!!!!!!");
                         client::node newNode = *gesIter;
                         audioTree->children.at(childcount).swap(newNode);
-                        //audioTree->children.at(childcount) = newNode;
                     }
                     else {
                         LOG(CCX_INFO, "mismatch");
