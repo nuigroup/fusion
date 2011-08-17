@@ -1348,6 +1348,7 @@ int main(int argc, char **argv) {
 		// if we're running the server, allow the event loop to have control for a while
 		if ( server != NULL )
 			event_base_loop(base, EVLOOP_ONCE|EVLOOP_NONBLOCK);
+            //event_base_dispatch(base);
         
         if(want_quit_soon == true) {
             want_quit_soon_count++;

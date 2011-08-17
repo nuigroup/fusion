@@ -111,10 +111,12 @@ AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
 void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
     unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
     bRecording = true;
+    this->output->lock();
     
     if ( recorder.getDeviceCount() < 1 ) {
         LOG(CCX_ERROR, "No audio devices found!");
         bRecording = false;
+        this->output->lock();
     }
     
     recorder.showWarnings( true );
@@ -136,6 +138,7 @@ void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
     catch(RtError& e) {
         LOG(CCX_ERROR, e.getMessage());
         bRecording = false;
+        this->output->unlock();
     }
     
     data.bufferBytes = bufferFrames * channels * sizeof( AUDIO_TYPE );
@@ -150,6 +153,8 @@ void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
     
     if(data.buffer == 0) {
         LOG(CCX_ERROR, "malloc problem!");
+        this->output->unlock();
+        bRecording = false;
     }
     
     try {
@@ -157,6 +162,7 @@ void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
     } catch (RtError& e) {
         LOG(CCX_ERROR, e.getMessage());
         bRecording = false;
+        this->output->unlock();
     }
     
     
@@ -173,7 +179,7 @@ void ccxAudioOutputModule::update() {
     
         if(((ccxDataGenericContainer *)this->input->getData())->hasProperty("recording") && !bRecording) {
             this->output->clear();
-            recordAudioStart(5);
+            recordAudioStart(10);
         }
         else if(bRecording) {
             AudioDataStream* audio = recordAudioEnd();
@@ -191,6 +197,8 @@ void ccxAudioOutputModule::update() {
     else {
         this->output->clear();
     }
+    
+    this->output->unlock();
     
     
 }
