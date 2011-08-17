@@ -7,3 +7,4 @@
 #include "ccxFactory.h"
 #include "ccxProperty.h"
 #include "ccxDataStream.h"
+#include "ccxDataGenericContainer.h"

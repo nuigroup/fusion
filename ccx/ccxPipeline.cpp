@@ -58,6 +58,10 @@ void ccxPipeline::clear() {
 	this->modules.clear();
 }
 
+void ccxPipeline::clearInputs() {
+    std::vector<ccxModule *>::iterator it;
+}
+
 ccxModule *ccxPipeline::firstModule() {
 	assert( this->modules.size() > 0 );
 	return this->modules[0];

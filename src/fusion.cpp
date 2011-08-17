@@ -1183,9 +1183,48 @@ int parse_options(int *argc, char ***argv) {
 	return -1; // no error
 }
 
-void web_utterance_start(struct evhttp_request *req, void *arg) {
-    LOG(CCX_INFO, "Utterance started! module to trigger:" << pipeline->firstModule()->getName());
+void web_utterance_begin(struct evhttp_request *req, void *arg) {
+    LOG(CCX_INFO, "Utterance started! ");
     web_message(req, "utterance start ok");
+    ccxModule* triggerModule = pipeline->getModuleById("Audio");
+    triggerModule->trigger();
+}
+
+void web_utterance_speech_begin(struct evhttp_request *req, void *arg) {
+    // send a property container that controls recording; these property changes are properly notified for threaded operation.
+    web_message(req, "speech begin ok");
+    ccxModule* triggerModule = pipeline->getModuleById("Audio");
+    LOG(CCX_INFO, "on: " << triggerModule->getName());
+    // do a notifyUpdate() on the audio module, no need for input data as this is a trigger
+    ccxDataGenericContainer* triggerContainer = new ccxDataGenericContainer();
+    triggerContainer->properties["recording"] = new ccxProperty(true);
+    triggerModule->getInput()->push(triggerContainer);
+    triggerModule->trigger();
+}
+
+void web_utterance_speech_end(struct evhttp_request *req, void *arg) {
+    // same as above, property container
+    web_message(req, "speech end ok");
+    ccxModule* triggerModule = pipeline->getModuleById("Audio");
+    LOG(CCX_INFO, "off: " << triggerModule->getName());
+    ccxDataGenericContainer* triggerContainer = new ccxDataGenericContainer();
+    triggerModule->getInput()->push(triggerContainer);
+    triggerModule->trigger();
+}
+
+void web_utterance_gesture_data(struct evhttp_request *req, void *arg) {
+    // instead of a property container we feed JSON, (but for now just trigger())
+    LOG(CCX_INFO, "Gesture data added to the utterance...");
+    // do a notifyUpdate() on the gesture JSON module, and feed in the special gesture stream (pushing to the stream would have it call this automatically)
+    web_message(req, "utterance data ok");
+    ccxModule* triggerModule = pipeline->getModuleById("Gesture");
+    LOG(CCX_INFO, triggerModule->getName());
+    triggerModule->trigger();
+}
+
+void web_utterance_end(struct evhttp_request *req, void *arg) {
+    LOG(CCX_INFO, "Utterance stop!");
+    web_message(req, "utterance stop ok");
 }
 
 int main(int argc, char **argv) {
@@ -1281,7 +1320,11 @@ int main(int argc, char **argv) {
 		evhttp_set_cb(server, "/pipeline/slot/load", web_pipeline_slot_load, NULL);
 		evhttp_set_cb(server, "/pipeline/slot/save", web_pipeline_slot_save, NULL);
         
-        evhttp_set_cb(server, "/utterance/start", web_utterance_start, NULL);
+        evhttp_set_cb(server, "/utterance/begin", web_utterance_begin, NULL);
+        evhttp_set_cb(server, "/utterance/end", web_utterance_end, NULL);
+        evhttp_set_cb(server, "/utterance/speech/begin", web_utterance_speech_begin, NULL);
+        evhttp_set_cb(server, "/utterance/speech/end", web_utterance_speech_end, NULL);
+        evhttp_set_cb(server, "/utterance/gesture/data", web_utterance_gesture_data, NULL);
         
 		evhttp_set_gencb(server, web_file, NULL);
 	}

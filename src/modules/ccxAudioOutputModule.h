@@ -50,7 +50,7 @@ struct AudioData {
 struct AudioDataStream {
     short* buffer;
     int sampleRate;
-    int bufferSize;
+    unsigned int bufferSize;
 };
 
 class ccxAudioOutputModule : public ccxModule {
@@ -69,10 +69,17 @@ protected:
     
     bool                bRecording;
     
-    float *             audioBuf;
-    int                 audioBufSize;
+    AUDIO_TYPE*             audioBuf;
+    unsigned int        audioBufSize;
+    
+    AudioData data;
+    
     
     ccxDataStream* output;
+    ccxDataStream* input;
+    
+    void recordAudioStart(int max_time);
+    AudioDataStream* recordAudioEnd();
     
     MODULE_INTERNALS();
 };

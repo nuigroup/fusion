@@ -111,6 +111,10 @@ public:
 	/*! \brief Free the module
 	 */
 	virtual ~ccxModule();
+    
+    /*! \brief Trigger the module to the start of an utterance
+     */
+    virtual void trigger();
 
 	/*! \brief Declare an input (only at init time.)
 	 */
@@ -206,7 +210,7 @@ public:
 	/*! \brief Poll the module (usually, update() is called if it's not threaded.
 	 */
 	virtual void poll();
-
+    
 	/*! \brief Lock access to the module data
 	 */
 	virtual void lock();

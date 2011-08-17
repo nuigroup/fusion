@@ -379,6 +379,10 @@ void ccxModule::notifyUpdate() {
 		this->thread_trigger->post();
 }
 
+void ccxModule::trigger() {
+    this->notifyUpdate();
+}
+
 bool ccxModule::needUpdate(bool lock) {
 	if ( this->need_update ) {
 		this->need_update = false;

@@ -20,9 +20,8 @@ public:
 	ccxDebugGestureOutputModule(); 
 	virtual ~ccxDebugGestureOutputModule();
 
-	virtual void notifyData(ccxDataStream *stream);
-    virtual void poll();
 	void update();
+    void trigger();
     void start();
 
 private:

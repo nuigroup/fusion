@@ -10,7 +10,7 @@
 
 MODULE_DECLARE(AudioOutput, "native", "Get audio from RtAudio input (Core Audio or DirectSound)");
 
-ccxAudioOutputModule::ccxAudioOutputModule() : ccxModule(CCX_MODULE_OUTPUT) {
+ccxAudioOutputModule::ccxAudioOutputModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODULE_OUTPUT) {
     
     MODULE_INIT();
     
@@ -26,7 +26,11 @@ ccxAudioOutputModule::ccxAudioOutputModule() : ccxModule(CCX_MODULE_OUTPUT) {
     
     this->output = new ccxDataStream("audiodatastream_8000");
     this->declareOutput(0, &this->output, new ccxDataStreamInfo("AudioDataStream", "audiodatastream_8000", "AudioDataStream (samplerate: 8000, format: 16-bit/short)"));
-
+    
+    this->input = new ccxDataStream("audio_triggers");
+    this->declareInput(0, &this->input, new ccxDataStreamInfo("AudioTriggers", "AudioTriggers", "Audio triggers (basically just a bool for recording)"));
+    
+    this->properties["use_thread"] = new ccxProperty(true);
 }
 
 ccxAudioOutputModule::~ccxAudioOutputModule() {
@@ -38,16 +42,81 @@ void ccxAudioOutputModule::stop() {
 }
 
 void ccxAudioOutputModule::start() {
-    
     ccxModule::start();
-    
-    unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
-    double max_time = 5.0;
+}
 
+AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
+    unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
+    if(bRecording) {
+        LOG(CCX_INFO, "done recording");
+        recorder.stopStream();
+        LOG(CCX_INFO, "stopped stream");
+        recorder.closeStream();
+        LOG(CCX_INFO, "closed input stream");
+        
+        bRecording = false;
+        
+        /*
+         
+         try {
+         recorder.openStream( &oParams, NULL, FORMAT, fs, &bufferFrames, &gotAudioOutput, (void *)&data );
+         recorder.startStream();
+         }
+         catch(RtError& e) {
+         LOG(CCX_ERROR, e.getMessage());
+         }
+         
+         while ( 1 ) {
+         SLEEP( 100 ); // wake every 100 ms to check if we're done
+         if ( recorder.isStreamRunning() == false ) break;
+         }
+         
+         recorder.closeStream();
+         
+         LOG(CCX_INFO, "done playing");
+         
+         */
+        
+        int srcused = 0;
+        
+        audioBufSize = (unsigned int)data.frameCounter * (unsigned int)data.channels;
+        
+        int newBufSize = audioBufSize;
+        
+        data.frameCounter = 0;
+        
+        if (fs != AUDIO_TARGET_SAMPLE_RATE_I) {
+            newBufSize = int(audioBufSize * resample_factor);
+            audioBuf = new float[newBufSize];
+            resample_process(resample_handle, resample_factor, data.buffer, audioBufSize, 1, &srcused, audioBuf, newBufSize);
+        }
+        
+        short* buf_16 = new short[newBufSize];
+        for (int i=0; i<newBufSize; i++) {
+            buf_16[i] = AUDIO_FLOAT2SHORT(audioBuf[i]);
+        }
+        
+        AudioDataStream* outputStream = new AudioDataStream;
+        outputStream->buffer = buf_16;
+        outputStream->sampleRate = AUDIO_TARGET_SAMPLE_RATE_I;
+        outputStream->bufferSize = newBufSize;
+                
+        return outputStream;
+    } else {
+        return NULL;
+    }
+    
+}
+
+void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
+    unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
+    bRecording = true;
+    
     if ( recorder.getDeviceCount() < 1 ) {
         LOG(CCX_ERROR, "No audio devices found!");
+        bRecording = false;
     }
-
+    
     recorder.showWarnings( true );
     bufferFrames = 512;
     RtAudio::StreamParameters iParams;
@@ -59,16 +128,14 @@ void ccxAudioOutputModule::start() {
     oParams.nChannels = channels;
     oParams.firstChannel = offset;
     
-    AudioData data;
     data.buffer = 0;
-    
-    SLEEP(1000);
-    
+        
     try {
         recorder.openStream(NULL, &iParams, FORMAT, fs, &bufferFrames, &gotAudioInput, (void *) &data );
     }
     catch(RtError& e) {
         LOG(CCX_ERROR, e.getMessage());
+        bRecording = false;
     }
     
     data.bufferBytes = bufferFrames * channels * sizeof( AUDIO_TYPE );
@@ -89,71 +156,42 @@ void ccxAudioOutputModule::start() {
         recorder.startStream();
     } catch (RtError& e) {
         LOG(CCX_ERROR, e.getMessage());
-    }
-
-	LOG(CCX_INFO, "started recording");
-    
-    for(int tm = 0; tm < max_time; tm++) {
-        SLEEP(500);
-        LOG(CCX_INFO, tm);
-    }
-	LOG(CCX_INFO, "done recording");
-
-    recorder.stopStream();
-	LOG(CCX_INFO, "stopped stream");
-
-    recorder.closeStream();
-    LOG(CCX_INFO, "closed input stream");
-    
-    data.frameCounter = 0;
-     
-	/*
-
-    try {
-        recorder.openStream( &oParams, NULL, FORMAT, fs, &bufferFrames, &gotAudioOutput, (void *)&data );
-        recorder.startStream();
-    }
-    catch(RtError& e) {
-        LOG(CCX_ERROR, e.getMessage());
+        bRecording = false;
     }
     
-    while ( 1 ) {
-        SLEEP( 100 ); // wake every 100 ms to check if we're done
-        if ( recorder.isStreamRunning() == false ) break;
-    }
-     
-    recorder.closeStream();
     
-    LOG(CCX_INFO, "done playing");
+	if(bRecording) LOG(CCX_INFO, "started recording");
     
-	*/
-
-    int srcused = 0;
-    
-    audioBufSize = fs * max_time * data.channels;
-    int newBufSize = audioBufSize;
-    
-    if (fs != AUDIO_TARGET_SAMPLE_RATE_I) {
-        newBufSize = int(audioBufSize * resample_factor);
-        audioBuf = new float[newBufSize];
-        resample_process(resample_handle, resample_factor, data.buffer, audioBufSize, 1, &srcused, audioBuf, newBufSize);
-    }
-    
-    short* buf_16 = new short[newBufSize];
-    for (int i=0; i<newBufSize; i++) {
-        buf_16[i] = AUDIO_FLOAT2SHORT(audioBuf[i]);
-    }
-    
-    AudioDataStream* outputStream = new AudioDataStream;
-    outputStream->buffer = buf_16;
-    outputStream->sampleRate = AUDIO_TARGET_SAMPLE_RATE_I;
-    outputStream->bufferSize = newBufSize;
-    
-    this->output->push(outputStream);
     
 }
 
 void ccxAudioOutputModule::update() {
+    
+    LOG(CCX_INFO, "got update call");
+    
+    if(this->input->getData() != NULL) {
+    
+        if(((ccxDataGenericContainer *)this->input->getData())->hasProperty("recording") && !bRecording) {
+            this->output->clear();
+            recordAudioStart(5);
+        }
+        else if(bRecording) {
+            AudioDataStream* audio = recordAudioEnd();
+            if(audio != NULL) {
+                this->output->push(audio);
+            } else {
+                this->output->clear();
+            }
+        }
+        else {
+            this->output->clear();
+        }
+        
+    }
+    else {
+        this->output->clear();
+    }
+    
     
 }
 

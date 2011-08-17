@@ -34,6 +34,8 @@ public:
 	virtual void setInput(ccxDataStream* stream, int n=0);
 	virtual ccxDataStream *getInput(int n=0);
 	virtual ccxDataStream *getOutput(int n=0);
+    
+    void clearInputs();
 
 	virtual void addElement(ccxModule *module);
 	virtual void removeElement(ccxModule *module);

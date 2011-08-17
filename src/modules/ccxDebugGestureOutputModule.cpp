@@ -41,7 +41,7 @@ void ccxDebugGestureOutputModule::start() {
     this->alreadySent = false;
     ccxModule::start();
 }
-
+/*
 void ccxDebugGestureOutputModule::poll() {
     if(!this->alreadySent) {
         this->notifyUpdate();
@@ -49,7 +49,8 @@ void ccxDebugGestureOutputModule::poll() {
     }
     ccxModule::poll();
 }
+*/
 
-void ccxDebugGestureOutputModule::notifyData(ccxDataStream *stream) {
+void ccxDebugGestureOutputModule::trigger() {
+    this->notifyUpdate();
 }
-

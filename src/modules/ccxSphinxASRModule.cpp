@@ -32,25 +32,6 @@ ccxSphinxASRModule::ccxSphinxASRModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODUL
     
     engine = NULL;
     model_sampleRate = 8000;
-    
-    // ASR Engine: commandpicking
-    engine = new ccaSphinxASREngine();
-    ccaSphinxASREngineArgs *engineArgs = new ccaSphinxASREngineArgs;
-
-	engineArgs->sphinxmodel_am = this->properties["acoustic_model"]->asString();
-    engineArgs->sphinxmodel_lm = this->properties["language_model"]->asString();
-    engineArgs->sphinxmodel_dict = this->properties["dictionary"]->asString();
-    engineArgs->sphinxmodel_fdict = this->properties["noise_dictionary"]->asString();
-
-    engineArgs->sphinx_mode = 2;
-    engineArgs->samplerate = model_sampleRate;
-    int asrstatus = engine->engineInit(engineArgs);
-    if (asrstatus != SPHINXASR_SUCCESS) {
-        LOG(CCX_INFO, "Initialization of ASR Engine failed!");
-        LOG(CCX_INFO, asrstatus);
-    }
-    
-    delete engineArgs;
         
 	// declare properties here, e.g:
 	// this->properties["size"] = new moProperty(1.);
@@ -62,11 +43,31 @@ ccxSphinxASRModule::~ccxSphinxASRModule() {
 
 void ccxSphinxASRModule::start() {
     
+    // ASR Engine: commandpicking
+    engine = new ccaSphinxASREngine();
+    ccaSphinxASREngineArgs *engineArgs = new ccaSphinxASREngineArgs;
+    
+	engineArgs->sphinxmodel_am = this->properties["acoustic_model"]->asString();
+    engineArgs->sphinxmodel_lm = this->properties["language_model"]->asString();
+    engineArgs->sphinxmodel_dict = this->properties["dictionary"]->asString();
+    engineArgs->sphinxmodel_fdict = this->properties["noise_dictionary"]->asString();
+    
+    engineArgs->sphinx_mode = 2;
+    engineArgs->samplerate = model_sampleRate;
+    int asrstatus = engine->engineInit(engineArgs);
+    if (asrstatus != SPHINXASR_SUCCESS) {
+        LOG(CCX_INFO, "Initialization of ASR Engine failed!");
+        LOG(CCX_INFO, asrstatus);
+    }
+    
+    delete engineArgs;
+    
     ccxModule::start();
     
 }
 
 void ccxSphinxASRModule::stop() {
+    engine->engineExit();
     ccxModule::stop();
 }
 
@@ -85,18 +86,25 @@ void ccxSphinxASRModule::update() {
     
     this->input->unlock();
     
-    if(engine->engineSentAudio(ad->buffer, ad->bufferSize)) {
-        LOG(CCX_ERROR, "recognize failed");
-        engine->engineClose();
-    } else {
-        LOG(CCX_INFO, "recogize succeeded!");
-        std::string hypothesis(engine->engineGetText());
-        engine->engineClose();
-        std::transform(hypothesis.begin(), hypothesis.end(), hypothesis.begin(), ::tolower);
-		char* chyp = new char[hypothesis.size()+1];
-		strcpy (chyp, hypothesis.c_str());
-        this->output->push((void*)chyp);
-        
+    if(ad != NULL) {
+    
+        if(engine->engineSentAudio(ad->buffer, ad->bufferSize)) {
+            LOG(CCX_ERROR, "recognize failed");
+            engine->engineClose();
+            this->output->clear();
+        } else {
+            LOG(CCX_INFO, "recogize succeeded!");
+            std::string hypothesis(engine->engineGetText());
+            engine->engineClose();
+            std::transform(hypothesis.begin(), hypothesis.end(), hypothesis.begin(), ::tolower);
+            char* chyp = new char[hypothesis.size()+1];
+            strcpy (chyp, hypothesis.c_str());
+            this->output->push((void*)chyp);
+            
+        }
+    }
+    else {
+        this->output->clear();
     }
     
 }
@@ -114,7 +122,8 @@ ccaSphinxASREngine::ccaSphinxASREngine() {
 }
 
 ccaSphinxASREngine::~ccaSphinxASREngine() {
-    // do cleanup
+    if(this->isEngineOpened()) this->engineClose();
+    if(this->bEngineInitialed) this->engineExit();
 }
 
 int ccaSphinxASREngine::engineInit(ccaSphinxASREngineArgs *args) {
@@ -179,6 +188,7 @@ int ccaSphinxASREngine::engineExit() {
         fe_free(fe);
         fe = NULL;
     }
+    bEngineInitialed = false;
     return SPHINXASR_SUCCESS;
 
 }

@@ -81,7 +81,11 @@ void ccxTemporalFusionModule::update() {
         }
         else {
             this->output->clear();
+            this->setError("fusion error");
         }
+    }
+    else {
+        this->output->clear();
     }
 }
 
