@@ -33,6 +33,7 @@
 #include "ccxPipeline.h"
 #include "ccxFactory.h"
 #include "ccxLog.h"
+#include "ccxDataStream.h"
 
 LOG_DECLARE("Pipeline");
 
@@ -58,8 +59,13 @@ void ccxPipeline::clear() {
 	this->modules.clear();
 }
 
-void ccxPipeline::clearInputs() {
-    std::vector<ccxModule *>::iterator it;
+void ProcessModule(ccxModule* I) { // Function which will process each item of the collection
+    ccxDataStream* output1 = I->getOutput();
+    if(output1 != NULL) output1->clear();
+}
+
+void ccxPipeline::clearStreams() {
+    std::for_each(this->modules.begin(), this->modules.end(), ProcessModule);
 }
 
 ccxModule *ccxPipeline::firstModule() {

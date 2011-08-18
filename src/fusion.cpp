@@ -1186,8 +1186,11 @@ int parse_options(int *argc, char ***argv) {
 void web_utterance_begin(struct evhttp_request *req, void *arg) {
     LOG(CCX_INFO, "Utterance started! ");
     web_message(req, "utterance start ok");
-    ccxModule* triggerModule = pipeline->getModuleById("Audio");
-    triggerModule->trigger();
+    pipeline->clearStreams();
+    /*ccxModule* triggerModule = pipeline->getModuleById("Audio");
+    triggerModule->getOutput()->clear();
+    triggerModule = pipeline->getModuleById("Gesture");
+    triggerModule->getOutput()->clear();*/
 }
 
 void web_utterance_speech_begin(struct evhttp_request *req, void *arg) {

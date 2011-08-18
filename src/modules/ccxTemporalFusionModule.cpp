@@ -84,6 +84,9 @@ void ccxTemporalFusionModule::update() {
             this->setError("fusion error");
         }
     }
+    else if(audioTree != NULL) {
+        this->output->push(audioTree);
+    }
     else {
         this->output->clear();
     }

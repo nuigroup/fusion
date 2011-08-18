@@ -35,7 +35,7 @@ public:
 	virtual ccxDataStream *getInput(int n=0);
 	virtual ccxDataStream *getOutput(int n=0);
     
-    void clearInputs();
+    void clearStreams();
 
 	virtual void addElement(ccxModule *module);
 	virtual void removeElement(ccxModule *module);
