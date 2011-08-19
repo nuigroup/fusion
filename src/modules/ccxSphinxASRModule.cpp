@@ -88,8 +88,8 @@ void ccxSphinxASRModule::update() {
     
     if(ad != NULL) {
     
-        if(engine->engineSentAudio(ad->buffer, ad->bufferSize)) {
-            LOG(CCX_ERROR, "recognize failed");
+        if(engine->engineSentAudio(ad->buffer, ad->bufferSize) != SPHINXASR_SUCCESS) {
+            LOG(CCX_INFO, "recognize failed");
             engine->engineClose();
             this->output->clear();
         } else {

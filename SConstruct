@@ -23,6 +23,8 @@ daemon_src = [
   'src/modules/ccxAudioOutputModule.cpp',
   'src/modules/ccxTemporalFusionModule.cpp',
   'src/modules/ccxDebugGestureOutputModule.cpp',
+  'src/modules/ccxDebugGestureModule.cpp',
+  'src/modules/ccxJSONInteractionModule.cpp',
   'src/models/ballWorldGrammar.cpp',
   'contrib/libresample/lib/resample.c',
   'contrib/libresample/lib/filterkit.c',

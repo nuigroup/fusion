@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7403310113F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 740330FF13F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp */; };
+		740C0EC213FDE29A00D9F8F8 /* ccxJSONInteractionModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 740C0EC013FDE29A00D9F8F8 /* ccxJSONInteractionModule.cpp */; };
 		741C664013F0F940005219A6 /* ccxAudioOutputModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */; };
 		745A598713EE501500736762 /* ccxSphinxASRModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7213EE362500112449 /* ccxSphinxASRModule.cpp */; };
 		7461F2BB13F2156A005654C5 /* ccxTemporalFusionModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74708A7613EE362500112449 /* ccxTemporalFusionModule.cpp */; };
@@ -25,6 +26,7 @@
 		74708CA613EE3F9200112449 /* gui in CopyFiles */ = {isa = PBXBuildFile; fileRef = 74708CA413EE3F9200112449 /* gui */; };
 		749B0B5413EF38CF004A673E /* libs3decoder.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 749B0B5213EF38CF004A673E /* libs3decoder.dylib */; };
 		749B0B5513EF38CF004A673E /* libsphinxbase.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 749B0B5313EF38CF004A673E /* libsphinxbase.dylib */; };
+		74ECAB0013FDD78600424329 /* ccxDebugGestureModule.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 74ECAAFC13FDD78600424329 /* ccxDebugGestureModule.cpp */; };
 		74FEC02D13EEA14D009C1AB3 /* librtaudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FEC02C13EEA14D009C1AB3 /* librtaudio.a */; };
 		74FEC02F13EEA408009C1AB3 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74FEC02E13EEA408009C1AB3 /* CoreAudio.framework */; };
 		74FEC03113EEB2A0009C1AB3 /* resample.c in Sources */ = {isa = PBXBuildFile; fileRef = 74FEC03013EEB2A0009C1AB3 /* resample.c */; };
@@ -66,6 +68,8 @@
 /* Begin PBXFileReference section */
 		740330FF13F4DEEA0038EB32 /* ccxDebugGestureOutputModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxDebugGestureOutputModule.cpp; sourceTree = "<group>"; };
 		7403310013F4DEEA0038EB32 /* ccxDebugGestureOutputModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxDebugGestureOutputModule.h; sourceTree = "<group>"; };
+		740C0EC013FDE29A00D9F8F8 /* ccxJSONInteractionModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxJSONInteractionModule.cpp; sourceTree = "<group>"; };
+		740C0EC113FDE29A00D9F8F8 /* ccxJSONInteractionModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxJSONInteractionModule.h; sourceTree = "<group>"; };
 		741C663E13F0F92F005219A6 /* ccxAudioOutputModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxAudioOutputModule.h; sourceTree = "<group>"; };
 		741C663F13F0F940005219A6 /* ccxAudioOutputModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxAudioOutputModule.cpp; sourceTree = "<group>"; };
 		74708A0B13EE358F00112449 /* fusion */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = fusion; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +104,10 @@
 		74708CA413EE3F9200112449 /* gui */ = {isa = PBXFileReference; lastKnownFileType = folder; name = gui; path = ../gui; sourceTree = "<group>"; };
 		749B0B5213EF38CF004A673E /* libs3decoder.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libs3decoder.dylib; path = ../contrib/sphinx/lib/osx/libs3decoder.dylib; sourceTree = "<group>"; };
 		749B0B5313EF38CF004A673E /* libsphinxbase.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsphinxbase.dylib; path = ../contrib/sphinx/lib/osx/libsphinxbase.dylib; sourceTree = "<group>"; };
+		74ECAAFC13FDD78600424329 /* ccxDebugGestureModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxDebugGestureModule.cpp; sourceTree = "<group>"; };
+		74ECAAFD13FDD78600424329 /* ccxDebugGestureModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxDebugGestureModule.h; sourceTree = "<group>"; };
+		74ECAAFE13FDD78600424329 /* ccxJSONGestureModule.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ccxJSONGestureModule.cpp; sourceTree = "<group>"; };
+		74ECAAFF13FDD78600424329 /* ccxJSONGestureModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ccxJSONGestureModule.h; sourceTree = "<group>"; };
 		74FEC02C13EEA14D009C1AB3 /* librtaudio.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = librtaudio.a; path = ../contrib/rtaudio/librtaudio.a; sourceTree = "<group>"; };
 		74FEC02E13EEA408009C1AB3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		74FEC03013EEB2A0009C1AB3 /* resample.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = resample.c; path = ../contrib/libresample/lib/resample.c; sourceTree = "<group>"; };
@@ -186,6 +194,12 @@
 		74708A6513EE362500112449 /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				740C0EC013FDE29A00D9F8F8 /* ccxJSONInteractionModule.cpp */,
+				740C0EC113FDE29A00D9F8F8 /* ccxJSONInteractionModule.h */,
+				74ECAAFC13FDD78600424329 /* ccxDebugGestureModule.cpp */,
+				74ECAAFD13FDD78600424329 /* ccxDebugGestureModule.h */,
+				74ECAAFE13FDD78600424329 /* ccxJSONGestureModule.cpp */,
+				74ECAAFF13FDD78600424329 /* ccxJSONGestureModule.h */,
 				74708A6613EE362500112449 /* .dummy.cpp */,
 				74708A6713EE362500112449 /* .dummy.h */,
 				74708A6813EE362500112449 /* ccxASRModule.cpp */,
@@ -310,6 +324,8 @@
 				74708A8313EE363200112449 /* ccxDebugOutputModule.cpp in Sources */,
 				74708A8B13EE363200112449 /* ccxSpiritParserModule.cpp in Sources */,
 				741C664013F0F940005219A6 /* ccxAudioOutputModule.cpp in Sources */,
+				74ECAB0013FDD78600424329 /* ccxDebugGestureModule.cpp in Sources */,
+				740C0EC213FDE29A00D9F8F8 /* ccxJSONInteractionModule.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,7 +35,7 @@ void ccxDebugInputModule::update() {
 	}
     
     if( stream->getFormat() == "mAST" ) {
-        mast_to_string(static_cast<client::multimodalSyntaxTree*>(stream->getData()));
+        LOG(CCX_INFO, mast_to_string(static_cast<client::multimodalSyntaxTree*>(stream->getData())));
     }
 }
 

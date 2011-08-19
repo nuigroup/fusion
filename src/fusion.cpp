@@ -55,6 +55,7 @@
 
 // CCX
 #include "ccx.h"
+#include "ccfMultimodalSyntaxTree.h"
 
 // assert
 #include <assert.h>
@@ -199,7 +200,7 @@ void web_json(struct evhttp_request *req, cJSON *root) {
 	char *out;
 
 	out = cJSON_Print(root);
-	cJSON_Delete(root);
+	//cJSON_Delete(root);
 
 	evbuffer_add(evb, out, strlen(out));
 	evhttp_add_header(req->output_headers, "Content-Type", "application/json");
@@ -1187,10 +1188,6 @@ void web_utterance_begin(struct evhttp_request *req, void *arg) {
     LOG(CCX_INFO, "Utterance started! ");
     web_message(req, "utterance start ok");
     pipeline->clearStreams();
-    /*ccxModule* triggerModule = pipeline->getModuleById("Audio");
-    triggerModule->getOutput()->clear();
-    triggerModule = pipeline->getModuleById("Gesture");
-    triggerModule->getOutput()->clear();*/
 }
 
 void web_utterance_speech_begin(struct evhttp_request *req, void *arg) {
@@ -1218,16 +1215,48 @@ void web_utterance_speech_end(struct evhttp_request *req, void *arg) {
 void web_utterance_gesture_data(struct evhttp_request *req, void *arg) {
     // instead of a property container we feed JSON, (but for now just trigger())
     LOG(CCX_INFO, "Gesture data added to the utterance...");
+    struct evbuffer* buf = req->input_buffer;
+    char* input = (char *)malloc(sizeof(char) * 16384);
+    evbuffer_remove(buf, input, 16384);
+    cJSON *parsedInput = cJSON_Parse(input);
+    LOG(CCX_INFO, input);
+    std::vector<client::unimodalLeafNode> *gestureTree = new std::vector<client::unimodalLeafNode>();
+    for(int index = 0; index < cJSON_GetArraySize(parsedInput); index++) {
+        cJSON *item = cJSON_GetArrayItem(parsedInput, index);
+        std::string typeString = std::string(cJSON_PrintUnformatted(cJSON_GetObjectItem(item, "type")));
+        std::string valString = std::string(cJSON_PrintUnformatted(cJSON_GetObjectItem(item, "val")));
+        typeString.erase(
+                         remove( typeString.begin(), typeString.end(), '\"' ),
+                         typeString.end()
+                         );
+        valString.erase(
+                        remove( valString.begin(), valString.end(), '\"' ),
+                        valString.end()
+                        );
+        client::unimodalLeafNode *debugNode = new client::unimodalLeafNode;
+        debugNode->type = typeString;
+        debugNode->val = valString;
+        gestureTree->push_back(*debugNode);
+
+    }
     // do a notifyUpdate() on the gesture JSON module, and feed in the special gesture stream (pushing to the stream would have it call this automatically)
     web_message(req, "utterance data ok");
     ccxModule* triggerModule = pipeline->getModuleById("Gesture");
-    LOG(CCX_INFO, triggerModule->getName());
+    LOG(CCX_INFO, "gd: " << triggerModule->getName());
+    triggerModule->getInput()->push(gestureTree);
     triggerModule->trigger();
 }
 
 void web_utterance_end(struct evhttp_request *req, void *arg) {
     LOG(CCX_INFO, "Utterance stop!");
-    web_message(req, "utterance stop ok");
+    web_message(req, "Utterance stop.");
+}
+
+void web_utterance_get(struct evhttp_request *req, void *arg) {
+    LOG(CCX_INFO, "Utterance get!");
+    cJSON* outputJSON = (cJSON *)pipeline->getModuleById("Interaction")->getOutput()->getData();
+    if(outputJSON != NULL) web_json(req, outputJSON);
+    else web_error(req, "no valid utterance");
 }
 
 int main(int argc, char **argv) {
@@ -1328,6 +1357,7 @@ int main(int argc, char **argv) {
         evhttp_set_cb(server, "/utterance/speech/begin", web_utterance_speech_begin, NULL);
         evhttp_set_cb(server, "/utterance/speech/end", web_utterance_speech_end, NULL);
         evhttp_set_cb(server, "/utterance/gesture/data", web_utterance_gesture_data, NULL);
+        evhttp_set_cb(server, "/utterance/get", web_utterance_get, NULL);
         
 		evhttp_set_gencb(server, web_file, NULL);
 	}
