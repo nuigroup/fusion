@@ -1,14 +1,5 @@
-'''
-    Application example using build() + return
-    ==========================================
-    
-    An application can be build if you return a widget on build(), or if you set
-    self.root.
-    '''
 import requests
-
 import time
-
 import json
 
 import kivy

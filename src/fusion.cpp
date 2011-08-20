@@ -1324,9 +1324,7 @@ int main(int argc, char **argv) {
 			if ( ret == -1 ) {
 				perror("HTTP server");
 				LOG(CCX_ERROR, "unable to open socket for 127.0.0.1:7500... retry in 3s");
-
-				SLEEP(3);
-
+				SLEEP(3000);
 			}
 		} while ( ret == -1 );
 
