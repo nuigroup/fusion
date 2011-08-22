@@ -24,7 +24,7 @@ ccxDebugGestureOutputModule::~ccxDebugGestureOutputModule() {
 }
 
 void ccxDebugGestureOutputModule::update() {
-    LOG(CCX_INFO, "updating");
+    LOG(CCX_DEBUG, "updating");
     /*std::vector<client::unimodalLeafNode> *gestureTree = new std::vector<client::unimodalLeafNode>();
     client::unimodalLeafNode* debugNode = new client::unimodalLeafNode;
     debugNode->type = "ball";

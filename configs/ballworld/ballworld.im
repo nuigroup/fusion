@@ -1,9 +1,0 @@
-# interaction model
-
-move(loc,loc);
-move(color,loc);
-create(color,loc);
-destroy(color);
-destroy(loc);
-color(loc,color);
-color(color,color);

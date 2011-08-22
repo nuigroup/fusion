@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        modules/ccxDebugGestureModule.cpp
-// Purpose:     Debug gestures
+// Purpose:     Generate debug gestures
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
@@ -25,7 +25,7 @@ ccxDebugGestureModule::~ccxDebugGestureModule() {
 }
 
 void ccxDebugGestureModule::update() {
-    LOG(CCX_INFO, "passing through");
+    LOG(CCX_DEBUG, "passing through");
     std::vector<client::unimodalLeafNode> *gestureTree = NULL;
     if(this->input != NULL) gestureTree = (std::vector<client::unimodalLeafNode> *)this->input->getData();
     if(gestureTree != NULL) this->output->push(gestureTree);

@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        modules/ccxCCASpeechRecognitionModule.cpp
-// Purpose:     CCA speech recognition output module
+// Name:        modules/ccxDebugInputModule.h
+// Purpose:     Prints data streams to the log for debugging
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////

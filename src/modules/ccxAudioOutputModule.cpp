@@ -1,10 +1,9 @@
-//
-//  ccxAudioOutputModule.cpp
-//  fusion
-//
-//  Created by Scott Halstvedt on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/////////////////////////////////////////////////////////////////////////////
+// Name:        modules/ccxAudioOutputModule.cpp
+// Purpose:     Uses RtAudio library to collect audio input
+// Author:      Scott Halstvedt
+// Copyright:   (c) 2011 NUI Group
+/////////////////////////////////////////////////////////////////////////////
 
 #include "ccxAudioOutputModule.h"
 
@@ -48,11 +47,11 @@ void ccxAudioOutputModule::start() {
 AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
     unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
     if(bRecording) {
-        LOG(CCX_INFO, "done recording");
+        LOG(CCX_DEBUG, "done recording");
         recorder.stopStream();
-        LOG(CCX_INFO, "stopped stream");
+        LOG(CCX_DEBUG, "stopped stream");
         recorder.closeStream();
-        LOG(CCX_INFO, "closed input stream");
+        LOG(CCX_DEBUG, "closed input stream");
         
         bRecording = false;
         
@@ -73,7 +72,7 @@ AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
          
          recorder.closeStream();
          
-         LOG(CCX_INFO, "done playing");
+         LOG(CCX_DEBUG, "done playing");
          
          */
         
@@ -166,14 +165,14 @@ void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
     }
     
     
-	if(bRecording) LOG(CCX_INFO, "started recording");
+	if(bRecording) LOG(CCX_DEBUG, "started recording");
     
     
 }
 
 void ccxAudioOutputModule::update() {
     
-    LOG(CCX_INFO, "got update call");
+    LOG(CCX_DEBUG, "got update call");
     
     if(this->input->getData() != NULL) {
     
@@ -223,7 +222,6 @@ int gotAudioInput( void *outputBuffer, void *inputBuffer, unsigned int nBufferFr
     return 0;
 }
 
-// Interleaved buffers
 int gotAudioOutput( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames,
                    double streamTime, RtAudioStreamStatus status, void *data )
 {

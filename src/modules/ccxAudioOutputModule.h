@@ -1,13 +1,12 @@
-//
-//  ccxAudioOutputModule.h
-//  fusion
-//
-//  Created by Scott Halstvedt on 8/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/////////////////////////////////////////////////////////////////////////////
+// Name:        modules/ccxAudioOutputModule.h
+// Purpose:     Uses RtAudio library to collect audio input
+// Author:      Scott Halstvedt
+// Copyright:   (c) 2011 NUI Group
+/////////////////////////////////////////////////////////////////////////////
 
-#ifndef CCX_AUDIO_INPUT_MODULE_H
-#define CCX_AUDIO_INPUT_MODULE_H
+#ifndef CCX_AUDIO_OUTPUT_MODULE_H
+#define CCX_AUDIO_OUTPUT_MODULE_H
 
 #include "ccx.h"
 

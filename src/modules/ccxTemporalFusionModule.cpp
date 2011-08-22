@@ -20,17 +20,14 @@ ccxTemporalFusionModule::ccxTemporalFusionModule() : ccxModule(CCX_MODULE_INPUT 
     this->declareInput(0, &this->audioInput, new ccxDataStreamInfo("audio", "mAST", "Multimodal abstract syntax tree (from audio utterance)"));
     this->declareInput(1, &this->tactileInput, new ccxDataStreamInfo("tactile", "vector<unimodalLeaf>", "Series of unimodal actions from the GUI"));
     this->declareOutput(0, &this->output, new ccxDataStreamInfo("fused", "mAST", "Multimodal abstract syntax tree (fused)"));
-
-	// declare properties her, e.g:
-	// this->properties["size"] = new moProperty(1.);
 }
 
 ccxTemporalFusionModule::~ccxTemporalFusionModule() {
 }
 
 void ccxTemporalFusionModule::notifyData(ccxDataStream *audioInput) {
-    assert(audioInput != NULL);
-    assert(tactileInput != NULL);
+    //assert(audioInput != NULL);
+    //assert(tactileInput != NULL);
     //assert(audioInput == this->audioInput);
     //assert(tactileInput == this->tactileInput);
     this->notifyUpdate();
@@ -61,14 +58,14 @@ void ccxTemporalFusionModule::update() {
             {
                 if(boost::apply_visitor(multimodal_node_finder(), nod) && gesIter != tactileTree->end()) {
                     client::multimodalLeafNode node = boost::get<client::multimodalLeafNode>(nod);
-                    LOG(CCX_INFO, node.type << " needed");
+                    LOG(CCX_DEBUG, node.type << " needed");
                     if(node.type == gesIter->type) {
-                        LOG(CCX_INFO, "success!!!!!!!!");
+                        LOG(CCX_DEBUG, "success!!!!!!!!");
                         client::node newNode = *gesIter;
                         audioTree->children.at(childcount).swap(newNode);
                     }
                     else {
-                        LOG(CCX_INFO, "mismatch");
+                        LOG(CCX_DEBUG, "mismatch");
                         good = false;
                     }
                     gesIter++;

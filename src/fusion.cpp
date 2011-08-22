@@ -1,18 +1,15 @@
+/////////////////////////////////////////////////////////////////////////////
+// Name:        models/ballWorldGrammar.h
+// Purpose:     BallWorld grammar for the Spirit parser module
+// Author:      Scott Halstvedt
+// Copyright:   (c) 2011 NUI Group
+/////////////////////////////////////////////////////////////////////////////
+
 /***********************************************************************
- ** Copyright (C) 2010 Movid Authors.  All rights reserved.
- **
- ** This file is part of the Movid Software.
- **
- ** This file may be distributed under the terms of the Q Public License
- ** as defined by Trolltech AS of Norway and appearing in the file
- ** LICENSE included in the packaging of this file.
+ ** Some parts Copyright (C) 2010 Movid Authors.  All rights reserved.
  **
  ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
  ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
- **
- ** Contact info@movid.org if any conditions of this licensing are
- ** not clear to you.
- **
  **********************************************************************/
 
 #include <stdio.h>
@@ -1044,7 +1041,7 @@ void web_file(struct evhttp_request *req, void *arg) {
 
 	free(baseuri);
 
-	LOG(CCX_INFO, "web: GET " << filename);
+	LOG(CCX_DEBUG, "web: GET " << filename);
 	fd = fopen(filename, "rb");
 	if ( fd == NULL ) {
 		evhttp_send_error(req, 404, "Not found");
@@ -1152,20 +1149,20 @@ int parse_options(int *argc, char ***argv) {
 				config_detach = true;
 				break;
 			case 'p':
-				//config_pidfile = std::string(optarg);
+				config_pidfile = std::string(optarg);
 				break;
 			case 'g':
-				//config_guidir = std::string(optarg);
+				config_guidir = std::string(optarg);
 				break;
 			case 'n':
 				config_httpserver = false;
 				break;
 			case 'l':
-				//config_pipelinefn = std::string(optarg);
+				config_pipelinefn = std::string(optarg);
 				break;
 			case 'i':
 				ccxDaemon::init();
-				//describe(optarg);
+				describe(optarg);
 				return 0; // leave properly
 			case 't':
 				test_mode = true;
@@ -1194,7 +1191,7 @@ void web_utterance_speech_begin(struct evhttp_request *req, void *arg) {
     // send a property container that controls recording; these property changes are properly notified for threaded operation.
     web_message(req, "speech begin ok");
     ccxModule* triggerModule = pipeline->getModuleById("Audio");
-    LOG(CCX_INFO, "on: " << triggerModule->getName());
+    LOG(CCX_DEBUG, "on: " << triggerModule->getName());
     // do a notifyUpdate() on the audio module, no need for input data as this is a trigger
     ccxDataGenericContainer* triggerContainer = new ccxDataGenericContainer();
     triggerContainer->properties["recording"] = new ccxProperty(true);
@@ -1206,7 +1203,7 @@ void web_utterance_speech_end(struct evhttp_request *req, void *arg) {
     // same as above, property container
     web_message(req, "speech end ok");
     ccxModule* triggerModule = pipeline->getModuleById("Audio");
-    LOG(CCX_INFO, "off: " << triggerModule->getName());
+    LOG(CCX_DEBUG, "off: " << triggerModule->getName());
     ccxDataGenericContainer* triggerContainer = new ccxDataGenericContainer();
     triggerModule->getInput()->push(triggerContainer);
     triggerModule->trigger();
@@ -1214,12 +1211,12 @@ void web_utterance_speech_end(struct evhttp_request *req, void *arg) {
 
 void web_utterance_gesture_data(struct evhttp_request *req, void *arg) {
     // instead of a property container we feed JSON, (but for now just trigger())
-    LOG(CCX_INFO, "Gesture data added to the utterance...");
+    LOG(CCX_DEBUG, "Gesture data added to the utterance...");
     struct evbuffer* buf = req->input_buffer;
     char* input = (char *)malloc(sizeof(char) * 16384);
     evbuffer_remove(buf, input, 16384);
     cJSON *parsedInput = cJSON_Parse(input);
-    LOG(CCX_INFO, input);
+    LOG(CCX_DEBUG, input);
     std::vector<client::unimodalLeafNode> *gestureTree = new std::vector<client::unimodalLeafNode>();
     for(int index = 0; index < cJSON_GetArraySize(parsedInput); index++) {
         cJSON *item = cJSON_GetArrayItem(parsedInput, index);
@@ -1242,7 +1239,7 @@ void web_utterance_gesture_data(struct evhttp_request *req, void *arg) {
     // do a notifyUpdate() on the gesture JSON module, and feed in the special gesture stream (pushing to the stream would have it call this automatically)
     web_message(req, "utterance data ok");
     ccxModule* triggerModule = pipeline->getModuleById("Gesture");
-    LOG(CCX_INFO, "gd: " << triggerModule->getName());
+    LOG(CCX_DEBUG, "gd: " << triggerModule->getName());
     triggerModule->getInput()->push(gestureTree);
     triggerModule->trigger();
 }

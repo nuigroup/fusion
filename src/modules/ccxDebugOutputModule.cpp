@@ -1,6 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        modules/ccxCCASpeechRecognitionModule.cpp
-// Purpose:     CCA speech recognition output module
+// Name:        modules/ccxDebugOutputModule.cpp
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
@@ -31,7 +30,7 @@ ccxDebugOutputModule::~ccxDebugOutputModule() {
 }
 
 void ccxDebugOutputModule::update() {
-    LOG(CCX_INFO, "updating");
+    LOG(CCX_DEBUG, "updating");
 	std::string text = this->properties["sentence"]->asString();
     char* cstr;
     cstr = new char [text.size()+1];

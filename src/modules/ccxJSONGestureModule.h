@@ -1,13 +1,13 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        modules/ccxCCASpeechRecognitionModule.cpp
-// Purpose:     CCA speech recognition output module
+// Name:        modules/ccxJSONGestureModule.h
+// Purpose:     Generates gestures from JSON stream input
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef CCX_DEBUG_GESTURE_OUTPUT_MODULE_H
-#define CCX_DEBUG_GESTURE_OUTPUT_MODULE_H
+#ifndef CCX_JSON_GESTURE_MODULE_H
+#define CCX_JSON_GESTURE_MODULE_H
 
 #include "ccxModule.h"
 #include "ccxDataStream.h"

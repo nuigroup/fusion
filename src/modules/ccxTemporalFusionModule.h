@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        modules/ccxTemporalFusionModule.cpp
+// Name:        modules/ccxTemporalFusionModule.h
 // Purpose:     Temporal fusion module
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group

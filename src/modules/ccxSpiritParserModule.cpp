@@ -31,14 +31,14 @@ ccxSpiritParserModule::~ccxSpiritParserModule() {
 
 
 void ccxSpiritParserModule::start() {
-    // initialize things    
+    // initialize    
     this->mast = new client::multimodalSyntaxTree;
     ccxModule::start();
-    LOG(CCX_INFO, "started!");
+    LOG(CCX_DEBUG, "started!");
 }
 
 void ccxSpiritParserModule::stop() {
-    LOG(CCX_INFO, "stopped!");
+    LOG(CCX_DEBUG, "stopped!");
     ccxModule::stop();
 }
 
@@ -63,7 +63,7 @@ void ccxSpiritParserModule::update() {
 
 bool ccxSpiritParserModule::initializeFromString(std::string input) {
         
-    storage = input; // We will manipulate the contents here.
+    storage = input;
     
     delete(mast);
     mast = new client::multimodalSyntaxTree;
@@ -74,11 +74,11 @@ bool ccxSpiritParserModule::initializeFromString(std::string input) {
     bool r = boost::spirit::qi::phrase_parse(iter, end, grammar, boost::spirit::ascii::space, *mast);
     
     if(r && iter == end) {
-        LOG(CCX_INFO, "success! sentence: \"" << storage << "\"");
+        LOG(CCX_DEBUG, "success! sentence: \"" << storage << "\"");
         return(true);
     }
     else {
-        LOG(CCX_INFO, "failure! sentence: \"" << storage << "\"");
+        LOG(CCX_DEBUG, "failure! sentence: \"" << storage << "\"");
         return(false);
     }
 }

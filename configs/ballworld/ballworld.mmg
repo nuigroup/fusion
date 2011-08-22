@@ -1,4 +1,4 @@
-# multimodal grammar
+# multimodal grammar example
 
 ball = {speech}objectDiectic:(time~T) + {mouse}ball:(time~T);
 

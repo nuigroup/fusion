@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        modules/ccxSphinxASRModule.cpp
-// Purpose:     CCA speech recognition output module
+// Purpose:     Sphinx3 speech recognition output module
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
@@ -56,8 +56,8 @@ void ccxSphinxASRModule::start() {
     engineArgs->samplerate = model_sampleRate;
     int asrstatus = engine->engineInit(engineArgs);
     if (asrstatus != SPHINXASR_SUCCESS) {
-        LOG(CCX_INFO, "Initialization of ASR Engine failed!");
-        LOG(CCX_INFO, asrstatus);
+        LOG(CCX_DEBUG, "Initialization of ASR Engine failed!");
+        LOG(CCX_DEBUG, asrstatus);
     }
     
     delete engineArgs;
@@ -89,11 +89,11 @@ void ccxSphinxASRModule::update() {
     if(ad != NULL) {
     
         if(engine->engineSentAudio(ad->buffer, ad->bufferSize) != SPHINXASR_SUCCESS) {
-            LOG(CCX_INFO, "recognize failed");
+            LOG(CCX_DEBUG, "recognize failed");
             engine->engineClose();
             this->output->clear();
         } else {
-            LOG(CCX_INFO, "recogize succeeded!");
+            LOG(CCX_DEBUG, "recogize succeeded!");
             std::string hypothesis(engine->engineGetText());
             engine->engineClose();
             std::transform(hypothesis.begin(), hypothesis.end(), hypothesis.begin(), ::tolower);

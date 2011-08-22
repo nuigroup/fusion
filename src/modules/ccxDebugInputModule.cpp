@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        modules/ccxCCASpeechRecognitionModule.cpp
-// Purpose:     CCA speech recognition output module
+// Name:        modules/ccxDebugInputModule.cpp
+// Purpose:     Prints data streams to the log for debugging
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
@@ -27,15 +27,15 @@ ccxDebugInputModule::~ccxDebugInputModule() {
 }
 
 void ccxDebugInputModule::update() {
-    LOG(CCX_INFO, "stream<" << stream << ">, type=" << stream->getFormat() << ", observers=" << stream->getObserverCount());
+    LOG(CCX_DEBUG, "stream<" << stream << ">, type=" << stream->getFormat() << ", observers=" << stream->getObserverCount());
     
 	if ( stream->getFormat() == "generic" ) {
 		ccxDataGenericList *list = static_cast<ccxDataGenericList*>(stream->getData());
-		LOG(CCX_INFO, " `- " << stream->getFormat() << " size=" << list->size());
+		LOG(CCX_DEBUG, " `- " << stream->getFormat() << " size=" << list->size());
 	}
     
     if( stream->getFormat() == "mAST" ) {
-        LOG(CCX_INFO, mast_to_string(static_cast<client::multimodalSyntaxTree*>(stream->getData())));
+        LOG(CCX_DEBUG, mast_to_string(static_cast<client::multimodalSyntaxTree*>(stream->getData())));
     }
 }
 

@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
 // Name:        modules/ccxSpinxASRModule.cpp
-// Purpose:     CCA speech recognition output module
+// Purpose:     Sphinx3 speech recognition output module
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
@@ -64,19 +64,19 @@ public:
     char * engineGetText();
     
 private:
-    // The Decoder
+    // sphinx3 Decoder
     s3_decode_t *decoder;
     fe_t *fe;
     
-    // States
+    // state
     bool bEngineInitialed;
     bool bEngineOpened;
     
     
-    // Grammar
+    // finite state grammar
     fsg_model_t *get_fsg(jsgf_t *grammar, const char *name);
     
-    // Utterance number
+    // utterance number
     int uttnum;
 };
 

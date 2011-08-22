@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        modules/ccxCCASpeechRecognitionModule.cpp
-// Purpose:     CCA speech recognition output module
+// Name:        modules/ccxJSONGestureModule.cpp
+// Purpose:     Generates gestures from JSON stream input
 // Author:      Scott Halstvedt
 // Copyright:   (c) 2011 NUI Group
 /////////////////////////////////////////////////////////////////////////////
@@ -8,7 +8,7 @@
 
 #include "ccxDebugGestureOutputModule.h"
 
-MODULE_DECLARE(DebugGestureOutput, "native", "Pushes a vector<unimodalLeaf> onto the stream for tactile GUI events");
+MODULE_DECLARE(JSONGesture, "native", "Pushes a vector<unimodalLeaf> onto the stream generated from JSON input");
 
 ccxDebugGestureOutputModule::ccxDebugGestureOutputModule() : ccxModule(CCX_MODULE_OUTPUT) {
     MODULE_INIT();
@@ -24,7 +24,7 @@ ccxDebugGestureOutputModule::~ccxDebugGestureOutputModule() {
 }
 
 void ccxDebugGestureOutputModule::update() {
-    LOG(CCX_INFO, "updating");
+    LOG(CCX_DEBUG, "updating");
     /*std::vector<client::unimodalLeafNode> *gestureTree = new std::vector<client::unimodalLeafNode>();
     client::unimodalLeafNode* debugNode = new client::unimodalLeafNode;
     debugNode->type = "ball";

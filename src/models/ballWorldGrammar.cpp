@@ -1,10 +1,9 @@
-//
-//  ballWorldGrammar.cpp
-//  
-//
-//  Created by Scott Halstvedt on 8/4/11.
-//
-//
+/////////////////////////////////////////////////////////////////////////////
+// Name:        models/ballWorldGrammar.cpp
+// Purpose:     BallWorld grammar for the Spirit parser module
+// Author:      Scott Halstvedt
+// Copyright:   (c) 2011 NUI Group
+/////////////////////////////////////////////////////////////////////////////
 
 #include "ballWorldGrammar.h"
 
@@ -92,13 +91,6 @@ namespace client {
     };
     
     // somewhere in here we need a phoenix::ref to a counter for multimodal sequence
-    
-    // we also need to use phoenix::construct to enable object creation
-    // _val = phoenix::construct<unimodalLeafNode>(_1, _2);
-    
-    // create classes instead of structs to hold the tree; then it can be smart.
-    
-    // also, we need to test the parser (but all this should go in the module)
     
 }
 

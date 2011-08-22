@@ -16,7 +16,7 @@ class ccxParserGrammar {
 class ccxParserModule : public ccxModule {
     
 public:
-    ccxParserModule();
+    virtual ccxParserModule();
     virtual ~ccxParserModule();
     
     virtual void notifyData();

@@ -15,6 +15,7 @@ from glob import glob
 from kivy.logger import Logger
 from kivy.uix.widget import Widget
 from kivy.graphics import Color, Ellipse, Line
+from kivy.animation import Animation
 
 utteranceStarted = False
 ballCounter = 0
@@ -47,10 +48,16 @@ class BallWorld(App):
             colorIndex = {"red" : [1, 0, 0], "green" : [0, 1, 0], "blue" : [0, 0, 1], "white" : [1, 1, 1], "yellow" : [1, 1, 0], "purple" : [1, 0, 1], "orange" : [1, 0.5, 0]}
             if tree.has_key("val"):
                 if tree["val"] == "create":
+                    for child in self.root.children:
+                        if hasattr(child, "color"):
+                            if child.color == colorIndex[tree["children"][0]["val"]]:
+                                print "there's already one of those"
+                                return False
                     coords = tree["children"][1]["val"].split(',')
                     print coords
                     self.root.add_widget(Ball(center_x = int(coords[0]), center_y = int(coords[1]), color=colorIndex[tree["children"][0]["val"]], id=ballCounter))
                     ballCounter += 1
+                    return True
                 elif tree["val"] == "destroy":
                     for attrs in tree["children"]:
                         if attrs.has_key("val") and attrs.has_key("type"):
@@ -61,6 +68,7 @@ class BallWorld(App):
                                             print "found ball by id"
                                             print child.id
                                             self.root.remove_widget(child)
+                                            return True
                             elif attrs["type"] == "color":
                                 for child in self.root.children:
                                     if hasattr(child, "color"):
@@ -69,6 +77,8 @@ class BallWorld(App):
                                             print child.id
                                             print child.color
                                             self.root.remove_widget(child)
+                                            return True
+                    return False
                 elif tree["val"] == "color":
                     if tree["children"][0]["type"] == "ball":
                         for child in self.root.children:
@@ -78,6 +88,7 @@ class BallWorld(App):
                                     print child.id
                                     print child.color
                                     child.color = colorIndex[tree["children"][1]["val"]]
+                                    return True
                     elif tree["children"][0]["type"] == "color":
                         for child in self.root.children:
                             if hasattr(child, "color"):
@@ -85,6 +96,7 @@ class BallWorld(App):
                                     print "found ball by color"
                                     print child.id
                                     child.color = colorIndex[tree["children"][1]["val"]]
+                                    return True
                 elif tree["val"] == "move":
                     s = tree["children"][1]["val"]
                     destination = list()
@@ -95,21 +107,23 @@ class BallWorld(App):
                             if hasattr(child, "id"):
                                 if child.id == int(tree["children"][0]["val"]):
                                     print "moving by id: %d" % child.id
-                                    child.center = destination
+                                    moveAnimation = Animation(center=destination, duration=1.)
+                                    moveAnimation.start(child)
+                                    return True
                     elif tree["children"][0]["type"] == "color":
                         for child in self.root.children:
                             if hasattr(child, "color"):
                                 if child.color == colorIndex[tree["children"][0]["val"]]:
                                     print "moving by color"
-                                    child.center = destination
+                                    moveAnimation = Animation(center=destination, duration=1.)
+                                    moveAnimation.start(child)
+                                    return True
 
         
     def utterance_begin(self, *args):
         print "start"
         r = requests.get('http://127.0.0.1:7500/utterance/begin')
-        #print r.content
         r = requests.get('http://127.0.0.1:7500/utterance/speech/begin')
-        #print r.content
     
     def utterance_end(self, *args):
         global gestureBuffer
@@ -119,13 +133,9 @@ class BallWorld(App):
             print jsonData
             r = requests.post('http://127.0.0.1:7500/utterance/gesture/data', jsonData)
             gestureBuffer = []
-        time.sleep(0.25)
-        print "end"
         r = requests.get('http://127.0.0.1:7500/utterance/speech/end')
-        #print r.content
         r = requests.get('http://127.0.0.1:7500/utterance/end')
-        #print r.content
-        time.sleep(0.5)
+        time.sleep(0.25)
         self.utterance_get()
     
 
@@ -135,14 +145,10 @@ class BallWorld(App):
             if utteranceStarted == False:
                 utteranceStarted = True
                 self.utterance_begin()
-        elif scancode == 50:
-            self.utterance_get()
-        else:
-            print scancode
     
-    def on_key_up(self, scancode, *largs):
+    def on_key_up(self, instance, scancode, *largs):
         global utteranceStarted
-        if largs[0] == 32: # spacebar
+        if scancode == 32: # spacebar
             if utteranceStarted == True:
                 utteranceStarted = False
                 self.utterance_end()

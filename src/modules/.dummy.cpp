@@ -1,41 +1,26 @@
-/***********************************************************************
- ** Copyright (C) 2010 Movid Authors.  All rights reserved.
- **
- ** This file is part of the Movid Software.
- **
- ** This file may be distributed under the terms of the Q Public License
- ** as defined by Trolltech AS of Norway and appearing in the file
- ** LICENSE included in the packaging of this file.
- **
- ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
- ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
- **
- ** Contact info@movid.org if any conditions of this licensing are
- ** not clear to you.
- **
- **********************************************************************/
+/////////////////////////////////////////////////////////////////////////////
+// Name:        modules/.dummy.cpp
+// Purpose:     Module template
+// Author:      Scott Halstvedt
+// Copyright:   (c) 2011 NUI Group
+/////////////////////////////////////////////////////////////////////////////
 
-
-#include <assert.h>
-#include "moDUMMYModule.h"
-#include "../moLog.h"
-#include "cv.h"
+#include "ccxDUMMYModule.h"
 
 MODULE_DECLARE(DUMMY, "native", "DUMMY Description");
 
-moDUMMYModule::moDUMMYModule() : moImageFilterModule(){
-
+ccxDUMMYModule::ccxDUMMYModule() : ccxModule(CCX_MODULE_INPUT|CCX_MODULE_OUTPUT) {
 	MODULE_INIT();
 
-	// declare properties her, e.g:
-	// this->properties["size"] = new moProperty(1.);
+	// declare properties here, e.g:
+	// this->properties["size"] = new ccxProperty(1.);
 }
 
-moDUMMYModule::~moDUMMYModule() {
+ccxDUMMYModule::~moDUMMYModule() {
 }
 
-void moDUMMYModule::applyFilter() {
-	// Add your filter code here
+void ccxDUMMYModule::update() {
+	// Update code goes here
 }
 
 

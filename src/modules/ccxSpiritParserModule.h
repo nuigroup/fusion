@@ -9,7 +9,7 @@
 
 #include "ccfMultimodalSyntaxTree.h"
 
-#include "ballWorldGrammar.cpp" // do this more elegantly later
+#include "ballWorldGrammar.cpp" // do grammar loading more elegantly later
 
 #include <iostream>
 #include <fstream>
