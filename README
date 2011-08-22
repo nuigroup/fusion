@@ -4,7 +4,7 @@
 
 Fusion is a modular daemon designed to facilitate rapid prototyping of multimodal user interfaces.
 It was initially written for the Natural User Interface Group as part of Google Summer of Code 2011.
-
+Fusion is based on the Movid sources.  Movid is (C) The Movid Authors.
 
 
 ################################################################################

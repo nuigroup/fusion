@@ -1,7 +1,7 @@
 Container
 =========
 
-moDataGenericContainer
+ccxDataGenericContainer
 ----------------------
 
 Every generic container should have a property named "implements".

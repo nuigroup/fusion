@@ -1,12 +1,13 @@
 Data stream
 ===========
 
-Many datastream exist, to be able to connect different module between them.
+Many datastreams exist, to be able to connect different modules between them.
 
 List of data stream type
 ------------------------
 
-* IplImage: generic image coming from OpenCV
-* IplImage8: generic 8bit image coming from OpenCV
 * blob: generic data container, used for blob/fids/... (check container.txt)
 * trackedblob: generic data container, used for blob/fids/..., and tracked
+* mAST: multimodal abstract syntax tree, used between many Fusion modules as a generalized tree in the app's grammar
+* audio: Recorded audio (in system's bitrate, etc.)
+* JSON: String formatted JSON data
