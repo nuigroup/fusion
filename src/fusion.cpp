@@ -21,7 +21,6 @@
 #include <windows.h>
 #include <winbase.h>
 #include <Xgetopt.h>
-
 #else
 #include <getopt.h>
 #endif
@@ -42,6 +41,7 @@
 #include <sstream>
 #include <string>
 #include <map>
+#include <algorithm>
 
 // libevent
 #include "event.h"
@@ -1149,20 +1149,20 @@ int parse_options(int *argc, char ***argv) {
 				config_detach = true;
 				break;
 			case 'p':
-				config_pidfile = std::string(optarg);
+				//config_pidfile = std::string(optarg);
 				break;
 			case 'g':
-				config_guidir = std::string(optarg);
+				//config_guidir = std::string(optarg);
 				break;
 			case 'n':
 				config_httpserver = false;
 				break;
 			case 'l':
-				config_pipelinefn = std::string(optarg);
+				//config_pipelinefn = std::string(optarg);
 				break;
 			case 'i':
 				ccxDaemon::init();
-				describe(optarg);
+				//describe(optarg);
 				return 0; // leave properly
 			case 't':
 				test_mode = true;

@@ -135,7 +135,7 @@ class BallWorld(App):
             gestureBuffer = []
         r = requests.get('http://127.0.0.1:7500/utterance/speech/end')
         r = requests.get('http://127.0.0.1:7500/utterance/end')
-        time.sleep(0.25)
+        time.sleep(2.0)
         self.utterance_get()
     
 

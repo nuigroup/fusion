@@ -411,6 +411,12 @@
     <ClInclude Include="..\src\modules\ccxDebugGestureOutputModule.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\modules\ccxJSONInteractionModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\modules\ccxDebugGestureModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\fusion.cpp">
@@ -456,6 +462,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\modules\ccxDebugGestureOutputModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\contrib\rtaudio\RtAudio.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\modules\ccxJSONInteractionModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\modules\ccxDebugGestureModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

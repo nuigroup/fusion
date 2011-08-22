@@ -9,6 +9,8 @@
 
 MODULE_DECLARE(AudioOutput, "native", "Get audio from RtAudio input (Core Audio or DirectSound)");
 
+bool ccxAudioOutputModule::bRecording = false;
+
 ccxAudioOutputModule::ccxAudioOutputModule() : ccxModule(CCX_MODULE_INPUT||CCX_MODULE_OUTPUT) {
     
     MODULE_INIT();
@@ -17,8 +19,6 @@ ccxAudioOutputModule::ccxAudioOutputModule() : ccxModule(CCX_MODULE_INPUT||CCX_M
     
     resample_factor = AUDIO_TARGET_SAMPLE_RATE_F / AUDIO_HARDWARE_SAMPLE_RATE_F;
     resample_handle = resample_open(1, resample_factor, resample_factor);
-    
-    bRecording = false;
     
     audioBuf = NULL;
     audioBufSize = 0;
@@ -45,19 +45,30 @@ void ccxAudioOutputModule::start() {
 }
 
 AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
-    unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
+	unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
+	
+	RtAudio::StreamParameters oParams;
+	oParams.deviceId = recorder.getDefaultOutputDevice();
+    oParams.nChannels = channels;
+    oParams.firstChannel = offset;
+
+	std::cout << "Current API: " << recorder.getCurrentApi() << std::endl;
+	std::cout << "Latency: " << recorder.getStreamLatency() << std::endl;
+	
+
     if(bRecording) {
         LOG(CCX_DEBUG, "done recording");
-        recorder.stopStream();
+		bRecording = false;
+		try {
+			recorder.stopStream();
+		} catch (RtError& e) {
+			LOG(CCX_ERROR, e.getMessage());
+		}
         LOG(CCX_DEBUG, "stopped stream");
         recorder.closeStream();
         LOG(CCX_DEBUG, "closed input stream");
         
-        bRecording = false;
-        
-        /*
-         
-         try {
+         /*try {
          recorder.openStream( &oParams, NULL, FORMAT, fs, &bufferFrames, &gotAudioOutput, (void *)&data );
          recorder.startStream();
          }
@@ -67,6 +78,7 @@ AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
          
          while ( 1 ) {
          SLEEP( 100 ); // wake every 100 ms to check if we're done
+		 std::cout << "hell";
          if ( recorder.isStreamRunning() == false ) break;
          }
          
@@ -84,17 +96,29 @@ AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
         
         data.frameCounter = 0;
         
+#ifdef WIN32
+        float* buf_f = new float[newBufSize];
+        for (int i=0; i<newBufSize; i++) {
+			buf_f[i] = AUDIO_SHORT2FLOAT(data.buffer[i]);
+        }
+		if (fs != AUDIO_TARGET_SAMPLE_RATE_I) {
+            newBufSize = int(audioBufSize * resample_factor);
+            audioBuf = new float[newBufSize];
+            resample_process(resample_handle, resample_factor, buf_f, audioBufSize, 1, &srcused, audioBuf, newBufSize);
+        }
+#else
         if (fs != AUDIO_TARGET_SAMPLE_RATE_I) {
             newBufSize = int(audioBufSize * resample_factor);
             audioBuf = new float[newBufSize];
             resample_process(resample_handle, resample_factor, data.buffer, audioBufSize, 1, &srcused, audioBuf, newBufSize);
         }
-        
+
+#endif
         short* buf_16 = new short[newBufSize];
         for (int i=0; i<newBufSize; i++) {
             buf_16[i] = AUDIO_FLOAT2SHORT(audioBuf[i]);
         }
-        
+
         AudioDataStream* outputStream = new AudioDataStream;
         outputStream->buffer = buf_16;
         outputStream->sampleRate = AUDIO_TARGET_SAMPLE_RATE_I;
@@ -107,7 +131,8 @@ AudioDataStream* ccxAudioOutputModule::recordAudioEnd() {
     
 }
 
-void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
+void ccxAudioOutputModule::recordAudioStart(int max_time = 3) {
+	recorder.showWarnings();
     unsigned int channels = 1, fs = AUDIO_HARDWARE_SAMPLE_RATE_I, bufferFrames, offset = 0;
     bRecording = true;
     this->output->lock();
@@ -115,24 +140,22 @@ void ccxAudioOutputModule::recordAudioStart(int max_time = 10) {
     if ( recorder.getDeviceCount() < 1 ) {
         LOG(CCX_ERROR, "No audio devices found!");
         bRecording = false;
-        this->output->lock();
+        this->output->unlock();
     }
     
     recorder.showWarnings( true );
     bufferFrames = 512;
     RtAudio::StreamParameters iParams;
-    RtAudio::StreamParameters oParams;
 	iParams.deviceId = recorder.getDefaultInputDevice();
     iParams.nChannels = channels;
     iParams.firstChannel = offset;
-	oParams.deviceId = recorder.getDefaultOutputDevice();
-    oParams.nChannels = channels;
-    oParams.firstChannel = offset;
     
     data.buffer = 0;
+
+	options.flags = RTAUDIO_MINIMIZE_LATENCY || RTAUDIO_SCHEDULE_REALTIME;
         
     try {
-        recorder.openStream(NULL, &iParams, FORMAT, fs, &bufferFrames, &gotAudioInput, (void *) &data );
+        recorder.openStream(NULL, &iParams, FORMAT, fs, &bufferFrames, &gotAudioInput, (void *) &data, &options);
     }
     catch(RtError& e) {
         LOG(CCX_ERROR, e.getMessage());
@@ -178,7 +201,7 @@ void ccxAudioOutputModule::update() {
     
         if(((ccxDataGenericContainer *)this->input->getData())->hasProperty("recording") && !bRecording) {
             this->output->clear();
-            recordAudioStart(10);
+            recordAudioStart();
         }
         else if(bRecording) {
             AudioDataStream* audio = recordAudioEnd();
@@ -202,11 +225,19 @@ void ccxAudioOutputModule::update() {
     
 }
 
+bool ccxAudioOutputModule::isRecording() {
+	return bRecording;
+}
+
+void ccxAudioOutputModule::setRecording(bool rec) {
+	bRecording = rec;
+}
+
 int gotAudioInput( void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames,
                   double streamTime, RtAudioStreamStatus status, void *data )
 {
     AudioData *iData = (AudioData *) data;
-    
+
     // Simply copy the data to our allocated buffer.
     unsigned int frames = nBufferFrames;
     if ( iData->frameCounter + nBufferFrames > iData->totalFrames ) {
@@ -226,6 +257,7 @@ int gotAudioOutput( void *outputBuffer, void *inputBuffer, unsigned int nBufferF
                    double streamTime, RtAudioStreamStatus status, void *data )
 {
     AudioData *aData = (AudioData*) data;
+
     unsigned int frames = nBufferFrames;
     if ( aData->frameCounter + nBufferFrames > aData->totalFrames ) {
         frames = aData->totalFrames - aData->frameCounter;

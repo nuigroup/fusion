@@ -13,7 +13,7 @@
 #include "RtAudio.h"
 #include "libresample.h"
 
-#if defined( __WINDOWS_ASIO__ ) || defined( __WINDOWS_DS__ ) || defined(WIN32)
+#if defined(WIN32)
 #include <windows.h>
 #include <io.h>
 #include <direct.h>
@@ -35,8 +35,13 @@
 #define AUDIO_TARGET_SAMPLE_RATE_F 8000.0f
 #define AUDIO_TARGET_SAMPLE_RATE_I 8000
 
+#ifdef WIN32
+typedef short AUDIO_TYPE;
+#define FORMAT RTAUDIO_SINT16
+#else
 typedef float  AUDIO_TYPE;
 #define FORMAT RTAUDIO_FLOAT32
+#endif
 
 struct AudioData {
     AUDIO_TYPE* buffer;
@@ -59,6 +64,8 @@ public:
     void start();
     void update();
     void stop();
+	static bool isRecording();
+	static void setRecording(bool rec);
     
 protected:
     void *              resample_handle;
@@ -66,13 +73,16 @@ protected:
     
     RtAudio recorder;
     
-    bool                bRecording;
+    static bool                bRecording;
     
-    AUDIO_TYPE*             audioBuf;
+    float*             audioBuf;
     unsigned int        audioBufSize;
+
+	//int gotAudioInput(void *outputBuffer, void *inputBuffer, unsigned int nBufferFrames, double streamTime, RtAudioStreamStatus status, void *data);
     
     AudioData data;
     
+	RtAudio::StreamOptions options;
     
     ccxDataStream* output;
     ccxDataStream* input;

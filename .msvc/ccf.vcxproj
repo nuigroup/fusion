@@ -26,6 +26,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc>false</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -54,7 +55,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__WINDOW_DS__;__WINDOWS_DS__;WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\rtaudio;$(ProjectDir)\..\contrib\rtaudio\include;$(ProjectDir)\..\contrib\libresample\include;$(ProjectDir)\..\contrib\sphinx\include\sphinxbase;$(ProjectDir)\..\contrib\sphinx\include\sphinx3;$(ProjectDir)\..\contrib\boost;$(ProjectDir)\..\contrib\cJSON;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\compat;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\WIN32-Code;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable;$(ProjectDir)\..\src;$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\ccx;$(ProjectDir)\..\ccx\contrib\ptypes-2.1.1\include;$(ProjectDir)\..\src\containers;$(ProjectDir)\..\src\models;$(ProjectDir)\..\src\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -63,12 +64,12 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ws2_32.lib;user32.lib;event.lib;ccx.lib;ptypes.lib;rtAudioD.lib;dsound.lib;s3decoder.lib;sphinxbase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ws2_32.lib;user32.lib;event.lib;ccx.lib;ptypes.lib;dsound.lib;s3decoder.lib;sphinxbase.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
       <AdditionalLibraryDirectories>$(SolutionDir)\..\contrib\rtaudio;$(SolutionDir)\..\contrib\sphinx\lib\win32;$(SolutionDir)\lib;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
-      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+      <UseLibraryDependencyInputs>true</UseLibraryDependencyInputs>
     </ProjectReference>
     <PostBuildEvent>
       <Command>xcopy /i /s /Y $(ProjectDir)..\gui\* $(ProjectDir)\gui
@@ -87,16 +88,19 @@ xcopy /Y $(ProjectDir)..\contrib\sphinx\lib\win32\*.dll $(TargetDir)</Command>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>__WINDOW_DS__;__WINDOWS_DS__;WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>$(ProjectDir)\..\contrib\rtaudio;$(ProjectDir)\..\contrib\rtaudio\include;$(ProjectDir)\..\contrib\libresample\include;$(ProjectDir)\..\contrib\sphinx\include\sphinxbase;$(ProjectDir)\..\contrib\sphinx\include\sphinx3;$(ProjectDir)\..\contrib\boost;$(ProjectDir)\..\contrib\cJSON;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\compat;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable\WIN32-Code;$(ProjectDir)\..\ccx\contrib\libevent-1.4.13-stable;$(ProjectDir)\..\src;$(ProjectDir)\..\contrib\XgetOpt;$(ProjectDir)\..\ccx;$(ProjectDir)\..\ccx\contrib\ptypes-2.1.1\include;$(ProjectDir)\..\src\containers;$(ProjectDir)\..\src\models;$(ProjectDir)\..\src\modules;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>ws2_32.lib;user32.lib;event.lib;ccx.lib;ptypes.lib;rtAudio.lib;s3decoder.lib;sphinxbase.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\..\contrib\rtaudio;$(SolutionDir)\..\contrib\sphinx\lib\win32;$(SolutionDir)\lib;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>ws2_32.lib;user32.lib;event.lib;ccx.lib;ptypes.lib;s3decoder.lib;sphinxbase.lib;dsound.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)\..\ccx\.msvc\ccx\Release;$(SolutionDir)\..\contrib\rtaudio;$(SolutionDir)\..\contrib\sphinx\lib\win32;$(SolutionDir)\lib;$(SolutionDir)$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>MSVCRT</IgnoreSpecificDefaultLibraries>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -225,9 +229,11 @@ xcopy /Y $(ProjectDir)..\contrib\sphinx\lib\win32\*.dll $(TargetDir)</Command>
     <ClInclude Include="..\src\containers\ccfMultimodalSyntaxTree.h" />
     <ClInclude Include="..\src\models\ballWorldGrammar.h" />
     <ClInclude Include="..\src\modules\ccxAudioOutputModule.h" />
+    <ClInclude Include="..\src\modules\ccxDebugGestureModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugGestureOutputModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugInputModule.h" />
     <ClInclude Include="..\src\modules\ccxDebugOutputModule.h" />
+    <ClInclude Include="..\src\modules\ccxJSONInteractionModule.h" />
     <ClInclude Include="..\src\modules\ccxSphinxASRModule.h" />
     <ClInclude Include="..\src\modules\ccxSpiritParserModule.h" />
     <ClInclude Include="..\src\modules\ccxTemporalFusionModule.h" />
@@ -238,14 +244,17 @@ xcopy /Y $(ProjectDir)..\contrib\sphinx\lib\win32\*.dll $(TargetDir)</Command>
     <ClCompile Include="..\contrib\libresample\lib\filterkit.c" />
     <ClCompile Include="..\contrib\libresample\lib\resample.c" />
     <ClCompile Include="..\contrib\libresample\lib\resamplesubs.c" />
+    <ClCompile Include="..\contrib\rtaudio\RtAudio.cpp" />
     <ClCompile Include="..\contrib\XgetOpt\XGetopt.cxx" />
     <ClCompile Include="..\src\containers\ccfMultimodalSyntaxTree.cpp" />
     <ClCompile Include="..\src\fusion.cpp" />
     <ClCompile Include="..\src\models\ballWorldGrammar.cpp" />
     <ClCompile Include="..\src\modules\ccxAudioOutputModule.cpp" />
+    <ClCompile Include="..\src\modules\ccxDebugGestureModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugGestureOutputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugInputModule.cpp" />
     <ClCompile Include="..\src\modules\ccxDebugOutputModule.cpp" />
+    <ClCompile Include="..\src\modules\ccxJSONInteractionModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSphinxASRModule.cpp" />
     <ClCompile Include="..\src\modules\ccxSpiritParserModule.cpp" />
     <ClCompile Include="..\src\modules\ccxTemporalFusionModule.cpp" />
