@@ -28,114 +28,11 @@
         </ul>
       </header>
       <section>
-        <h2>Design Goals</h2>
+        <p>Refer to <a href="http://ccf.nuigroup.com/2/#home">project page</a></p>
 
-<p>Fusion is an open source, modular, cross-platform interaction framework
-designed to rapidly prototype and develop multi-modal application interfaces. It seeks to expose an easy-to-consume API for user input in multiple simultaneous input modes. Initially, we provide modules for audio input to be recognized by a grammar and Sphinx ASR, and touch/mouse input.  See <a href="http://www.youtube.com/watch?v=RyBEUyEtxQo">Put That There 1</a> and <a href="http://www.youtube.com/watch?v=0Pr2KIPQOKE">Put That There 2</a> for an example of multimodal interaction.</p>
-
-<p>See the <a href="http://ccf.nuigroup.com/">Fusion page</a> at the NUI Group's website for a video of Fusion's demo in action. </p>
-
-<p>This project was initially written for the Natural User Interface Group as part of Google Summer of Code 2011.</p>
-
-<h2>Features</h2>
-
-<ul>
-<li><p><strong>Cross-Platform</strong>
-Fusion is fully cross-platform. It runs on Windows, Linux, MacOSX and FreeBSD.
-The same configurations and models apply across platforms, so if your application is
-cross-platform, we support it.</p></li>
-<li><p><strong>Daemon</strong>
-Fusion runs as a daemon process. That means you can
-launch it on a different headless computer if you want (although currently some things
-depend on the daemon running on localhost, and responsiveness could be an issue).</p></li>
-<li><p><strong>Threading</strong>
-With Fusion, you have the ability to enable threading for any module you want.
-That means you are finally able to use your Core 2 Duo / Quad Core to its full
-potential. Obviously, you can still use non-threaded mode.</p></li>
-<li><p><strong>Remote API</strong>
-Fusion has a JSON API to control all its settings and adjust your pipeline remotely
-and on the fly. Interaction events are also served as JSON objects.</p></li>
-<li><p><strong>HTML5 Administration</strong>
-Fusion's web interface makes use of the most recent developments in web
-programming with open standards like HTML5. All that is required is a compatible
-HTML5 web browser. As of today, Firefox 3.6, Safari and Chromium have successfully
-run the web interface.</p></li>
-</ul><h2>Building</h2>
-
-<p>Fusion currently runs on Windows 7/8, OS X 10.6+, and Linux (tested on Ubuntu 11.04+).  It currently uses the SCons tool to build on all platforms.</p>
-
-<p>This means you have to install SCons to be able to compile Fusion.
-The platform specific compile notes below include instruction on how to install
-SCons. Once you have SCons installed open a command line in the Fusion directory
-(the one with this README in it) and run the following command:</p>
-
-<p>To build fusion (and dependencies if needed) run:
-scons</p>
-
-<p>To clean fusion (remove any intermediate files, output libs and executables):
-scons -c  (or 'scons --clean')</p>
-
-<p>To also clean the dependencies built in contrib:
-scons -c --clean-contrib</p>
-
-<p>For more info about SCons, other options, or how to install it on any system,
-you can check the SCons user guide at:
-<a href="http://www.scons.org/doc/production/HTML/scons-user.html">http://www.scons.org/doc/production/HTML/scons-user.html</a></p>
-
-<h3>Windows 7/8</h3>
-
-<p>To build Fusion on Windows, you need Visual C++ 2010 and SCons (which also requires Python).
-1. Get Visual C++ Express 2010 (not needed if you have Visual Studio 2010). Download the free version here: <a href="http://www.microsoft.com/express/Downloads/#2010-Visual-CPP">http://www.microsoft.com/express/Downloads/#2010-Visual-CPP</a></p>
-
-<ol>
-<li>Get Python and SCons. Download and run the following installers:
-<a href="http://www.python.org/ftp/python/2.7.3/python-2.7.3.msi">Python</a>
-<a href="http://prdownloads.sourceforge.net/scons/scons-2.0.1.win32.exe">SCons</a>
-</li>
-</ol><p>OK, you're ready to build.  If you installed everything to default locations just run: <code>scons</code></p>
-
-<p>If scons command is not found, try <code>C:\Python2.7\Scripts\scons</code></p>
-
-<p>Now you should be able to start fusion. Just double click the fusion executable or run it from the command line to use a config:
-<code>fusion -l config/ballworld/ballworld.cfg</code></p>
-
-<p>Now that the daemon is running, you can simply open your browser
-(needs to be a browser with HTML5 and support for
-the canvas object. Javascript also has to be enabled.) and navigate to the admin interface at <a href="http://127.0.0.1:7500/">http://127.0.0.1:7500/</a>.</p>
-
-<h3>OS X and Linux</h3>
-
-<p>On OS X and Linux, Fusion is also built with SCons (<a href="http://www.scons.org">http://www.scons.org</a>).</p>
-
-<ol>
-<li>Download <a href="http://prdownloads.sourceforge.net/scons/scons-2.0.1.zip">SCons</a>
-</li>
-<li>Unzip the file, open a terminal, and navigate to that directory:
-<code>cd scons-2.0.1</code>
-<code>python setup.py install</code>
-</li>
-</ol><p>Now you're ready to build fusion.  Change directory to the Fusion sources.</p>
-
-<ol>
-<li>First, you need to build rtaudio. This can take some configuration, so check out <code>contrib/rtaudio/install</code>. Most times, though, you should just be able to build with <code>cd contrib/rtaudio &amp;&amp; ./configure &amp;&amp; make</code>.</li>
-<li>Next, go back to the root of the project and <code>scons</code>. This will (hopefully) build everything. Note: If you need to build fusion as 32bit, you can do so by forcing the -m32 flag on the compilers for both moved and all libs in contrib by running:
-<code>CC='gcc -m32' CXX='g++ -m32' scons</code>
-</li>
-<li>Run <code>./ccf</code>, and navigate to <a href="http://127.0.0.1:7500/">http://127.0.0.1:7500/</a> with a Canvas/HTML5/JS-enabled browser for configuration. Exit the server with <code>curl 127.0.0.1:7500/pipeline/quit</code>.</li>
-<li>Leave the config as-is and run the platform-specific Python file in <code>demo</code> for a quick demo of Fusion's functionality.</li>
-</ol><h2>Documentation</h2>
-
-<h3>OS X or Linux:</h3>
-
-<ol>
-<li>Make sure you have Doxygen installed </li>
-<li>cd docs</li>
-<li>make</li>
-</ol><h3>Windows:</h3>
-
-<ol>
-<li>Run Doxygen on the Doxyfile in docs/</li>
-</ol>
+<hr><p>GSoC 2011 project
+<br><a href="http://www.google-melange.com/gsoc/homepage/google/gsoc2011"><img src="http://db.tt/JHJQ8Itn" alt="GSoC 2011"></a>
+<br><strong>Student:</strong> Scott Halstvedt<br><br><strong>Mentor:</strong> Christian Moore</p>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/nuigroup">nuigroup</a></p>
