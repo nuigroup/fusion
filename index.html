@@ -28,11 +28,46 @@
         </ul>
       </header>
       <section>
-        <p>Refer to <a href="http://ccf.nuigroup.com/2/#home">project page</a></p>
+        <h2>Design Goals</h2>
 
-<hr><p>GSoC 2011 project
+<p>Fusion is an open source, modular, cross-platform interaction framework
+designed to rapidly prototype and develop multi-modal application interfaces. It seeks to expose an easy-to-consume API for user input in multiple simultaneous input modes. Initially, we provide modules for audio input to be recognized by a grammar and Sphinx ASR, and touch/mouse input.  See <a href="http://www.youtube.com/watch?v=RyBEUyEtxQo">Put That There 1</a> and <a href="http://www.youtube.com/watch?v=0Pr2KIPQOKE">Put That There 2</a> for an example of multimodal interaction.</p>
+
+<p>See the <a href="http://ccf.nuigroup.com/2/">Fusion page</a> at the NUI Group's website for more information and a demo video. </p>
+
+<p>This project was initially written for the Natural User Interface Group as part of Google Summer of Code 2011.</p>
+
+<h2>Features</h2>
+
+<ul>
+<li><p><strong>Cross-Platform</strong>
+Fusion is fully cross-platform. It runs on Windows, Linux, MacOSX and FreeBSD.
+The same configurations and models apply across platforms, so if your application is
+cross-platform, we support it.</p></li>
+<li><p><strong>Daemon</strong>
+Fusion runs as a daemon process. That means you can
+launch it on a different headless computer if you want (although currently some things
+depend on the daemon running on localhost, and responsiveness could be an issue).</p></li>
+<li><p><strong>Threading</strong>
+With Fusion, you have the ability to enable threading for any module you want.
+That means you are finally able to use your Core 2 Duo / Quad Core to its full
+potential. Obviously, you can still use non-threaded mode.</p></li>
+<li><p><strong>Remote API</strong>
+Fusion has a JSON API to control all its settings and adjust your pipeline remotely
+and on the fly. Interaction events are also served as JSON objects.</p></li>
+<li>
+<p><strong>HTML5 Administration</strong>
+Fusion's web interface makes use of the most recent developments in web
+programming with open standards like HTML5. All that is required is a compatible
+HTML5 web browser. As of today, Firefox 3.6, Safari and Chromium have successfully
+run the web interface.</p>
+
+<hr>
+<p>GSoC 2011 project
 <br><a href="http://www.google-melange.com/gsoc/homepage/google/gsoc2011"><img src="http://db.tt/JHJQ8Itn" alt="GSoC 2011"></a>
 <br><strong>Student:</strong> Scott Halstvedt<br><br><strong>Mentor:</strong> Christian Moore</p>
+</li>
+</ul>
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/nuigroup">nuigroup</a></p>
